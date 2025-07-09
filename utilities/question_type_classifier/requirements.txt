@@ -1,0 +1,3 @@
+# Question Type Classifier Requirements
+# This utility uses only Python standard library modules, no external dependencies required.
+# Minimum Python version: 3.6+ 
