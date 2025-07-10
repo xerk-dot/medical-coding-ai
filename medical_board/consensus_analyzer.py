@@ -30,56 +30,122 @@ class QuestionConsensus:
 
 
 class ConsensusAnalyzer:
-    """Analyzes consensus across multiple AI doctor test results"""
+    """Analyzes consensus among AI doctors on medical coding questions"""
     
-    def __init__(self, results_dir: str = "../test_attempts"):
+    def __init__(self, results_dir: str = "../test_attempts", mode: str = "all"):
         self.results_dir = results_dir
-        self.consensus_reports_dir = "../consensus_benchmarks/consensus_reports"
-        self.threshold_first = 0.70  # 70% for first vote
-        self.threshold_subsequent = 0.85  # 85% for subsequent votes
+        self.mode = mode  # "vanilla", "enhanced", or "all"
+        self.threshold_first = 0.7  # 70% consensus needed for first round
+        self.threshold_subsequent = 0.8  # 80% consensus needed for subsequent rounds
+        
+    def get_latest_test_folder(self) -> Optional[str]:
+        """Find the most recent test folder that contains files matching the requested mode"""
+        if not os.path.exists(self.results_dir):
+            return None
+            
+        # Find all test_YYYYMMDD_HHMMSS folders
+        test_folders = []
+        for item in os.listdir(self.results_dir):
+            if os.path.isdir(os.path.join(self.results_dir, item)) and item.startswith("test_"):
+                test_folders.append(item)
+        
+        if not test_folders:
+            return None
+            
+        # Sort by timestamp (folder name) descending to check newest first
+        test_folders.sort(reverse=True)
+        
+        # Find the latest folder that contains files matching our mode
+        for folder_name in test_folders:
+            folder_path = os.path.join(self.results_dir, folder_name)
+            
+            # Check if this folder has files matching our mode
+            has_matching_files = False
+            for filename in os.listdir(folder_path):
+                if filename.endswith('.json'):
+                    is_enhanced = "_enhanced_" in filename
+                    
+                    if self.mode == "vanilla" and not is_enhanced:
+                        has_matching_files = True
+                        break
+                    elif self.mode == "enhanced" and is_enhanced:
+                        has_matching_files = True
+                        break
+                    elif self.mode == "all":
+                        has_matching_files = True
+                        break
+            
+            if has_matching_files:
+                print(f"📁 Using latest test folder with {self.mode} results: {folder_name}")
+                return folder_path
+                
+        print(f"❌ No test folders found containing {self.mode} results")
+        return None
     
     def load_all_results(self) -> List[Dict]:
-        """Load only the latest test result file for each model from the judgements directory"""
-        pattern = os.path.join(self.results_dir, "*.json")
-        files = glob.glob(pattern)
+        """Load all test results from the latest test folder, filtered by mode"""
+        # Get the latest test folder
+        latest_folder = self.get_latest_test_folder()
+        if not latest_folder:
+            print("❌ No test folders found in results directory")
+            return []
         
-        # Group files by model name and find the latest for each
-        model_files = defaultdict(list)
+        # Find all JSON files in the latest test folder
+        json_files = []
+        if os.path.exists(latest_folder):
+            for filename in os.listdir(latest_folder):
+                if filename.endswith('.json'):
+                    json_files.append(os.path.join(latest_folder, filename))
         
-        for file_path in files:
+        if not json_files:
+            print(f"❌ No JSON files found in {latest_folder}")
+            return []
+        
+        # Filter files based on mode
+        filtered_files = []
+        for file_path in json_files:
             filename = os.path.basename(file_path)
-            # Skip consensus report files
-            if filename.startswith('consensus_report'):
-                continue
-                
-            # Extract model name and timestamp from filename like "model_name_YYYYMMDD_HHMMSS.json"
-            parts = filename.replace('.json', '').split('_')
-            if len(parts) >= 3:
-                # Model name is everything except the last two parts (date and time)
-                model_name = '_'.join(parts[:-2])
-                timestamp = '_'.join(parts[-2:])  # YYYYMMDD_HHMMSS
-                model_files[model_name].append((timestamp, file_path))
+            is_enhanced = "_enhanced_" in filename
+            
+            if self.mode == "vanilla" and not is_enhanced:
+                filtered_files.append(file_path)
+            elif self.mode == "enhanced" and is_enhanced:
+                filtered_files.append(file_path)
+            elif self.mode == "all":
+                filtered_files.append(file_path)
         
-        # Get the latest file for each model (highest timestamp)
-        latest_files = []
-        for model_name, file_list in model_files.items():
-            # Sort by timestamp (descending) and take the first (latest)
-            file_list.sort(key=lambda x: x[0], reverse=True)
-            latest_timestamp, latest_file = file_list[0]
-            latest_files.append(latest_file)
-            print(f"Using latest result for {model_name}: {os.path.basename(latest_file)}")
+        if not filtered_files:
+            print(f"❌ No files found matching mode '{self.mode}' in {latest_folder}")
+            return []
         
-        # Load the latest results
+        # Load and parse JSON files
         results = []
-        for file_path in latest_files:
+        models_found = set()
+        
+        for file_path in filtered_files:
             try:
                 with open(file_path, 'r', encoding='utf-8') as f:
                     data = json.load(f)
-                    results.append(data)
-            except Exception as e:
-                print(f"Error loading {file_path}: {e}")
+                
+                # Extract model info for tracking
+                model_name = data.get("doctor_name", "Unknown")
+                model_id = data.get("model_id", "unknown")
+                is_enhanced = data.get("use_embeddings", False)
+                
+                mode_suffix = " (Enhanced)" if is_enhanced else " (Vanilla)"
+                display_name = f"{model_name}{mode_suffix}"
+                
+                models_found.add(display_name)
+                results.append(data)
+                
+                filename = os.path.basename(file_path)
+                print(f"Using latest result for {model_name}: {filename}")
+                
+            except (json.JSONDecodeError, FileNotFoundError) as e:
+                print(f"⚠️  Error loading {file_path}: {e}")
+                continue
         
-        print(f"Loaded {len(results)} latest test result files from {len(model_files)} models")
+        print(f"Loaded {len(results)} latest test result files from {len(models_found)} models ({self.mode} mode)")
         return results
     
     def analyze_consensus(self, round_number: int = 1) -> List[QuestionConsensus]:
@@ -98,6 +164,9 @@ class ConsensusAnalyzer:
             print("No test results found to analyze")
             return []
         
+        # Load question types for backward compatibility
+        question_types = self.load_question_types()
+        
         # Determine threshold based on round
         threshold = self.threshold_first if round_number == 1 else self.threshold_subsequent
         
@@ -108,14 +177,14 @@ class ConsensusAnalyzer:
             doctor_name = test_session["doctor_name"]
             
             for result in test_session.get("results", []):
-                if result["success"] and result["selected_answer"]:
+                if result["selected_answer"]:  # Only check if an answer was provided
                     question_num = result["question_number"]
                     question_responses[question_num].append({
                         "doctor": doctor_name,
                         "answer": result["selected_answer"],
                         "reasoning": result.get("reasoning", ""),
                         "question": result["question"],
-                        "question_type": result["question_type"],
+                        "question_type": result.get("question_type", question_types.get(question_num, "other")),
                         "choices": result["choices"]
                     })
         
@@ -173,6 +242,22 @@ class ConsensusAnalyzer:
         
         return consensus_results
     
+    def load_question_types(self) -> Dict[int, str]:
+        """Load question types from the questions file for backward compatibility"""
+        try:
+            questions_file = "../question_banks/test_1/test_1_questions.json"
+            with open(questions_file, 'r', encoding='utf-8') as f:
+                questions = json.load(f)
+            
+            question_types = {}
+            for q in questions:
+                question_types[q["question_number"]] = q.get("question_type", "other")
+            
+            return question_types
+            
+        except (FileNotFoundError, json.JSONDecodeError):
+            return {}
+    
     def print_consensus_summary(self, consensus_results: List[QuestionConsensus]):
         """Print a summary of consensus results"""
         if not consensus_results:
@@ -229,11 +314,13 @@ class ConsensusAnalyzer:
         """Save detailed consensus report to JSON file"""
         if not filename:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"consensus_report_{timestamp}.json"
+            mode_suffix = f"_{self.mode}" if self.mode != "all" else ""
+            filename = f"consensus_report{mode_suffix}_{timestamp}.json"
         
         # Convert to serializable format
         report = {
             "timestamp": datetime.now().isoformat(),
+            "mode": self.mode,
             "summary": {
                 "total_questions": len(consensus_results),
                 "consensus_achieved": sum(1 for r in consensus_results if r.consensus_achieved),
@@ -259,9 +346,10 @@ class ConsensusAnalyzer:
             report["questions"].append(question_data)
         
         # Ensure consensus reports directory exists
-        os.makedirs(self.consensus_reports_dir, exist_ok=True)
+        consensus_reports_dir = "../consensus_benchmarks/consensus_reports"
+        os.makedirs(consensus_reports_dir, exist_ok=True)
         
-        filepath = os.path.join(self.consensus_reports_dir, filename)
+        filepath = os.path.join(consensus_reports_dir, filename)
         
         try:
             with open(filepath, 'w', encoding='utf-8') as f:
@@ -273,22 +361,23 @@ class ConsensusAnalyzer:
 
 def main():
     """Main entry point for consensus analysis"""
-    import sys
+    import argparse
     
-    analyzer = ConsensusAnalyzer()
+    parser = argparse.ArgumentParser(description="Medical Board Consensus Analyzer")
+    parser.add_argument("--mode", choices=["vanilla", "enhanced", "all"], default="all",
+                       help="Analysis mode: vanilla (no embeddings), enhanced (with embeddings), or all")
+    parser.add_argument("--round", type=int, default=1,
+                       help="Consensus round number (affects threshold)")
     
-    # Determine round number from command line
-    round_number = 1
-    if len(sys.argv) > 1:
-        try:
-            round_number = int(sys.argv[1])
-        except ValueError:
-            print("Invalid round number. Using round 1.")
+    args = parser.parse_args()
     
-    print(f"🗳️  Analyzing Medical Board Consensus (Round {round_number})")
+    analyzer = ConsensusAnalyzer(mode=args.mode)
+    
+    mode_desc = {"vanilla": "Vanilla (No Embeddings)", "enhanced": "Enhanced (With Embeddings)", "all": "All Models"}
+    print(f"🗳️  Analyzing Medical Board Consensus - {mode_desc[args.mode]} (Round {args.round})")
     
     # Analyze consensus
-    consensus_results = analyzer.analyze_consensus(round_number)
+    consensus_results = analyzer.analyze_consensus(args.round)
     
     if not consensus_results:
         print("No test results found for analysis")
@@ -301,11 +390,11 @@ def main():
     analyzer.save_consensus_report(consensus_results)
     
     # Check for second round needs
-    if round_number == 1:
+    if args.round == 1:
         failed_questions = analyzer.get_questions_needing_second_vote(consensus_results)
         if failed_questions:
-            print(f"\n🔄 {len(failed_questions)} questions need a second vote with 85% threshold")
-            print("   Run: python consensus_analyzer.py 2")
+            print(f"\n🔄 {len(failed_questions)} questions need a second vote with higher threshold")
+            print(f"   Run: python consensus_analyzer.py --mode {args.mode} --round 2")
 
 
 if __name__ == "__main__":
