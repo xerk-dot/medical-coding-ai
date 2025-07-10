@@ -43,11 +43,19 @@ class AIClient:
             {"role": "user", "content": formatted_question}
         ]
         
+        # Set model-specific token limits and configurations
+        if "gemini" in model_id.lower():
+            max_tokens = 8000  # Gemini models need even more tokens for reasoning
+        elif "o3" in model_id:
+            max_tokens = 8000  # Reasoning models need even more tokens
+        else:
+            max_tokens = 6000  # Default for other models
+        
         payload = {
             "model": model_id,
             "messages": messages,
             "temperature": 0.1,  # Low temperature for consistent medical coding
-            "max_tokens": 500,
+            "max_tokens": max_tokens,
             "tools": [
                 {
                     "type": "function",
@@ -103,24 +111,27 @@ class AIClient:
                             else:
                                 print(f"Invalid choice returned: {selected_choice}")
                 
-                # If no tool call, try to parse from content
+                # Fallback parsing for different response formats
                 if "choices" in result and len(result["choices"]) > 0:
-                    content = result["choices"][0]["message"]["content"]
-                    selected_choice, reasoning = self._parse_response(content)
-                    if selected_choice:
-                        return selected_choice, reasoning, json.dumps(result, indent=2)
-                    
-                    # Try to parse JSON from content (for models that return JSON instead of tool calls)
-                    selected_choice, reasoning = self._parse_json_response(content)
-                    if selected_choice:
-                        return selected_choice, reasoning, json.dumps(result, indent=2)
-                    
-                    # For Gemini models: check reasoning_details for the actual response
+                    # For Gemini models: check reasoning_details first (they often put the real answer here)
                     selected_choice, reasoning = self._parse_reasoning_details(result)
                     if selected_choice:
                         return selected_choice, reasoning, json.dumps(result, indent=2)
+                    
+                    # Try to parse from main content
+                    content = result["choices"][0]["message"]["content"]
+                    if content:
+                        selected_choice, reasoning = self._parse_response(content)
+                        if selected_choice:
+                            return selected_choice, reasoning, json.dumps(result, indent=2)
+                        
+                        # Try to parse JSON from content (for models that return JSON instead of tool calls)
+                        selected_choice, reasoning = self._parse_json_response(content)
+                        if selected_choice:
+                            return selected_choice, reasoning, json.dumps(result, indent=2)
                 
                 print(f"Unexpected response format from {model_id}")
+                print(f"Response preview: {json.dumps(result, indent=2)[:500]}...")
                 return None, None, json.dumps(result, indent=2)
                 
             except requests.exceptions.RequestException as e:
@@ -182,13 +193,40 @@ class AIClient:
             reasoning = content
             return choice, reasoning
         
+        # Look for "The answer is X" pattern
+        answer_match = re.search(r'(?:the\s+)?answer\s+is\s+([ABCD])', content, re.IGNORECASE)
+        if answer_match:
+            choice = answer_match.group(1).upper()
+            reasoning = content
+            return choice, reasoning
+        
+        # Look for "I choose X" or "I select X" pattern
+        choice_match = re.search(r'I\s+(?:choose|select)\s+([ABCD])', content, re.IGNORECASE)
+        if choice_match:
+            choice = choice_match.group(1).upper()
+            reasoning = content
+            return choice, reasoning
+        
+        # Look for standalone letter followed by explanation
+        letter_match = re.search(r'^([ABCD])\b', content, re.IGNORECASE)
+        if letter_match:
+            choice = letter_match.group(1).upper()
+            reasoning = content
+            return choice, reasoning
+        
+        # Look for any mention of a choice letter in the text
+        for choice in ["A", "B", "C", "D"]:
+            if f" {choice} " in content or f" {choice}." in content or f" {choice}:" in content:
+                # Found a choice letter, assume it's the answer
+                return choice, content
+        
         # Look for just the letter at the start
         if len(content) > 0 and content[0].upper() in ["A", "B", "C", "D"]:
             choice = content[0].upper()
             reasoning = content[1:].strip()
             return choice, reasoning
         
-        return None, content 
+        return None, content
     
     def _parse_json_response(self, content: str) -> Tuple[Optional[str], Optional[str]]:
         """
@@ -240,52 +278,47 @@ class AIClient:
                 # Check if there's reasoning_details (Gemini format)
                 if "reasoning_details" in message:
                     for detail in message["reasoning_details"]:
-                        if "text" in detail:
-                            reasoning_text = detail["text"]
-                            
-                            # Look for answer patterns in the reasoning
-                            import re
-                            
-                            # Look for "Answer: X" or "Choice: X" patterns
-                            answer_patterns = [
-                                r'(?:Answer|Choice):\s*([ABCD])',
-                                r'(?:select|choose|pick)\s*([ABCD])',
-                                r'(?:option|choice)\s*([ABCD])',
-                                r'code\s*([ABCD])',
-                                r'(?:^|\s)([ABCD])(?:\s|$)',  # Single letter with word boundaries
-                            ]
-                            
-                            for pattern in answer_patterns:
-                                match = re.search(pattern, reasoning_text, re.IGNORECASE)
-                                if match:
-                                    choice = match.group(1).upper()
-                                    if choice in ["A", "B", "C", "D"]:
-                                        return choice, reasoning_text
-                            
-                            # Look for specific choice indicators in the reasoning
-                            if "code C" in reasoning_text.lower() or "option C" in reasoning_text.lower():
-                                return "C", reasoning_text
-                            elif "code A" in reasoning_text.lower() or "option A" in reasoning_text.lower():
-                                return "A", reasoning_text
-                            elif "code B" in reasoning_text.lower() or "option B" in reasoning_text.lower():
-                                return "B", reasoning_text
-                            elif "code D" in reasoning_text.lower() or "option D" in reasoning_text.lower():
-                                return "D", reasoning_text
-                            
-                            # Check for finish_reason indicating malformed function call
-                            if "finish_reason" in result["choices"][0]:
-                                finish_reason = result["choices"][0]["finish_reason"]
-                                if finish_reason == "stop" and "native_finish_reason" in result["choices"][0]:
-                                    native_reason = result["choices"][0]["native_finish_reason"]
-                                    if native_reason == "MALFORMED_FUNCTION_CALL":
-                                        # Model intended to use function but failed - try to extract from reasoning
-                                        if "31231" in reasoning_text:
-                                            return "C", reasoning_text
-                                        elif "10060" in reasoning_text:
-                                            return "C", reasoning_text
-                                        # Add more specific code mappings as needed
+                        if "data" in detail:
+                            # Try to decode the data if it's encrypted/encoded
+                            try:
+                                # For Gemini, sometimes the reasoning is in plain text
+                                reasoning_text = detail["data"]
+                                if isinstance(reasoning_text, str):
+                                    selected_choice, reasoning = self._parse_response(reasoning_text)
+                                    if selected_choice:
+                                        return selected_choice, reasoning
+                            except:
+                                pass
                 
+                # Check if there's a 'reasoning' field directly in the message
+                if "reasoning" in message:
+                    reasoning_text = message["reasoning"]
+                    if isinstance(reasoning_text, str):
+                        selected_choice, reasoning = self._parse_response(reasoning_text)
+                        if selected_choice:
+                            return selected_choice, reasoning
+                
+                # Check for function call arguments in a different format
+                if "function_call" in message:
+                    function_call = message["function_call"]
+                    if "arguments" in function_call:
+                        try:
+                            args = json.loads(function_call["arguments"])
+                            choice = args.get("choice")
+                            reasoning = args.get("reasoning")
+                            if choice and choice in ["A", "B", "C", "D"]:
+                                return choice, reasoning
+                        except:
+                            pass
+                
+                # Last resort: check the entire message content recursively
+                content = message.get("content", "")
+                if content:
+                    selected_choice, reasoning = self._parse_response(content)
+                    if selected_choice:
+                        return selected_choice, reasoning
+                        
         except Exception as e:
-            print(f"Error parsing reasoning_details: {e}")
+            print(f"Error parsing reasoning details: {e}")
         
         return None, None

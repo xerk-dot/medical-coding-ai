@@ -1,8 +1,8 @@
 {
-  "doctor_name": "Dr. Grok 3 Preview",
-  "model_id": "x-ai/grok-3-preview",
-  "start_time": "2025-07-09T18:00:44.442716",
-  "end_time": "2025-07-09T18:01:02.604258",
+  "doctor_name": "Dr. Claude Sonnet the 4th",
+  "model_id": "anthropic/claude-4-sonnet",
+  "start_time": "2025-07-09T20:14:41.901697",
+  "end_time": "2025-07-09T20:15:00.078877",
   "total_questions": 100,
   "completed_answers": 0,
   "results": [
@@ -1160,7 +1160,7 @@
     },
     {
       "question_number": 73,
-      "question": "According to the ICD-10-CM guidelines, when a patient has both an acute and chronic condition, which one should be sequenced first?",
+      "question": "According to the ICD 10 CM guidelines, when a patient has both an acute and chronic condition, which one should be sequenced first?",
       "question_type": "ICD",
       "choices": {
         "A": "Acute condition",
@@ -1512,7 +1512,7 @@
     },
     {
       "question_number": 95,
-      "question": "When a patient is admitted to the hospital for a high fever and is later diagnosed with sepsis, what should be the primary diagnosis according to ICD-10-CM guidelines?",
+      "question": "When a patient is admitted to the hospital for a high fever and is later diagnosed with sepsis, what should be the primary diagnosis according to ICD 10 CM guidelines?",
       "question_type": "ICD",
       "choices": {
         "A": "Fever",

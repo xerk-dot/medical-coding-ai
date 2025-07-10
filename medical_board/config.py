@@ -43,13 +43,6 @@ AI_DOCTORS: Dict[str, Dict[str, str]] = {
         "cost_tier": 4,  # $2.00/$8.00 per M tokens
         "cost_note": "$2.00/$8.00 per M tokens"
     },
-    "o3": {
-        "model_id": "openai/o3",
-        "display_name": "Dr. o3",
-        "short_name": "o3",
-        "cost_tier": 4,  # $2.00/$8.00 per M tokens (requires BYOK)
-        "cost_note": "$2.00/$8.00 per M tokens (requires BYOK)"
-    },
     "gpt_4o": {
         "model_id": "openai/gpt-4o",
         "display_name": "Dr. GPT 4o",
@@ -57,10 +50,38 @@ AI_DOCTORS: Dict[str, Dict[str, str]] = {
         "cost_tier": 5,  # $2.50/$10.00 per M tokens
         "cost_note": "$2.50/$10.00 per M tokens"
     },
+    "gpt_4_1_mini": {
+        "model_id": "openai/gpt-4.1-mini",
+        "display_name": "Dr. GPT 4.1 Mini",
+        "short_name": "gpt_4_1_mini",
+        "cost_tier": 3,  # $0.40/$1.60 per M tokens
+        "cost_note": "$0.40/$1.60 per M tokens"
+    },
+    "gpt_4o_mini": {
+        "model_id": "openai/gpt-4o-mini",
+        "display_name": "Dr. GPT 4o Mini",
+        "short_name": "gpt_4o_mini",
+        "cost_tier": 1,  # $0.15/$0.60 per M tokens
+        "cost_note": "$0.15/$0.60 per M tokens"
+    },
     "claude_sonnet_4": {
-        "model_id": "anthropic/claude-3.5-sonnet",
+        "model_id": "anthropic/claude-sonnet-4",
         "display_name": "Dr. Claude Sonnet the 4th",
         "short_name": "claude_sonnet_4",
+        "cost_tier": 6,  # $3.00/$15.00 per M tokens
+        "cost_note": "$3.00/$15.00 per M tokens"
+    },
+    "claude_sonnet_3.5": {
+        "model_id": "anthropic/claude-3.5-sonnet",
+        "display_name": "Dr. Claude Sonnet the 3.5th",
+        "short_name": "claude_sonnet_3.5",
+        "cost_tier": 6,  # $3.00/$15.00 per M tokens
+        "cost_note": "$3.00/$15.00 per M tokens"
+    },
+    "claude_sonnet_3.7": {
+        "model_id": "anthropic/claude-3.7-sonnet",
+        "display_name": "Dr. Claude Sonnet the 3.7th",
+        "short_name": "claude_sonnet_3.7",
         "cost_tier": 6,  # $3.00/$15.00 per M tokens
         "cost_note": "$3.00/$15.00 per M tokens"
     },
@@ -71,20 +92,12 @@ AI_DOCTORS: Dict[str, Dict[str, str]] = {
         "cost_tier": 6,  # Similar to Claude pricing
         "cost_note": "~$3.00/$15.00 per M tokens"
     },
-    "grok_3_beta": {
-        "model_id": "x-ai/grok-3-beta",
-        "display_name": "Dr. Grok 3 Beta",
-        "short_name": "grok_3_beta",
-        "cost_tier": 6,  # $3.00/$15.00 per M tokens
-        "cost_note": "$3.00/$15.00 per M tokens",
-        "max_workers": 1  # Sequential processing due to extremely strict rate limits
-    },
-    "o1": {
-        "model_id": "openai/o1",
-        "display_name": "Dr. o1",
-        "short_name": "o1",
-        "cost_tier": 7,  # $15.00/$60.00 per M tokens - Most expensive
-        "cost_note": "$15.00/$60.00 per M tokens"
+    "gemini_2_5_flash_preview": {
+        "model_id": "google/gemini-2.5-flash-preview-05-20",
+        "display_name": "Dr. Gemini Flash Preview the 2.5th",
+        "short_name": "gemini_2_5_flash_preview",
+        "cost_tier": 1,  # $3.00/$15.00 per M tokens
+        "cost_note": "$0.15/$0.60 per M tokens"
     }
 }
 
