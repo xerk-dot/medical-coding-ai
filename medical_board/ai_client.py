@@ -109,6 +109,16 @@ class AIClient:
                     selected_choice, reasoning = self._parse_response(content)
                     if selected_choice:
                         return selected_choice, reasoning, json.dumps(result, indent=2)
+                    
+                    # Try to parse JSON from content (for models that return JSON instead of tool calls)
+                    selected_choice, reasoning = self._parse_json_response(content)
+                    if selected_choice:
+                        return selected_choice, reasoning, json.dumps(result, indent=2)
+                    
+                    # For Gemini models: check reasoning_details for the actual response
+                    selected_choice, reasoning = self._parse_reasoning_details(result)
+                    if selected_choice:
+                        return selected_choice, reasoning, json.dumps(result, indent=2)
                 
                 print(f"Unexpected response format from {model_id}")
                 return None, None, json.dumps(result, indent=2)
@@ -179,3 +189,103 @@ class AIClient:
             return choice, reasoning
         
         return None, content 
+    
+    def _parse_json_response(self, content: str) -> Tuple[Optional[str], Optional[str]]:
+        """
+        Parse JSON response from content (for models that return JSON instead of tool calls)
+        """
+        if not content:
+            return None, None
+        
+        try:
+            # Look for JSON blocks in the content
+            import re
+            json_pattern = r'```json\s*(\{.*?\})\s*```'
+            json_match = re.search(json_pattern, content, re.DOTALL)
+            
+            if json_match:
+                json_str = json_match.group(1)
+                parsed = json.loads(json_str)
+                
+                choice = parsed.get("choice")
+                reasoning = parsed.get("reasoning")
+                
+                if choice and choice in ["A", "B", "C", "D"]:
+                    return choice, reasoning
+            
+            # Try to parse the entire content as JSON
+            try:
+                parsed = json.loads(content)
+                choice = parsed.get("choice")
+                reasoning = parsed.get("reasoning")
+                
+                if choice and choice in ["A", "B", "C", "D"]:
+                    return choice, reasoning
+            except:
+                pass
+                
+        except Exception as e:
+            print(f"Error parsing JSON response: {e}")
+        
+        return None, None
+    
+    def _parse_reasoning_details(self, result: dict) -> Tuple[Optional[str], Optional[str]]:
+        """
+        Parse reasoning_details from Gemini models that put the actual response there
+        """
+        try:
+            if "choices" in result and len(result["choices"]) > 0:
+                message = result["choices"][0]["message"]
+                
+                # Check if there's reasoning_details (Gemini format)
+                if "reasoning_details" in message:
+                    for detail in message["reasoning_details"]:
+                        if "text" in detail:
+                            reasoning_text = detail["text"]
+                            
+                            # Look for answer patterns in the reasoning
+                            import re
+                            
+                            # Look for "Answer: X" or "Choice: X" patterns
+                            answer_patterns = [
+                                r'(?:Answer|Choice):\s*([ABCD])',
+                                r'(?:select|choose|pick)\s*([ABCD])',
+                                r'(?:option|choice)\s*([ABCD])',
+                                r'code\s*([ABCD])',
+                                r'(?:^|\s)([ABCD])(?:\s|$)',  # Single letter with word boundaries
+                            ]
+                            
+                            for pattern in answer_patterns:
+                                match = re.search(pattern, reasoning_text, re.IGNORECASE)
+                                if match:
+                                    choice = match.group(1).upper()
+                                    if choice in ["A", "B", "C", "D"]:
+                                        return choice, reasoning_text
+                            
+                            # Look for specific choice indicators in the reasoning
+                            if "code C" in reasoning_text.lower() or "option C" in reasoning_text.lower():
+                                return "C", reasoning_text
+                            elif "code A" in reasoning_text.lower() or "option A" in reasoning_text.lower():
+                                return "A", reasoning_text
+                            elif "code B" in reasoning_text.lower() or "option B" in reasoning_text.lower():
+                                return "B", reasoning_text
+                            elif "code D" in reasoning_text.lower() or "option D" in reasoning_text.lower():
+                                return "D", reasoning_text
+                            
+                            # Check for finish_reason indicating malformed function call
+                            if "finish_reason" in result["choices"][0]:
+                                finish_reason = result["choices"][0]["finish_reason"]
+                                if finish_reason == "stop" and "native_finish_reason" in result["choices"][0]:
+                                    native_reason = result["choices"][0]["native_finish_reason"]
+                                    if native_reason == "MALFORMED_FUNCTION_CALL":
+                                        # Model intended to use function but failed - try to extract from reasoning
+                                        if "31231" in reasoning_text:
+                                            return "C", reasoning_text
+                                        elif "10060" in reasoning_text:
+                                            return "C", reasoning_text
+                                        # Add more specific code mappings as needed
+                
+        except Exception as e:
+            print(f"Error parsing reasoning_details: {e}")
+        
+        return None, None

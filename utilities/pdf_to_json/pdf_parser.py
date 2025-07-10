@@ -416,19 +416,27 @@ def extract_answers_from_pdf(answers_pdf_file: str) -> Dict[int, str]:
     
     answers = {}
     
-    # Look for answer patterns like "1. A" or "1. B" etc.
-    # Answers are typically formatted as question number followed by the correct choice letter
-    pattern = r'(\d+)\.\s*([A-D])'
+    # Look for answer patterns like "Answer: C. 41113" where C is the correct choice
+    # The pattern is: Answer: followed by a letter (A, B, C, or D) and then a dot
+    pattern = r'Answer:\s*([A-D])\.'
     matches = re.findall(pattern, raw_text)
     
     print(f"Found {len(matches)} answer patterns")
     
-    for question_num_str, answer_letter in matches:
-        question_num = int(question_num_str)
-        if 1 <= question_num <= 100:  # Valid question range
-            answers[question_num] = answer_letter
+    # The answers should be in sequential order (1, 2, 3, ...)
+    for i, answer_letter in enumerate(matches, 1):
+        if i <= 100:  # Valid question range
+            answers[i] = answer_letter
     
     print(f"✅ Extracted answers for {len(answers)} questions")
+    
+    # Debug: show first few answers
+    if answers:
+        print("First 10 answers:")
+        for i in range(1, min(11, len(answers) + 1)):
+            if i in answers:
+                print(f"  Q{i}: {answers[i]}")
+    
     return answers
 
 def create_answers_json(answers_dict: Dict[int, str], output_file: str):

@@ -3,62 +3,88 @@ Configuration for the Medical Board AI Testing System
 """
 import os
 from typing import Dict, List
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # OpenRouter Configuration
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
-# AI Models Configuration - The Medical AI Panel
+# AI Models Configuration - The Medical AI Panel (ordered by cost - cheapest first)
+# Updated with Summer 2025 OpenRouter pricing
 AI_DOCTORS: Dict[str, Dict[str, str]] = {
-    "claude_sonnet_4": {
-        "model_id": "anthropic/claude-3.5-sonnet",
-        "display_name": "Dr. claude-sonnet-4-20250514",
-        "short_name": "claude_sonnet_4"
-    },
     "gemini_2_5_flash": {
         "model_id": "google/gemini-2.5-flash",
-        "display_name": "Dr. gemini-2.5-flash",
-        "short_name": "gemini_2_5_flash"
-    },
-    "gemini_2_5_pro": {
-        "model_id": "google/gemini-2.5-pro",
-        "display_name": "Dr. gemini-2.5-pro",
-        "short_name": "gemini_2_5_pro"
+        "display_name": "Dr. Gemini Flash the 2.5th",
+        "short_name": "gemini_2_5_flash",
+        "cost_tier": 1,  # $0.15/$0.60 per M tokens
+        "cost_note": "$0.15/$0.60 per M tokens"
     },
     "deepseek_v3": {
-        "model_id": "deepseek/deepseek-v3",
-        "display_name": "Dr. deepseek-v3-0324",
-        "short_name": "deepseek_v3"
+        "model_id": "deepseek/deepseek-chat-v3-0324",
+        "display_name": "Dr. DeepSeek V3",
+        "short_name": "deepseek_v3",
+        "cost_tier": 2,  # $0.28/$0.88 per M tokens
+        "cost_note": "$0.28/$0.88 per M tokens"
     },
-    "grok_3": {
-        "model_id": "x-ai/grok-3-preview",
-        "display_name": "Dr. grok-3-preview-02-24",
-        "short_name": "grok_3"
+    "mistral_medium": {
+        "model_id": "mistralai/mistral-medium-3",
+        "display_name": "Dr. Mistral Medium",
+        "short_name": "mistral_medium",
+        "cost_tier": 3,  # $0.40/$2.00 per M tokens
+        "cost_note": "$0.40/$2.00 per M tokens"
     },
     "gpt_4_1": {
-        "model_id": "openai/gpt-4.1-2025-04-14",
-        "display_name": "Dr. gpt-4.1-2025-04-14",
-        "short_name": "gpt_4_1"
+        "model_id": "openai/gpt-4.1",
+        "display_name": "Dr. GPT 4.1",
+        "short_name": "gpt_4_1",
+        "cost_tier": 4,  # $2.00/$8.00 per M tokens
+        "cost_note": "$2.00/$8.00 per M tokens"
+    },
+    "o3": {
+        "model_id": "openai/o3",
+        "display_name": "Dr. o3",
+        "short_name": "o3",
+        "cost_tier": 4,  # $2.00/$8.00 per M tokens (requires BYOK)
+        "cost_note": "$2.00/$8.00 per M tokens (requires BYOK)"
     },
     "gpt_4o": {
         "model_id": "openai/gpt-4o",
-        "display_name": "Dr. 4o",
-        "short_name": "gpt_4o"
+        "display_name": "Dr. GPT 4o",
+        "short_name": "gpt_4o",
+        "cost_tier": 5,  # $2.50/$10.00 per M tokens
+        "cost_note": "$2.50/$10.00 per M tokens"
     },
-    "o3": {
-        "model_id": "openai/o3-2025-04-16",
-        "display_name": "Dr. o3-2025-04-16",
-        "short_name": "o3"
+    "claude_sonnet_4": {
+        "model_id": "anthropic/claude-3.5-sonnet",
+        "display_name": "Dr. Claude Sonnet the 4th",
+        "short_name": "claude_sonnet_4",
+        "cost_tier": 6,  # $3.00/$15.00 per M tokens
+        "cost_note": "$3.00/$15.00 per M tokens"
     },
-    "mistral_medium": {
-        "model_id": "mistral/mistral-medium-2505",
-        "display_name": "Dr. mistral-medium-2505",
-        "short_name": "mistral_medium"
+    "gemini_2_5_pro": {
+        "model_id": "google/gemini-2.5-pro",
+        "display_name": "Dr. Gemini Pro the 2.5th",
+        "short_name": "gemini_2_5_pro",
+        "cost_tier": 6,  # Similar to Claude pricing
+        "cost_note": "~$3.00/$15.00 per M tokens"
+    },
+    "grok_3_beta": {
+        "model_id": "x-ai/grok-3-beta",
+        "display_name": "Dr. Grok 3 Beta",
+        "short_name": "grok_3_beta",
+        "cost_tier": 6,  # $3.00/$15.00 per M tokens
+        "cost_note": "$3.00/$15.00 per M tokens",
+        "max_workers": 1  # Sequential processing due to extremely strict rate limits
     },
     "o1": {
         "model_id": "openai/o1",
         "display_name": "Dr. o1",
-        "short_name": "o1"
+        "short_name": "o1",
+        "cost_tier": 7,  # $15.00/$60.00 per M tokens - Most expensive
+        "cost_note": "$15.00/$60.00 per M tokens"
     }
 }
 
@@ -85,10 +111,11 @@ You must respond with only A, B, C, or D followed by a brief explanation of your
 }
 
 # File paths
-QUESTIONS_FILE = "question_banks/test_1/test_1_questions.json"
-RESULTS_DIR = "medical_board_judgements"
+QUESTIONS_FILE = "../question_banks/test_1/test_1_questions.json"
+RESULTS_DIR = "../test_attempts"
 
 # Testing configuration
 MAX_RETRIES = 3
 REQUEST_TIMEOUT = 60
-RATE_LIMIT_DELAY = 1  # seconds between requests 
+RATE_LIMIT_DELAY = 0.5  # Reduced for parallel processing
+PARALLEL_WORKERS = 10  # Max concurrent requests per doctor 

@@ -3,16 +3,18 @@ Medical Board Test Runner
 
 This script administers the medical coding test to all AI doctors in the panel.
 Each AI takes the test individually, one question at a time.
-Results are saved to medical_board_judgements as JSON files.
+Results are saved to test_attempts as JSON files.
 """
 import json
 import os
 import time
+import asyncio
+import concurrent.futures
 from datetime import datetime
 from typing import Dict, List, Optional
 from dataclasses import dataclass, asdict
 
-from config import AI_DOCTORS, SYSTEM_PROMPTS, QUESTIONS_FILE, RESULTS_DIR, RATE_LIMIT_DELAY
+from config import AI_DOCTORS, SYSTEM_PROMPTS, QUESTIONS_FILE, RESULTS_DIR, RATE_LIMIT_DELAY, PARALLEL_WORKERS
 from ai_client import AIClient
 
 
@@ -38,7 +40,7 @@ class DoctorTestSession:
     start_time: str
     end_time: Optional[str]
     total_questions: int
-    successful_answers: int
+    completed_answers: int
     results: List[TestResult]
 
 
@@ -70,7 +72,7 @@ class MedicalBoardTest:
     
     def run_single_doctor_test(self, doctor_key: str) -> Optional[DoctorTestSession]:
         """
-        Run the test for a single AI doctor
+        Run the test for a single AI doctor with parallel question processing
         
         Args:
             doctor_key: Key from AI_DOCTORS config
@@ -86,10 +88,12 @@ class MedicalBoardTest:
         doctor_name = doctor_config["display_name"]
         model_id = doctor_config["model_id"]
         short_name = doctor_config["short_name"]
+        cost_tier = doctor_config.get("cost_tier", 5)
         
         print(f"\n🏥 Starting medical board exam for {doctor_name}")
         print(f"   Model: {model_id}")
-        print(f"   Questions: {len(self.questions)}")
+        print(f"   Cost Tier: {cost_tier} (1=cheapest, 7=most expensive)")
+        print(f"   Questions: {len(self.questions)} (processing in parallel)")
         
         # Initialize test session
         session = DoctorTestSession(
@@ -98,28 +102,53 @@ class MedicalBoardTest:
             start_time=datetime.now().isoformat(),
             end_time=None,
             total_questions=len(self.questions),
-            successful_answers=0,
+            completed_answers=0,
             results=[]
         )
         
-        # Administer each question
-        for i, question_data in enumerate(self.questions, 1):
-            print(f"\n📝 Question {i}/{len(self.questions)}: {question_data['question_type']} question")
+        # Process all questions in parallel (with model-specific concurrency limits)
+        max_workers = doctor_config.get("max_workers", PARALLEL_WORKERS)
+        print(f"\n🚀 Processing all {len(self.questions)} questions in parallel (max_workers={max_workers})...")
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            # Submit all questions as futures
+            future_to_question = {
+                executor.submit(self._ask_single_question, model_id, question_data): question_data
+                for question_data in self.questions
+            }
             
-            result = self._ask_single_question(
-                model_id=model_id,
-                question_data=question_data
-            )
-            
-            session.results.append(result)
-            if result.success:
-                session.successful_answers += 1
-                print(f"   ✅ Answer: {result.selected_answer}")
-            else:
-                print(f"   ❌ Failed: {result.error_message}")
-            
-            # Rate limiting between questions
-            time.sleep(RATE_LIMIT_DELAY)
+            completed = 0
+            for future in concurrent.futures.as_completed(future_to_question):
+                question_data = future_to_question[future]
+                try:
+                    result = future.result()
+                    session.results.append(result)
+                    completed += 1
+                    
+                    if result.success:
+                        session.completed_answers += 1
+                        print(f"   ✍️ Q{result.question_number} ({completed}/{len(self.questions)}): {result.selected_answer}")
+                    else:
+                        print(f"   ❌ Q{result.question_number} ({completed}/{len(self.questions)}): Failed - {result.error_message}")
+                        
+                except Exception as e:
+                    print(f"   💥 Q{question_data['question_number']} failed with exception: {e}")
+                    # Create a failed result
+                    failed_result = TestResult(
+                        question_number=question_data["question_number"],
+                        question=question_data["question"],
+                        question_type=question_data.get("question_type", "other"),
+                        choices=question_data["choices"],
+                        selected_answer=None,
+                        reasoning=None,
+                        raw_response=None,
+                        success=False,
+                        error_message=str(e)
+                    )
+                    session.results.append(failed_result)
+                    completed += 1
+        
+        # Sort results by question number for consistent ordering
+        session.results.sort(key=lambda x: x.question_number)
         
         # Complete the session
         session.end_time = datetime.now().isoformat()
@@ -209,48 +238,63 @@ class MedicalBoardTest:
     
     def _print_test_summary(self, session: DoctorTestSession):
         """Print a summary of the test results"""
-        success_rate = (session.successful_answers / session.total_questions) * 100
+        completion_rate = (session.completed_answers / session.total_questions) * 100
         
         print(f"\n📊 Test Summary for {session.doctor_name}")
         print(f"   Total Questions: {session.total_questions}")
-        print(f"   Successful Answers: {session.successful_answers}")
-        print(f"   Success Rate: {success_rate:.1f}%")
+        print(f"   Completed Answers: {session.completed_answers} (note: this means the ai filled in an answer, this is not the same as successful answers)")
+        print(f"   Completion Rate: {completion_rate:.1f}%")
         
         # Count by question type
         type_counts = {}
-        type_success = {}
+        type_completed = {}
         
         for result in session.results:
             q_type = result.question_type
             if q_type not in type_counts:
                 type_counts[q_type] = 0
-                type_success[q_type] = 0
+                type_completed[q_type] = 0
             
             type_counts[q_type] += 1
             if result.success:
-                type_success[q_type] += 1
+                type_completed[q_type] += 1
         
         print(f"\n   📋 Breakdown by Question Type:")
         for q_type in sorted(type_counts.keys()):
-            rate = (type_success[q_type] / type_counts[q_type]) * 100
-            print(f"     {q_type}: {type_success[q_type]}/{type_counts[q_type]} ({rate:.1f}%)")
+            rate = (type_completed[q_type] / type_counts[q_type]) * 100
+            print(f"     {q_type}: {type_completed[q_type]}/{type_counts[q_type]} ({rate:.1f}%)")
     
     def run_all_doctors_test(self):
-        """Run the test for all doctors in the AI panel"""
+        """Run the test for all doctors in the AI panel, prioritizing cheapest models first"""
         print("🏥 Starting Medical Board Examination for All AI Doctors")
+        print("💰 Running cheapest models first to optimize costs")
         print("="*60)
+        
+        # Sort doctors by cost tier (cheapest first)
+        sorted_doctors = sorted(
+            AI_DOCTORS.items(), 
+            key=lambda x: x[1].get("cost_tier", 5)
+        )
+        
+        print("📋 Test order by cost tier:")
+        for doctor_key, config in sorted_doctors:
+            cost_tier = config.get("cost_tier", 5)
+            print(f"   Tier {cost_tier}: {config['display_name']}")
         
         all_results = []
         
-        for doctor_key in AI_DOCTORS.keys():
+        for doctor_key, doctor_config in sorted_doctors:
             try:
+                cost_tier = doctor_config.get("cost_tier", 5)
+                print(f"\n💰 Testing Cost Tier {cost_tier} model...")
+                
                 session = self.run_single_doctor_test(doctor_key)
                 if session:
                     all_results.append(session)
                 
-                # Longer delay between doctors to be respectful to API
-                print(f"\n⏱️  Waiting before next doctor...")
-                time.sleep(RATE_LIMIT_DELAY * 3)
+                # Brief delay between doctors (parallel processing makes this much faster)
+                print(f"\n⏱️  Brief pause before next doctor...")
+                time.sleep(2)
                 
             except KeyboardInterrupt:
                 print(f"\n⚠️  Test interrupted by user")
@@ -269,9 +313,9 @@ class MedicalBoardTest:
         print("🏆 OVERALL MEDICAL BOARD RESULTS")
         print("="*60)
         
-        for session in sorted(all_results, key=lambda x: x.successful_answers, reverse=True):
-            success_rate = (session.successful_answers / session.total_questions) * 100
-            print(f"{session.doctor_name:<30} {session.successful_answers:>3}/{session.total_questions} ({success_rate:>5.1f}%)")
+        for session in sorted(all_results, key=lambda x: x.completed_answers, reverse=True):
+            completion_rate = (session.completed_answers / session.total_questions) * 100
+            print(f"{session.doctor_name:<30} {session.completed_answers:>3}/{session.total_questions} ({completion_rate:>5.1f}%)")
 
 
 def main():

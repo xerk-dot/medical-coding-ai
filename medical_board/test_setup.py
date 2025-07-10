@@ -139,7 +139,7 @@ def test_results_directory():
     """Test that results directory exists or can be created"""
     print("\n📁 Testing Results Directory...")
     
-    results_dir = "../medical_board_judgements"
+    results_dir = "../test_attempts"
     
     try:
         os.makedirs(results_dir, exist_ok=True)

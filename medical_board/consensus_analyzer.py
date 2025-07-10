@@ -8,6 +8,7 @@ Implements the voting thresholds:
 import json
 import os
 import glob
+from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 from collections import Counter, defaultdict
 from dataclasses import dataclass
@@ -31,18 +32,46 @@ class QuestionConsensus:
 class ConsensusAnalyzer:
     """Analyzes consensus across multiple AI doctor test results"""
     
-    def __init__(self, results_dir: str = "../medical_board_judgements"):
+    def __init__(self, results_dir: str = "../test_attempts"):
         self.results_dir = results_dir
+        self.consensus_reports_dir = "../consensus_benchmarks/consensus_reports"
         self.threshold_first = 0.70  # 70% for first vote
         self.threshold_subsequent = 0.85  # 85% for subsequent votes
     
     def load_all_results(self) -> List[Dict]:
-        """Load all test result files from the judgements directory"""
+        """Load only the latest test result file for each model from the judgements directory"""
         pattern = os.path.join(self.results_dir, "*.json")
         files = glob.glob(pattern)
         
-        results = []
+        # Group files by model name and find the latest for each
+        model_files = defaultdict(list)
+        
         for file_path in files:
+            filename = os.path.basename(file_path)
+            # Skip consensus report files
+            if filename.startswith('consensus_report'):
+                continue
+                
+            # Extract model name and timestamp from filename like "model_name_YYYYMMDD_HHMMSS.json"
+            parts = filename.replace('.json', '').split('_')
+            if len(parts) >= 3:
+                # Model name is everything except the last two parts (date and time)
+                model_name = '_'.join(parts[:-2])
+                timestamp = '_'.join(parts[-2:])  # YYYYMMDD_HHMMSS
+                model_files[model_name].append((timestamp, file_path))
+        
+        # Get the latest file for each model (highest timestamp)
+        latest_files = []
+        for model_name, file_list in model_files.items():
+            # Sort by timestamp (descending) and take the first (latest)
+            file_list.sort(key=lambda x: x[0], reverse=True)
+            latest_timestamp, latest_file = file_list[0]
+            latest_files.append(latest_file)
+            print(f"Using latest result for {model_name}: {os.path.basename(latest_file)}")
+        
+        # Load the latest results
+        results = []
+        for file_path in latest_files:
             try:
                 with open(file_path, 'r', encoding='utf-8') as f:
                     data = json.load(f)
@@ -50,7 +79,7 @@ class ConsensusAnalyzer:
             except Exception as e:
                 print(f"Error loading {file_path}: {e}")
         
-        print(f"Loaded {len(results)} test result files")
+        print(f"Loaded {len(results)} latest test result files from {len(model_files)} models")
         return results
     
     def analyze_consensus(self, round_number: int = 1) -> List[QuestionConsensus]:
@@ -199,7 +228,6 @@ class ConsensusAnalyzer:
     def save_consensus_report(self, consensus_results: List[QuestionConsensus], filename: Optional[str] = None):
         """Save detailed consensus report to JSON file"""
         if not filename:
-            from datetime import datetime
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             filename = f"consensus_report_{timestamp}.json"
         
@@ -230,7 +258,10 @@ class ConsensusAnalyzer:
             }
             report["questions"].append(question_data)
         
-        filepath = os.path.join(self.results_dir, filename)
+        # Ensure consensus reports directory exists
+        os.makedirs(self.consensus_reports_dir, exist_ok=True)
+        
+        filepath = os.path.join(self.consensus_reports_dir, filename)
         
         try:
             with open(filepath, 'w', encoding='utf-8') as f:
