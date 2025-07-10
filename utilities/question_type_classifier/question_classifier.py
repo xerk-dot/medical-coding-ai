@@ -211,8 +211,8 @@ Examples:
     
     parser.add_argument(
         "--input", "-i",
-        default="../../question_banks/test_1/test_1_questions.json",
-        help="Path to input JSON file (default: ../../question_banks/test_1/test_1_questions.json)"
+        default="../../00_question_banks/test_1/test_1_questions.json",
+        help="Path to input JSON file (default: ../../00_question_banks/test_1/test_1_questions.json)"
     )
     
     parser.add_argument(

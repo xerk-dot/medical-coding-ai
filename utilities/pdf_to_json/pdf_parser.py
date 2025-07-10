@@ -484,18 +484,18 @@ def create_questions_json(questions: List[Dict], output_file: str):
 def list_test_files():
     """List available test PDF files"""
     project_root = Path(__file__).parent.parent.parent
-    test_dir = project_root / "question_banks/test_1"
+    test_dir = project_root / "00_question_banks/test_1"
     
     if not test_dir.exists():
-        print("No test directory found at question_banks/test_1")
+        print("No test directory found at 00_question_banks/test_1")
         return []
     
     pdf_files = list(test_dir.glob("*.pdf"))
     if not pdf_files:
-        print("No PDF files found in question_banks/test_1")
+        print("No PDF files found in 00_question_banks/test_1")
         return []
     
-    print("Available PDF files in question_banks/test_1:")
+    print("Available PDF files in 00_question_banks/test_1:")
     for i, pdf_file in enumerate(pdf_files, 1):
         print(f"  {i}. {pdf_file.name}")
     
@@ -549,7 +549,7 @@ def parse_pdf(pdf_file: str, save_debug: bool = False, use_ai_cleanup: bool = Tr
     # Save results
     print(f"\n=== Saving Results ===")
     base_name = os.path.splitext(os.path.basename(pdf_file))[0]
-    output_dir = Path(__file__).parent.parent.parent / "question_banks/test_1"
+    output_dir = Path(__file__).parent.parent.parent / "00_question_banks/test_1"
     output_dir.mkdir(exist_ok=True)
     
     questions_file = output_dir / f"{base_name}_questions.json"
@@ -649,7 +649,7 @@ Examples:
     pdf_path = Path(args.pdf_file)
     if not pdf_path.is_absolute():
         project_root = Path(__file__).parent.parent.parent
-        test_path = project_root / "question_banks/test_1" / args.pdf_file
+        test_path = project_root / "00_question_banks/test_1" / args.pdf_file
         if test_path.exists():
             pdf_path = test_path
         elif not pdf_path.exists():

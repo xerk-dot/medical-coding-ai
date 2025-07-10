@@ -1,0 +1,251 @@
+{
+  "timestamp": "2025-07-10T12:23:12.409242",
+  "mode": "all",
+  "summary": {
+    "total_questions": 10,
+    "consensus_achieved": 10,
+    "threshold_used": 0.7
+  },
+  "questions": [
+    {
+      "question_number": 1,
+      "question": "During a regular checkup, Dr. Stevens discovered a suspicious lesion on the floor of Paul's mouth and decided to perform an excision. Which CPT code covers the excision of an oral lesion?",
+      "question_type": "CPT",
+      "choices": {
+        "A": "40800",
+        "B": "41105",
+        "C": "41113",
+        "D": "40804"
+      },
+      "votes": {
+        "C": [
+          "Dr. Grok the 4th"
+        ]
+      },
+      "vote_counts": {
+        "C": 1
+      },
+      "total_votes": 1,
+      "consensus_choice": "C",
+      "consensus_percentage": 100.0,
+      "consensus_achieved": true,
+      "threshold_used": 0.7
+    },
+    {
+      "question_number": 2,
+      "question": "While shaving, Robert accidentally caused a small cut on his chin that later became infected. He visited a healthcare provider who incised and drained the infected area. Which CPT code covers the incision and drainage of an infected cut?",
+      "question_type": "CPT",
+      "choices": {
+        "A": "10080",
+        "B": "10021",
+        "C": "10060",
+        "D": "10160"
+      },
+      "votes": {
+        "C": [
+          "Dr. Grok the 4th"
+        ]
+      },
+      "vote_counts": {
+        "C": 1
+      },
+      "total_votes": 1,
+      "consensus_choice": "C",
+      "consensus_percentage": 100.0,
+      "consensus_achieved": true,
+      "threshold_used": 0.7
+    },
+    {
+      "question_number": 3,
+      "question": "Lucas, a professional swimmer, developed a cyst in his arm due to repetitive motion. The doctor decided to excise the cyst. Which CPT code represents the excision of a cyst?",
+      "question_type": "CPT",
+      "choices": {
+        "A": "20005",
+        "B": "20055",
+        "C": "20010",
+        "D": "20020"
+      },
+      "votes": {
+        "A": [
+          "Dr. Grok the 4th"
+        ]
+      },
+      "vote_counts": {
+        "A": 1
+      },
+      "total_votes": 1,
+      "consensus_choice": "A",
+      "consensus_percentage": 100.0,
+      "consensus_achieved": true,
+      "threshold_used": 0.7
+    },
+    {
+      "question_number": 4,
+      "question": "Ella's doctor suspected she might have diabetes. He ordered a Hemoglobin A1c test to assess her average blood sugar levels over the past three months. Which CPT code represents the Hemoglobin A1c test?",
+      "question_type": "CPT",
+      "choices": {
+        "A": "83036",
+        "B": "83033",
+        "C": "83035",
+        "D": "83034"
+      },
+      "votes": {
+        "A": [
+          "Dr. Grok the 4th"
+        ]
+      },
+      "vote_counts": {
+        "A": 1
+      },
+      "total_votes": 1,
+      "consensus_choice": "A",
+      "consensus_percentage": 100.0,
+      "consensus_achieved": true,
+      "threshold_used": 0.7
+    },
+    {
+      "question_number": 5,
+      "question": "Riley had an overactive thyroid and was recommended for a thyroid lobectomy. Which CPT code pertains to this procedure?",
+      "question_type": "CPT",
+      "choices": {
+        "A": "60210",
+        "B": "60212",
+        "C": "60220",
+        "D": "60225"
+      },
+      "votes": {
+        "C": [
+          "Dr. Grok the 4th"
+        ]
+      },
+      "vote_counts": {
+        "C": 1
+      },
+      "total_votes": 1,
+      "consensus_choice": "C",
+      "consensus_percentage": 100.0,
+      "consensus_achieved": true,
+      "threshold_used": 0.7
+    },
+    {
+      "question_number": 6,
+      "question": "After a series of tests, Dr. Wright determined that Katie had a kidney stone and recommended a percutaneous nephrostolithotomy. Which CPT code corresponds to this procedure?",
+      "question_type": "CPT",
+      "choices": {
+        "A": "50010",
+        "B": "50020",
+        "C": "50200",
+        "D": "50543"
+      },
+      "votes": {
+        "B": [
+          "Dr. Grok the 4th"
+        ]
+      },
+      "vote_counts": {
+        "B": 1
+      },
+      "total_votes": 1,
+      "consensus_choice": "B",
+      "consensus_percentage": 100.0,
+      "consensus_achieved": true,
+      "threshold_used": 0.7
+    },
+    {
+      "question_number": 7,
+      "question": "Ethan, experiencing persistent flank pain, underwent a diagnostic renal angiography. Which CPT code represents this procedure?",
+      "question_type": "CPT",
+      "choices": {
+        "A": "50010",
+        "B": "50220",
+        "C": "50200",
+        "D": "50398"
+      },
+      "votes": {
+        "C": [
+          "Dr. Grok the 4th"
+        ]
+      },
+      "vote_counts": {
+        "C": 1
+      },
+      "total_votes": 1,
+      "consensus_choice": "C",
+      "consensus_percentage": 100.0,
+      "consensus_achieved": true,
+      "threshold_used": 0.7
+    },
+    {
+      "question_number": 8,
+      "question": "The Relative Value Unit (RVU) associated with a CPT code reflects:",
+      "question_type": "CPT",
+      "choices": {
+        "A": "The complexity of the procedure",
+        "B": "The average time a procedure takes",
+        "C": "The cost associated with performing the procedure",
+        "D": "All of the above"
+      },
+      "votes": {
+        "D": [
+          "Dr. Grok the 4th"
+        ]
+      },
+      "vote_counts": {
+        "D": 1
+      },
+      "total_votes": 1,
+      "consensus_choice": "D",
+      "consensus_percentage": 100.0,
+      "consensus_achieved": true,
+      "threshold_used": 0.7
+    },
+    {
+      "question_number": 9,
+      "question": "What does the term 'bradycardia' refer to?",
+      "question_type": "other",
+      "choices": {
+        "A": "Fast heartbeat",
+        "B": "Slow heartbeat",
+        "C": "Irregular heartbeat",
+        "D": "Strong heartbeat"
+      },
+      "votes": {
+        "B": [
+          "Dr. Grok the 4th"
+        ]
+      },
+      "vote_counts": {
+        "B": 1
+      },
+      "total_votes": 1,
+      "consensus_choice": "B",
+      "consensus_percentage": 100.0,
+      "consensus_achieved": true,
+      "threshold_used": 0.7
+    },
+    {
+      "question_number": 10,
+      "question": "After weeks of sinus congestion, Olivia saw an ENT specialist. The doctor decided to perform a nasal endoscopy. Which CPT code describes this procedure?",
+      "question_type": "CPT",
+      "choices": {
+        "A": "30000",
+        "B": "30140",
+        "C": "31231",
+        "D": "31237"
+      },
+      "votes": {
+        "C": [
+          "Dr. Grok the 4th"
+        ]
+      },
+      "vote_counts": {
+        "C": 1
+      },
+      "total_votes": 1,
+      "consensus_choice": "C",
+      "consensus_percentage": 100.0,
+      "consensus_achieved": true,
+      "threshold_used": 0.7
+    }
+  ]
+}

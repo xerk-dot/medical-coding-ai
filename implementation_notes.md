@@ -6,7 +6,7 @@ A multi-AI consensus system for determining proper medical codes from test quest
 
 ```
 syntra/
-├── question_banks/          # PDF test files and extracted questions
+├── 00_question_banks/          # PDF test files and extracted questions
 ├── solvers/                 # AI consensus solving logic
 ├── solving_attempts/        # Results from solving sessions
 └── utilities/
@@ -45,5 +45,5 @@ AIs can use tools to determine A/B/C/D answer choices.
 
 In the medical board folder, there is a script that you can run to have all the AIs take the test. this python script will use open router to have each AI take the test. The AI will be asked one question at a time. tool use for ABCD. the questions are from test_1_questions.json
 
-Each test submission is saved as a json in the test_attempts as a json featuring the AI's answers, the model, the time the test was completed. the file will be named the name of the model (short form)_date-finished
+Each test submission is saved as a json in the 02_test_attempts as a json featuring the AI's answers, the model, the time the test was completed. the file will be named the name of the model (short form)_date-finished
 

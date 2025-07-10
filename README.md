@@ -1,4 +1,4 @@
-# Enhanced Consensus Validation Tool
+# AI Medical Coding Exam
 
 This tool validates the accuracy of AI consensus decisions against the official answer key and provides detailed individual model performance statistics.
 
@@ -16,17 +16,17 @@ The enhanced consensus validation script compares the latest consensus report fr
 
 ### Basic Validation with Model Performance
 ```bash
-cd consensus_validation
+cd 04_consensus_validation
 python3 validate_consensus.py
 ```
 
 ## What It Does
 
 ### 1. **Data Loading**
-- Loads the official answer key from `question_banks/test_1/test_1_answers.json`
-- Loads individual test results from all AI models in `test_attempts/`
-- Finds the latest consensus report from `consensus_benchmarks/consensus_reports/`
-- Loads question types from `question_banks/test_1/test_1_questions.json`
+- Loads the official answer key from `00_question_banks/test_1/test_1_answers.json`
+- Loads individual test results from all AI models in `02_test_attempts/`
+- Finds the latest consensus report from `03_consensus_benchmarks/consensus_reports/`
+- Loads question types from `00_question_banks/test_1/test_1_questions.json`
 
 ### 2. **Individual Model Analysis**
 - Calculates accuracy for each AI model against the answer key
@@ -216,9 +216,9 @@ This tool is designed to work with:
 ## Example Workflow
 
 1. **Fix Answer Key**: `cd utilities/pdf_to_json && python3 pdf_parser.py test_1.pdf`
-2. **Run AI Tests**: `cd medical_board && python3 medical_test.py --all`
+2. **Run AI Tests**: `cd 01_medical_board && python3 medical_test.py --all`
 3. **Generate Consensus**: `python3 consensus_analyzer.py 1`
-4. **Validate with Model Performance**: `cd ../consensus_validation && python3 validate_consensus.py`
+4. **Validate with Model Performance**: `cd ../04_consensus_validation && python3 validate_consensus.py`
 5. **Review Results**: Check individual model rankings and consensus accuracy
 6. **Iterate**: Adjust AI panel or consensus thresholds based on performance data
 
