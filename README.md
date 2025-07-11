@@ -168,8 +168,10 @@ syntra/
 ## Results
 
 ### Without HCPCS and ICD APIs
+
 <details>
 <summary>Click to expand</summary>
+
 #### 🎯 Consensus Validation Summary
 
 | Metric                | Value                        |
@@ -261,7 +263,9 @@ syntra/
 
 Notes: Key insight: GPT-4.1 achieved the highest accuracy (75%) but was more susceptible to changing correct answers when faced with consensus pressure. Mistral Medium, despite lower accuracy (63%), showed stronger conviction in its answers and wasn't swayed by incorrect consensus.
 </details>
+
 ### With HCPCS and ICD Apis:
+
 <details>
 <summary>Click to expand</summary>
 
