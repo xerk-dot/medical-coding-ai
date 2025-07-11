@@ -1,0 +1,167 @@
+{
+  "doctor_name": "Dr. GPT 4.1 Mini",
+  "model_id": "openai/gpt-4.1-mini",
+  "timestamp": "20250710_204206",
+  "test_session_timestamp": "20250710_204142",
+  "total_questions": 9,
+  "completed_answers": 9,
+  "completion_rate": 100.0,
+  "average_response_time": 1.730050111111111,
+  "use_embeddings": false,
+  "embeddings_count": 0,
+  "results": [
+    {
+      "question_number": 1,
+      "question": "During a regular checkup, Dr. Stevens discovered a suspicious lesion on the floor of Paul's mouth and decided to perform an excision. Which CPT code covers the excision of an oral lesion?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice B: 8 votes (66.7%) - Dr. GPT 4.1 Mini, Dr. GPT 4o Mini, Dr. GPT 4o and 5 others\n\u2022 Choice C: 4 votes (33.3%) - Dr. Gemini Pro the 2.5th, Dr. Mistral Medium, Dr. Gemini Flash the 2.5th and 1 others\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "40800",
+        "B": "41105",
+        "C": "41113",
+        "D": "40804"
+      },
+      "selected_answer": "B",
+      "reasoning": "CPT code 41105 specifically describes the excision of a lesion on the floor of the mouth, which matches the procedure performed by Dr. Stevens. The other codes refer to different oral sites or procedures.",
+      "response_time": 1.216311,
+      "raw_response": "{\n  \"id\": \"gen-1752198117-zCI7vYkSJHb89fHVi8aw\",\n  \"provider\": \"OpenAI\",\n  \"model\": \"openai/gpt-4.1-mini\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752198117,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\",\n      \"native_finish_reason\": \"stop\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"call_1fld7005HTwTTTAnHT8KmPln\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"B\\\",\\\"reasoning\\\":\\\"CPT code 41105 specifically describes the excision of a lesion on the floor of the mouth, which matches the procedure performed by Dr. Stevens. The other codes refer to different oral sites or procedures.\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"system_fingerprint\": \"fp_6f2eabb9a5\",\n  \"usage\": {\n    \"prompt_tokens\": 370,\n    \"completion_tokens\": 51,\n    \"total_tokens\": 421,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 7,
+      "question": "Ethan, experiencing persistent flank pain, underwent a diagnostic renal angiography. Which CPT code represents this procedure?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 1 votes (8.3%) - Dr. GPT 4.1\n\u2022 Choice C: 4 votes (33.3%) - Dr. Gemini Pro the 2.5th, Dr. Mistral Medium, Dr. Gemini Flash the 2.5th and 1 others\n\u2022 Choice D: 7 votes (58.3%) - Dr. GPT 4.1 Mini, Dr. GPT 4o Mini, Dr. GPT 4o and 4 others\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "50010",
+        "B": "50220",
+        "C": "50200",
+        "D": "50398"
+      },
+      "selected_answer": "D",
+      "reasoning": "CPT code 50398 is used for diagnostic renal angiography, which involves imaging of the renal arteries to evaluate conditions such as persistent flank pain. The other codes (50010, 50220, 50200) are related to different procedures such as kidney biopsy or nephrectomy, not diagnostic angiography.",
+      "response_time": 1.807885,
+      "raw_response": "{\n  \"id\": \"gen-1752198117-3dcJhNxZgfywaumplaCT\",\n  \"provider\": \"OpenAI\",\n  \"model\": \"openai/gpt-4.1-mini\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752198117,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\",\n      \"native_finish_reason\": \"stop\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"call_3EYivWtNLTa6xuLQFGSIK71d\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"D\\\",\\\"reasoning\\\":\\\"CPT code 50398 is used for diagnostic renal angiography, which involves imaging of the renal arteries to evaluate conditions such as persistent flank pain. The other codes (50010, 50220, 50200) are related to different procedures such as kidney biopsy or nephrectomy, not diagnostic angiography.\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"system_fingerprint\": \"fp_6f2eabb9a5\",\n  \"usage\": {\n    \"prompt_tokens\": 374,\n    \"completion_tokens\": 73,\n    \"total_tokens\": 447,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 12,
+      "question": "Jackson has been feeling pain and pressure in his sinuses. The ENT decided to perform a sinusotomy to improve drainage. Which CPT code represents this procedure?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 9 votes (75.0%) - Dr. Gemini Pro the 2.5th, Dr. GPT 4.1 Mini, Dr. Gemini Flash the 2.5th and 6 others\n\u2022 Choice B: 3 votes (25.0%) - Dr. Mistral Medium, Dr. GPT 4o Mini, Dr. GPT 4o\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "31020",
+        "B": "31256",
+        "C": "31287",
+        "D": "31288"
+      },
+      "selected_answer": "A",
+      "reasoning": "CPT code 31020 represents a sinusotomy, which is the surgical opening of a sinus to improve drainage. The other codes (31256, 31287, 31288) are related to endoscopic sinus procedures but not specifically sinusotomy.",
+      "response_time": 2.531381,
+      "raw_response": "{\n  \"id\": \"gen-1752198118-Aobg9snL2sisMkBMYjGn\",\n  \"provider\": \"OpenAI\",\n  \"model\": \"openai/gpt-4.1-mini\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752198118,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\",\n      \"native_finish_reason\": \"stop\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"call_lh8ryG97TcqASH6J4MJbXqi7\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"A\\\",\\\"reasoning\\\":\\\"CPT code 31020 represents a sinusotomy, which is the surgical opening of a sinus to improve drainage. The other codes (31256, 31287, 31288) are related to endoscopic sinus procedures but not specifically sinusotomy.\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"system_fingerprint\": \"fp_6f2eabb9a5\",\n  \"usage\": {\n    \"prompt_tokens\": 358,\n    \"completion_tokens\": 60,\n    \"total_tokens\": 418,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 24,
+      "question": "Olivia went to the pediatrician for her annual checkup. The doctor conducted a comprehensive review covering her past, family, and social history. Which CPT code represents this level of history-taking?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 8 votes (66.7%) - Dr. Mistral Medium, Dr. GPT 4.1 Mini, Dr. GPT 4o Mini and 5 others\n\u2022 Choice B: 1 votes (8.3%) - Dr. Claude Sonnet the 3.5th\n\u2022 Choice C: 3 votes (25.0%) - Dr. Gemini Pro the 2.5th, Dr. Gemini Flash the 2.5th, Dr. Gemini Flash Preview the 2.5th\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "99391",
+        "B": "99382",
+        "C": "99392",
+        "D": "99381"
+      },
+      "selected_answer": "A",
+      "reasoning": "CPT code 99391 represents an annual comprehensive preventive medicine evaluation and management of an individual, typically a new or established patient aged 1-4 years, which includes a comprehensive history covering past, family, and social history. This matches the description of Olivia's pediatrician visit for her annual checkup with a comprehensive review.",
+      "response_time": 2.737654,
+      "raw_response": "{\n  \"id\": \"gen-1752198119-MA5VSY0diC38DCGQDQvL\",\n  \"provider\": \"OpenAI\",\n  \"model\": \"openai/gpt-4.1-mini\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752198119,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\",\n      \"native_finish_reason\": \"stop\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"call_hw8IoLNkNTMLe2pFbmp1Yckk\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"A\\\",\\\"reasoning\\\":\\\"CPT code 99391 represents an annual comprehensive preventive medicine evaluation and management of an individual, typically a new or established patient aged 1-4 years, which includes a comprehensive history covering past, family, and social history. This matches the description of Olivia's pediatrician visit for her annual checkup with a comprehensive review.\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"system_fingerprint\": \"fp_6f2eabb9a5\",\n  \"usage\": {\n    \"prompt_tokens\": 396,\n    \"completion_tokens\": 75,\n    \"total_tokens\": 471,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 29,
+      "question": "Leo had been experiencing difficulty breathing and went to a clinic. The doctor performed a procedure to remove nasal polyps. Which CPT code corresponds to this procedure?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 9 votes (75.0%) - Dr. Gemini Pro the 2.5th, Dr. Mistral Medium, Dr. GPT 4.1 Mini and 6 others\n\u2022 Choice D: 3 votes (25.0%) - Dr. GPT 4o Mini, Dr. GPT 4.1, Dr. Claude Sonnet the 3.7th\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "30110",
+        "B": "30140",
+        "C": "30220",
+        "D": "31237"
+      },
+      "selected_answer": "A",
+      "reasoning": "CPT code 30110 corresponds to the excision or removal of nasal polyps, which matches the procedure described. The other codes relate to different nasal or sinus procedures not specific to polyp removal.",
+      "response_time": 1.466554,
+      "raw_response": "{\n  \"id\": \"gen-1752198121-xA9tyPtqfpyNcpzAPGvl\",\n  \"provider\": \"OpenAI\",\n  \"model\": \"openai/gpt-4.1-mini\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752198121,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\",\n      \"native_finish_reason\": \"stop\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"call_v47RivffaAfzkB3MD7CNZ5SS\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"A\\\",\\\"reasoning\\\":\\\"CPT code 30110 corresponds to the excision or removal of nasal polyps, which matches the procedure described. The other codes relate to different nasal or sinus procedures not specific to polyp removal.\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"system_fingerprint\": \"fp_6f2eabb9a5\",\n  \"usage\": {\n    \"prompt_tokens\": 360,\n    \"completion_tokens\": 50,\n    \"total_tokens\": 410,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 33,
+      "question": "Ella went to the doctor after experiencing pain from a swollen salivary gland. The doctor performed a sialolithotomy. Which CPT code represents this procedure?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 8 votes (66.7%) - Dr. Gemini Pro the 2.5th, Dr. GPT 4.1 Mini, Dr. GPT 4o Mini and 5 others\n\u2022 Choice D: 4 votes (33.3%) - Dr. Mistral Medium, Dr. GPT 4o, Dr. Gemini Flash the 2.5th and 1 others\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "40810",
+        "B": "40812",
+        "C": "40819",
+        "D": "40820"
+      },
+      "selected_answer": "A",
+      "reasoning": "CPT code 40810 specifically describes sialolithotomy, which is the surgical removal of a salivary gland stone. This matches the procedure performed by the doctor for the swollen salivary gland with pain.",
+      "response_time": 1.723608,
+      "raw_response": "{\n  \"id\": \"gen-1752198122-5MnAGpL74XUrx9iQLtPf\",\n  \"provider\": \"OpenAI\",\n  \"model\": \"openai/gpt-4.1-mini\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752198122,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\",\n      \"native_finish_reason\": \"stop\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"call_puIxQOifpzpC8GGNam6PU2qc\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"A\\\",\\\"reasoning\\\":\\\"CPT code 40810 specifically describes sialolithotomy, which is the surgical removal of a salivary gland stone. This matches the procedure performed by the doctor for the swollen salivary gland with pain.\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"system_fingerprint\": \"fp_6f2eabb9a5\",\n  \"usage\": {\n    \"prompt_tokens\": 363,\n    \"completion_tokens\": 53,\n    \"total_tokens\": 416,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 59,
+      "question": "After a minor car accident, Emma was taken to the emergency room. They found a hematoma in her shoulder that needed incision and drainage. Which CPT code pertains to this procedure?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 9 votes (75.0%) - Dr. Gemini Pro the 2.5th, Dr. Mistral Medium, Dr. GPT 4.1 Mini and 6 others\n\u2022 Choice B: 3 votes (25.0%) - Dr. GPT 4o, Dr. GPT 4.1, Dr. Claude Sonnet the 4th\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "20005",
+        "B": "20010",
+        "C": "20016",
+        "D": "20100"
+      },
+      "selected_answer": "A",
+      "reasoning": "CPT code 20005 is for incision and drainage of hematoma, seroma, or fluid collection in the shoulder or axilla area, which matches the procedure described for Emma's shoulder hematoma.",
+      "response_time": 1.578632,
+      "raw_response": "{\n  \"id\": \"gen-1752198123-Jcm1suAcvLINXbRbsR9L\",\n  \"provider\": \"OpenAI\",\n  \"model\": \"openai/gpt-4.1-mini\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752198123,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\",\n      \"native_finish_reason\": \"stop\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"call_MRU2ZhAUrAjAMyuqQAYhvM4c\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"A\\\",\\\"reasoning\\\":\\\"CPT code 20005 is for incision and drainage of hematoma, seroma, or fluid collection in the shoulder or axilla area, which matches the procedure described for Emma's shoulder hematoma.\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"system_fingerprint\": \"fp_6f2eabb9a5\",\n  \"usage\": {\n    \"prompt_tokens\": 362,\n    \"completion_tokens\": 50,\n    \"total_tokens\": 412,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 62,
+      "question": "John, an avid gardener, discovered a wart on his finger. Concerned about its appearance, he consulted a physician who recommended its removal. Which CPT code covers the excision of a wart?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice B: 8 votes (66.7%) - Dr. Gemini Pro the 2.5th, Dr. GPT 4.1 Mini, Dr. Gemini Flash the 2.5th and 5 others\n\u2022 Choice D: 4 votes (33.3%) - Dr. Mistral Medium, Dr. GPT 4o Mini, Dr. GPT 4o and 1 others\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "10021",
+        "B": "10040",
+        "C": "10060",
+        "D": "10120"
+      },
+      "selected_answer": "B",
+      "reasoning": "CPT code 10040 specifically covers the excision of a benign lesion such as a wart. Code 10021 is for fine needle aspiration, 10060 is for incision and drainage of abscess, and 10120 is for removal of foreign body, which are not appropriate for wart excision.",
+      "response_time": 1.458888,
+      "raw_response": "{\n  \"id\": \"gen-1752198124-FUZUAFJV9wNmYZTQhiOw\",\n  \"provider\": \"OpenAI\",\n  \"model\": \"openai/gpt-4.1-mini\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752198124,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\",\n      \"native_finish_reason\": \"stop\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"call_3FLUa3xV4tha5Jr341ZkIcRa\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"B\\\",\\\"reasoning\\\":\\\"CPT code 10040 specifically covers the excision of a benign lesion such as a wart. Code 10021 is for fine needle aspiration, 10060 is for incision and drainage of abscess, and 10120 is for removal of foreign body, which are not appropriate for wart excision.\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"system_fingerprint\": \"fp_6f2eabb9a5\",\n  \"usage\": {\n    \"prompt_tokens\": 370,\n    \"completion_tokens\": 71,\n    \"total_tokens\": 441,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 70,
+      "question": "Peter visited a dermatologist for a persistent rash. The doctor diagnosed him with atopic dermatitis of the hands. What ICD-10-CM code represents this diagnosis?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 9 votes (75.0%) - Dr. Gemini Pro the 2.5th, Dr. GPT 4.1 Mini, Dr. GPT 4o Mini and 6 others\n\u2022 Choice B: 2 votes (16.7%) - Dr. Claude Sonnet the 3.7th, Dr. Claude Sonnet the 4th\n\u2022 Choice C: 1 votes (8.3%) - Dr. Mistral Medium\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "ICD",
+      "choices": {
+        "A": "L20.81",
+        "B": "L20.82",
+        "C": "L20.83",
+        "D": "L20.84"
+      },
+      "selected_answer": "A",
+      "reasoning": "The ICD-10-CM code L20.81 specifically represents atopic dermatitis of the hands, which matches the diagnosis given by the dermatologist for Peter's persistent rash.",
+      "response_time": 1.049538,
+      "raw_response": "{\n  \"id\": \"gen-1752198125-WzYhH2hAL8zyNR2M2xlR\",\n  \"provider\": \"OpenAI\",\n  \"model\": \"openai/gpt-4.1-mini\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752198125,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\",\n      \"native_finish_reason\": \"stop\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"call_vxmprQof5OnDHCy3oaXngozI\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"A\\\",\\\"reasoning\\\":\\\"The ICD-10-CM code L20.81 specifically represents atopic dermatitis of the hands, which matches the diagnosis given by the dermatologist for Peter's persistent rash.\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"system_fingerprint\": null,\n  \"usage\": {\n    \"prompt_tokens\": 389,\n    \"completion_tokens\": 43,\n    \"total_tokens\": 432,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  }\n}",
+      "success": true,
+      "error_message": null
+    }
+  ]
+}

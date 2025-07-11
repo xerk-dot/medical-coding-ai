@@ -1,17 +1,24 @@
 """
-Consensus Analyzer for Medical Board Results
+Multi-Round Consensus Analyzer for Medical Board Results
 
-Implements the voting thresholds:
+Implements iterative voting with thresholds:
 - First vote: 70% agreement required
-- Second/subsequent votes: 85% agreement required
+- Second/subsequent votes: 80% agreement required
+
+Automatically runs multiple rounds until all questions reach consensus.
 """
 import json
 import os
-import glob
+import sys
+import time
 from datetime import datetime
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 from collections import Counter, defaultdict
 from dataclasses import dataclass
+
+# Add medical_board to path for direct imports
+sys.path.append("../01_medical_board")
+from medical_test import MedicalBoardTest
 
 @dataclass
 class QuestionConsensus:
@@ -27,163 +34,175 @@ class QuestionConsensus:
     consensus_percentage: float
     consensus_achieved: bool
     threshold_used: float
-
+    vote_round: int
 
 class ConsensusAnalyzer:
-    """Analyzes consensus among AI doctors on medical coding questions"""
+    """Multi-round consensus analyzer for AI medical board decisions"""
     
-    def __init__(self, results_dir: str = "../02_test_attempts", mode: str = "all"):
-        self.results_dir = results_dir
-        self.mode = mode  # "vanilla", "enhanced", or "all"
+    def __init__(self, mode: str = "all"):
+        self.mode = mode
+        self.results_dir = "../02_test_attempts"
         self.threshold_first = 0.7  # 70% consensus needed for first round
         self.threshold_subsequent = 0.8  # 80% consensus needed for subsequent rounds
+        self.consensus_reports_dir = "./consensus_reports"
+        self.questions_file = "../00_question_banks/test_1/test_1_questions.json"
+        self.max_rounds = 5
         
+        # Create directories
+        os.makedirs(self.consensus_reports_dir, exist_ok=True)
+    
     def get_available_test_folders(self) -> List[str]:
         """Get list of all available test folders sorted by date"""
         if not os.path.exists(self.results_dir):
             return []
             
-        # Find all test_YYYYMMDD_HHMMSS folders
         test_folders = []
         for item in os.listdir(self.results_dir):
             if os.path.isdir(os.path.join(self.results_dir, item)) and item.startswith("test_"):
                 test_folders.append(item)
         
-        # Sort by timestamp (folder name) descending
-        test_folders.sort(reverse=True)
-        return test_folders
+        return sorted(test_folders, reverse=True)
     
-    def get_test_folder(self, test_folder_name: Optional[str] = None) -> Optional[str]:
-        """Get test folder path - either specified or latest with matching files"""
-        available_folders = self.get_available_test_folders()
-        
-        if not available_folders:
-            print(f"❌ No test folders found in {self.results_dir}")
-            return None
-        
-        # If specific folder requested, validate it exists
-        if test_folder_name:
-            if test_folder_name not in available_folders:
-                print(f"❌ Test folder '{test_folder_name}' not found")
-                print(f"Available folders: {', '.join(available_folders[:5])}...")
-                return None
-            return os.path.join(self.results_dir, test_folder_name)
-        
-        # Otherwise find latest folder with matching files
-        for folder_name in available_folders:
-            folder_path = os.path.join(self.results_dir, folder_name)
-            
-            # Check if this folder has files matching our mode
-            has_matching_files = False
-            for filename in os.listdir(folder_path):
-                if filename.endswith('.json'):
-                    is_enhanced = "_enhanced_" in filename
-                    
-                    if self.mode == "vanilla" and not is_enhanced:
-                        has_matching_files = True
-                        break
-                    elif self.mode == "enhanced" and is_enhanced:
-                        has_matching_files = True
-                        break
-                    elif self.mode == "all":
-                        has_matching_files = True
-                        break
-            
-            if has_matching_files:
-                print(f"📁 Using test folder with {self.mode} results: {folder_name}")
-                return folder_path
-                
-        print(f"❌ No test folders found containing {self.mode} results")
-        return None
+    def load_all_questions(self) -> List[Dict]:
+        """Load all questions from the question bank"""
+        with open(self.questions_file, 'r', encoding='utf-8') as f:
+            return json.load(f)
     
-    def load_all_results(self, test_folder_name: Optional[str] = None) -> List[Dict]:
-        """Load all test results from specified or latest test folder, filtered by mode"""
-        # Get the test folder
-        test_folder = self.get_test_folder(test_folder_name)
-        if not test_folder:
-            print("❌ No valid test folder found")
+    def load_test_results(self, test_folder: str) -> List[Dict]:
+        """Load test results from a specific test folder"""
+        test_path = os.path.join(self.results_dir, test_folder)
+        if not os.path.exists(test_path):
+            print(f"❌ Test folder not found: {test_path}")
             return []
         
-        # Find all JSON files in the test folder
-        json_files = []
-        if os.path.exists(test_folder):
-            for filename in os.listdir(test_folder):
-                if filename.endswith('.json'):
-                    json_files.append(os.path.join(test_folder, filename))
-        
-        if not json_files:
-            print(f"❌ No JSON files found in {test_folder}")
-            return []
-        
-        # Filter files based on mode
-        filtered_files = []
-        for file_path in json_files:
-            filename = os.path.basename(file_path)
-            is_enhanced = "_enhanced_" in filename
-            
-            if self.mode == "vanilla" and not is_enhanced:
-                filtered_files.append(file_path)
-            elif self.mode == "enhanced" and is_enhanced:
-                filtered_files.append(file_path)
-            elif self.mode == "all":
-                filtered_files.append(file_path)
-        
-        if not filtered_files:
-            print(f"❌ No files found matching mode '{self.mode}' in {test_folder}")
-            return []
-        
-        # Load and parse JSON files
         results = []
-        models_found = set()
+        for filename in os.listdir(test_path):
+            if filename.endswith('.json'):
+                file_path = os.path.join(test_path, filename)
+                try:
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                    
+                    # Filter by mode if needed
+                    is_enhanced = data.get("use_embeddings", False) or "_enhanced_" in filename
+                    
+                    if self.mode == "vanilla" and is_enhanced:
+                        continue
+                    elif self.mode == "enhanced" and not is_enhanced:
+                        continue
+                    
+                    results.append(data)
+                except Exception as e:
+                    print(f"⚠️  Error loading {file_path}: {e}")
         
-        for file_path in filtered_files:
-            try:
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                
-                # Extract model info for tracking
-                model_name = data.get("doctor_name", "Unknown")
-                model_id = data.get("model_id", "unknown")
-                is_enhanced = data.get("use_embeddings", False)
-                
-                mode_suffix = " (Enhanced)" if is_enhanced else " (Vanilla)"
-                display_name = f"{model_name}{mode_suffix}"
-                
-                models_found.add(display_name)
-                results.append(data)
-                
-                filename = os.path.basename(file_path)
-                print(f"Using latest result for {model_name}: {filename}")
-                
-            except (json.JSONDecodeError, FileNotFoundError) as e:
-                print(f"⚠️  Error loading {file_path}: {e}")
-                continue
-        
-        print(f"Loaded {len(results)} latest test result files from {len(models_found)} models ({self.mode} mode)")
         return results
     
-    def analyze_consensus(self, round_number: int = 1, test_folder_name: Optional[str] = None) -> List[QuestionConsensus]:
-        """
-        Analyze consensus across all AI doctors for each question
+    def create_questions_with_context(self, question_numbers: List[int], 
+                                    previous_consensus: List[QuestionConsensus]) -> str:
+        """Create a temporary questions file with previous vote context"""
+        all_questions = self.load_all_questions()
         
-        Args:
-            round_number: Voting round (affects threshold)
-            test_folder_name: Specific test folder to analyze (uses latest if None)
+        # Create temporary directory for this round
+        temp_dir = os.path.join(os.getcwd(), "temp_consensus")
+        os.makedirs(temp_dir, exist_ok=True)
+        
+        # Filter questions and add context
+        filtered_questions = []
+        for q in all_questions:
+            if q["question_number"] in question_numbers:
+                # Find previous consensus for this question
+                prev_result = next((r for r in previous_consensus if r.question_number == q["question_number"]), None)
+                
+                if prev_result:
+                    # Add previous vote context
+                    context = f"\n\n--- Previous Vote Results ---\n"
+                    context += f"Consensus threshold not met. Previous votes:\n"
+                    
+                    for choice, doctors in sorted(prev_result.votes.items()):
+                        percentage = (len(doctors) / prev_result.total_votes) * 100
+                        context += f"• Choice {choice}: {len(doctors)} votes ({percentage:.1f}%) - {', '.join(doctors[:3])}"
+                        if len(doctors) > 3:
+                            context += f" and {len(doctors)-3} others"
+                        context += "\n"
+                    
+                    context += f"\nPlease reconsider your answer based on the voting pattern above."
+                    
+                    # Create new question with context
+                    new_question = q.copy()
+                    new_question["question"] = q["question"] + context
+                    filtered_questions.append(new_question)
+                else:
+                    filtered_questions.append(q)
+        
+        # Save to temporary file
+        temp_file = os.path.join(temp_dir, "consensus_questions.json")
+        with open(temp_file, 'w', encoding='utf-8') as f:
+            json.dump(filtered_questions, f, indent=2)
+        
+        return temp_file
+    
+    def run_medical_tests_for_questions(self, questions_file: str, round_num: int) -> Optional[str]:
+        """Run medical tests for specific questions and return test folder"""
+        print(f"\n🤖 Running medical tests for round {round_num}...")
+        
+        # Load and display questions info
+        questions_data = json.load(open(questions_file))
+        num_questions = len(questions_data)
+        question_numbers = [q.get("question_number", i+1) for i, q in enumerate(questions_data)]
+        
+        print(f"📋 Testing {num_questions} questions with all AI models...")
+        print(f"   Questions: {', '.join(map(str, sorted(question_numbers)))}")
+        
+        # Create medical test instance
+        use_embeddings = (self.mode == "enhanced")
+        test = MedicalBoardTest(use_embeddings=use_embeddings, max_workers=2, questions_file=questions_file)
+        
+        # Get all doctor keys (excluding problematic models)
+        from config import AI_DOCTORS
+        all_doctor_keys = [key for key in AI_DOCTORS.keys() if key != "grok_4"]
+        
+        print(f"   🔄 Starting medical tests with {len(all_doctor_keys)} AI models...")
+        start_time = time.time()
+        
+        # Run tests for all doctors
+        try:
+            test.run_multiple_doctors(all_doctor_keys, max_questions=None, max_concurrent_agents=4, parallel=True)
             
-        Returns:
-            List of QuestionConsensus objects
-        """
-        results = self.load_all_results(test_folder_name)
+            # Find the latest test folder
+            test_folders = sorted([f for f in os.listdir(self.results_dir) if f.startswith("test_")], reverse=True)
+            if test_folders:
+                latest_folder = test_folders[0]
+                elapsed_time = time.time() - start_time
+                print(f"✅ Tests completed in {elapsed_time:.1f}s. Results in: {latest_folder}")
+                if num_questions > 0:
+                    print(f"   ⏱️  Average: {elapsed_time/num_questions:.1f}s per question")
+                return latest_folder
+            else:
+                print(f"❌ No test results found")
+                return None
+                
+        except Exception as e:
+            print(f"❌ Error running medical tests: {e}")
+            return None
+    
+    def analyze_consensus_results(self, test_folder: str, round_num: int) -> List[QuestionConsensus]:
+        """Analyze consensus for questions from test results"""
+        results = self.load_test_results(test_folder)
         
         if not results:
-            print("No test results found to analyze")
+            print(f"❌ No results found in {test_folder}")
             return []
         
-        # Load question types for backward compatibility
-        question_types = self.load_question_types()
+        print(f"\n📊 Analyzing results from {len(results)} AI models:")
+        for result in results:
+            doctor_name = result.get("doctor_name", "Unknown")
+            is_enhanced = result.get("use_embeddings", False)
+            mode_suffix = " (Enhanced)" if is_enhanced else " (Vanilla)"
+            print(f"   • {doctor_name}{mode_suffix}")
         
-        # Determine threshold based on round
-        threshold = self.threshold_first if round_number == 1 else self.threshold_subsequent
+        # Determine threshold
+        threshold = self.threshold_first if round_num == 1 else self.threshold_subsequent
+        print(f"📏 Using {threshold * 100:.0f}% consensus threshold for round {round_num}")
         
         # Group responses by question number
         question_responses = defaultdict(list)
@@ -192,18 +211,22 @@ class ConsensusAnalyzer:
             doctor_name = test_session["doctor_name"]
             
             for result in test_session.get("results", []):
-                if result["selected_answer"]:  # Only check if an answer was provided
-                    question_num = result["question_number"]
+                question_num = result["question_number"]
+                
+                if result["selected_answer"]:
+                    # Clean the question text (remove previous context if any)
+                    clean_question = result["question"].split("\n\n--- Previous Vote Results ---")[0]
+                    
                     question_responses[question_num].append({
                         "doctor": doctor_name,
                         "answer": result["selected_answer"],
                         "reasoning": result.get("reasoning", ""),
-                        "question": result["question"],
-                        "question_type": result.get("question_type", question_types.get(question_num, "other")),
+                        "question": clean_question,
+                        "question_type": result.get("question_type", "other"),
                         "choices": result["choices"]
                     })
         
-        # Analyze consensus for each question
+        # Analyze consensus
         consensus_results = []
         
         for question_num in sorted(question_responses.keys()):
@@ -212,7 +235,7 @@ class ConsensusAnalyzer:
             if not responses:
                 continue
             
-            # Count votes for each choice
+            # Count votes
             vote_counts = Counter()
             votes_by_choice = defaultdict(list)
             
@@ -224,7 +247,7 @@ class ConsensusAnalyzer:
             
             total_votes = len(responses)
             
-            # Find consensus choice (most votes)
+            # Find consensus
             if vote_counts:
                 consensus_choice = vote_counts.most_common(1)[0][0]
                 consensus_count = vote_counts[consensus_choice]
@@ -232,13 +255,11 @@ class ConsensusAnalyzer:
                 consensus_achieved = consensus_percentage >= (threshold * 100)
             else:
                 consensus_choice = None
-                consensus_count = 0
                 consensus_percentage = 0.0
                 consensus_achieved = False
             
-            # Use first response for question metadata
+            # Create consensus result
             first_response = responses[0]
-            
             consensus_result = QuestionConsensus(
                 question_number=question_num,
                 question=first_response["question"],
@@ -250,101 +271,45 @@ class ConsensusAnalyzer:
                 consensus_choice=consensus_choice,
                 consensus_percentage=consensus_percentage,
                 consensus_achieved=consensus_achieved,
-                threshold_used=threshold
+                threshold_used=threshold,
+                vote_round=round_num
             )
             
             consensus_results.append(consensus_result)
         
         return consensus_results
     
-    def load_question_types(self) -> Dict[int, str]:
-        """Load question types from the questions file for backward compatibility"""
-        try:
-            questions_file = "../00_question_banks/test_1/test_1_questions.json"
-            with open(questions_file, 'r', encoding='utf-8') as f:
-                questions = json.load(f)
-            
-            question_types = {}
-            for q in questions:
-                question_types[q["question_number"]] = q.get("question_type", "other")
-            
-            return question_types
-            
-        except (FileNotFoundError, json.JSONDecodeError):
-            return {}
+    def merge_consensus_results(self, all_results: List[QuestionConsensus], 
+                              new_results: List[QuestionConsensus]) -> List[QuestionConsensus]:
+        """Merge new consensus results with existing ones"""
+        result_map = {r.question_number: r for r in all_results}
+        
+        # Update with new results
+        for new_result in new_results:
+            result_map[new_result.question_number] = new_result
+        
+        return sorted(result_map.values(), key=lambda x: x.question_number)
     
-    def print_consensus_summary(self, consensus_results: List[QuestionConsensus]):
-        """Print a summary of consensus results"""
-        if not consensus_results:
-            print("No consensus results to display")
-            return
+    def save_vote_report(self, results: List[QuestionConsensus], round_num: int, 
+                        vote_history: Dict[int, List[Dict]]) -> str:
+        """Save vote-specific report with all questions"""
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"consensus_report_vote_{round_num:02d}_{timestamp}.json"
+        filepath = os.path.join(self.consensus_reports_dir, filename)
         
-        total_questions = len(consensus_results)
-        consensus_achieved = sum(1 for r in consensus_results if r.consensus_achieved)
-        consensus_rate = (consensus_achieved / total_questions) * 100
-        
-        print(f"\n🏆 CONSENSUS ANALYSIS SUMMARY")
-        print("=" * 60)
-        print(f"Total Questions Analyzed: {total_questions}")
-        print(f"Consensus Achieved: {consensus_achieved}/{total_questions} ({consensus_rate:.1f}%)")
-        print(f"Threshold Used: {consensus_results[0].threshold_used * 100:.0f}%")
-        
-        # Breakdown by question type
-        type_stats = defaultdict(lambda: {"total": 0, "consensus": 0})
-        
-        for result in consensus_results:
-            q_type = result.question_type
-            type_stats[q_type]["total"] += 1
-            if result.consensus_achieved:
-                type_stats[q_type]["consensus"] += 1
-        
-        print(f"\n📋 Consensus by Question Type:")
-        for q_type in sorted(type_stats.keys()):
-            stats = type_stats[q_type]
-            rate = (stats["consensus"] / stats["total"]) * 100
-            print(f"  {q_type:<8}: {stats['consensus']:>2}/{stats['total']:<2} ({rate:>5.1f}%)")
-        
-        # Show failed consensus questions
-        failed_consensus = [r for r in consensus_results if not r.consensus_achieved]
-        
-        if failed_consensus:
-            print(f"\n❌ Questions without consensus ({len(failed_consensus)}):")
-            for result in failed_consensus[:10]:  # Show first 10
-                print(f"  Q{result.question_number}: {result.consensus_percentage:.1f}% "
-                      f"for choice {result.consensus_choice}")
-                
-                # Show vote breakdown
-                vote_summary = []
-                for choice, count in sorted(result.vote_counts.items()):
-                    vote_summary.append(f"{choice}:{count}")
-                print(f"    Votes: {', '.join(vote_summary)}")
-        
-        print()
-    
-    def get_questions_needing_second_vote(self, consensus_results: List[QuestionConsensus]) -> List[int]:
-        """Get list of question numbers that need a second vote (failed first round consensus)"""
-        return [r.question_number for r in consensus_results if not r.consensus_achieved]
-    
-    def save_consensus_report(self, consensus_results: List[QuestionConsensus], filename: Optional[str] = None):
-        """Save detailed consensus report to JSON file"""
-        if not filename:
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            mode_suffix = f"_{self.mode}" if self.mode != "all" else ""
-            filename = f"consensus_report{mode_suffix}_{timestamp}.json"
-        
-        # Convert to serializable format
         report = {
             "timestamp": datetime.now().isoformat(),
+            "vote_round": round_num,
             "mode": self.mode,
             "summary": {
-                "total_questions": len(consensus_results),
-                "consensus_achieved": sum(1 for r in consensus_results if r.consensus_achieved),
-                "threshold_used": consensus_results[0].threshold_used if consensus_results else None
+                "total_questions": len(results),
+                "consensus_achieved": sum(1 for r in results if r.consensus_achieved),
+                "threshold_used": self.threshold_first if round_num == 1 else self.threshold_subsequent
             },
             "questions": []
         }
         
-        for result in consensus_results:
+        for result in results:
             question_data = {
                 "question_number": result.question_number,
                 "question": result.question,
@@ -356,35 +321,220 @@ class ConsensusAnalyzer:
                 "consensus_choice": result.consensus_choice,
                 "consensus_percentage": result.consensus_percentage,
                 "consensus_achieved": result.consensus_achieved,
-                "threshold_used": result.threshold_used
+                "threshold_used": result.threshold_used,
+                "vote_round": result.vote_round,
+                "vote_history": vote_history.get(result.question_number, [])
             }
             report["questions"].append(question_data)
         
-        # Ensure consensus reports directory exists
-        consensus_reports_dir = "../03_consensus_benchmarks/consensus_reports"
-        os.makedirs(consensus_reports_dir, exist_ok=True)
+        with open(filepath, 'w', encoding='utf-8') as f:
+            json.dump(report, f, indent=2, ensure_ascii=False)
         
-        filepath = os.path.join(consensus_reports_dir, filename)
+        print(f"💾 Vote report saved: {filename}")
+        return filepath
+    
+    def save_final_report(self, all_results: List[QuestionConsensus], total_rounds: int, 
+                         vote_history: Dict[int, List[Dict]]) -> str:
+        """Save final consensus report with ALL questions from the original question bank"""
+        filepath = os.path.join(self.consensus_reports_dir, "consensus_report_final.json")
         
-        try:
-            with open(filepath, 'w', encoding='utf-8') as f:
-                json.dump(report, f, indent=2, ensure_ascii=False)
-            print(f"💾 Consensus report saved to: {filepath}")
-        except Exception as e:
-            print(f"❌ Error saving consensus report: {e}")
-
+        # Load ALL original questions to ensure complete coverage
+        all_original_questions = self.load_all_questions()
+        
+        # Create a map of results by question number for quick lookup
+        results_map = {r.question_number: r for r in all_results}
+        
+        # Calculate statistics
+        questions_by_rounds = defaultdict(int)
+        for q_num, history in vote_history.items():
+            rounds_needed = len(history)
+            questions_by_rounds[rounds_needed] += 1
+        
+        report = {
+            "timestamp": datetime.now().isoformat(),
+            "total_rounds": total_rounds,
+            "mode": self.mode,
+            "summary": {
+                "total_questions": len(all_results),
+                "consensus_achieved": sum(1 for r in all_results if r.consensus_achieved),
+                "questions_by_rounds_needed": dict(questions_by_rounds),
+                "average_rounds_needed": sum(len(h) for h in vote_history.values()) / len(vote_history) if vote_history else 1
+            },
+            "questions": []
+        }
+        
+        # Include only the questions that were actually tested
+        for result in all_results:
+            question_data = {
+                "question_number": result.question_number,
+                "question": result.question,
+                "question_type": result.question_type,
+                "choices": result.choices,
+                "final_consensus_choice": result.consensus_choice,
+                "final_consensus_percentage": result.consensus_percentage,
+                "consensus_achieved": result.consensus_achieved,
+                "rounds_needed": len(vote_history.get(result.question_number, [])),
+                "vote_history": vote_history.get(result.question_number, [])
+            }
+            report["questions"].append(question_data)
+        
+        # Sort questions by question number
+        report["questions"].sort(key=lambda x: x["question_number"])
+        
+        with open(filepath, 'w', encoding='utf-8') as f:
+            json.dump(report, f, indent=2, ensure_ascii=False)
+        
+        print(f"✅ Final consensus report saved with {len(report['questions'])} tested questions: {filepath}")
+        return filepath
+    
+    def run_consensus_analysis(self, initial_test_folder: Optional[str] = None):
+        """Run complete multi-round consensus analysis"""
+        print(f"🎯 Starting Multi-Round Consensus Analysis")
+        print(f"📊 Mode: {self.mode}")
+        print("=" * 60)
+        
+        # Get initial test folder
+        if not initial_test_folder:
+            test_folders = self.get_available_test_folders()
+            if not test_folders:
+                print("❌ No test folders found")
+                return
+            initial_test_folder = test_folders[0]
+        
+        print(f"📁 Starting from test folder: {initial_test_folder}")
+        
+        # Initialize tracking
+        all_results = []
+        vote_history = defaultdict(list)
+        round_num = 0
+        
+        # First round - analyze existing results
+        round_num = 1
+        print(f"\n{'='*60}")
+        print(f"🗳️  ROUND {round_num} (Threshold: {self.threshold_first * 100:.0f}%)")
+        print(f"📋 Analyzing existing test results...")
+        
+        consensus_results = self.analyze_consensus_results(initial_test_folder, round_num)
+        
+        if not consensus_results:
+            print("❌ No consensus results found")
+            return
+        
+        # Update tracking
+        all_results = consensus_results
+        for result in consensus_results:
+            vote_record = {
+                "round": round_num,
+                "test_folder": initial_test_folder,
+                "votes": result.votes,
+                "vote_counts": result.vote_counts,
+                "consensus_choice": result.consensus_choice,
+                "consensus_percentage": result.consensus_percentage,
+                "consensus_achieved": result.consensus_achieved,
+                "threshold_used": result.threshold_used
+            }
+            vote_history[result.question_number].append(vote_record)
+        
+        # Save first vote report
+        self.save_vote_report(all_results, round_num, dict(vote_history))
+        
+        # Check status and continue rounds if needed
+        while round_num < self.max_rounds:
+            # Find questions that still need consensus
+            failed_questions = [r.question_number for r in all_results if not r.consensus_achieved]
+            
+            # Print round summary
+            consensus_achieved = sum(1 for r in all_results if r.consensus_achieved)
+            print(f"\n✅ Round {round_num} Results: {consensus_achieved}/{len(all_results)} questions reached consensus")
+            
+            if not failed_questions:
+                print(f"🎉 All questions have reached consensus!")
+                break
+            
+            print(f"❌ {len(failed_questions)} questions need another round")
+            if len(failed_questions) <= 20:
+                print(f"   Questions: {', '.join(map(str, sorted(failed_questions)))}")
+            else:
+                print(f"   Questions: {', '.join(map(str, sorted(failed_questions[:10])))}, ... and {len(failed_questions)-10} more")
+            
+            # Ask user if they want to continue
+            if round_num < self.max_rounds:
+                response = input(f"\nContinue to round {round_num + 1}? (y/n): ")
+                if response.lower() != 'y':
+                    print("Stopping consensus analysis")
+                    break
+            
+            # Prepare next round
+            round_num += 1
+            threshold = self.threshold_subsequent
+            
+            print(f"\n{'='*60}")
+            print(f"🗳️  ROUND {round_num} (Threshold: {threshold * 100:.0f}%)")
+            print(f"📝 Creating questions with previous vote context...")
+            
+            # Create questions file with previous vote context
+            questions_file = self.create_questions_with_context(failed_questions, all_results)
+            
+            # Run medical tests for failed questions
+            test_folder = self.run_medical_tests_for_questions(questions_file, round_num)
+            if not test_folder:
+                print("❌ Failed to run medical tests")
+                break
+            
+            # Analyze new results
+            print(f"\n🔍 Analyzing round {round_num} results...")
+            new_consensus_results = self.analyze_consensus_results(test_folder, round_num)
+            
+            # Update tracking
+            for result in new_consensus_results:
+                vote_record = {
+                    "round": round_num,
+                    "test_folder": test_folder,
+                    "votes": result.votes,
+                    "vote_counts": result.vote_counts,
+                    "consensus_choice": result.consensus_choice,
+                    "consensus_percentage": result.consensus_percentage,
+                    "consensus_achieved": result.consensus_achieved,
+                    "threshold_used": result.threshold_used
+                }
+                vote_history[result.question_number].append(vote_record)
+            
+            # Merge results
+            all_results = self.merge_consensus_results(all_results, new_consensus_results)
+            
+            # Save vote report
+            self.save_vote_report(all_results, round_num, dict(vote_history))
+        
+        # Save final report
+        self.save_final_report(all_results, round_num, dict(vote_history))
+        
+        # Print final summary
+        print(f"\n{'='*60}")
+        print(f"🏁 CONSENSUS ANALYSIS COMPLETE")
+        print(f"{'='*60}")
+        final_consensus = sum(1 for r in all_results if r.consensus_achieved)
+        print(f"Total Questions: {len(all_results)}")
+        print(f"Consensus Achieved: {final_consensus}/{len(all_results)} ({final_consensus/len(all_results)*100:.1f}%)")
+        print(f"Total Rounds: {round_num}")
+        
+        # Show distribution of rounds needed
+        rounds_distribution = defaultdict(int)
+        for history in vote_history.values():
+            rounds_distribution[len(history)] += 1
+        
+        print(f"\nRounds needed per question:")
+        for rounds, count in sorted(rounds_distribution.items()):
+            print(f"  {rounds} round{'s' if rounds > 1 else ''}: {count} questions")
 
 def main():
-    """Main entry point for consensus analysis"""
+    """Main entry point"""
     import argparse
     
-    parser = argparse.ArgumentParser(description="Medical Board Consensus Analyzer")
+    parser = argparse.ArgumentParser(description="Multi-Round Consensus Analyzer")
     parser.add_argument("--mode", choices=["vanilla", "enhanced", "all"], default="all",
-                       help="Analysis mode: vanilla (no embeddings), enhanced (with embeddings), or all")
-    parser.add_argument("--round", type=int, default=1,
-                       help="Consensus round number (affects threshold)")
+                       help="Analysis mode")
     parser.add_argument("--test", type=str, default=None,
-                       help="Specific test folder to analyze (e.g., test_20250709_225521)")
+                       help="Initial test folder to start from")
     parser.add_argument("--list", action="store_true",
                        help="List available test folders")
     
@@ -392,12 +542,11 @@ def main():
     
     analyzer = ConsensusAnalyzer(mode=args.mode)
     
-    # Handle --list option
     if args.list:
         available_folders = analyzer.get_available_test_folders()
         if available_folders:
             print("📂 Available test folders:")
-            for i, folder in enumerate(available_folders[:20]):  # Show first 20
+            for i, folder in enumerate(available_folders[:20]):
                 print(f"  {i+1}. {folder}")
             if len(available_folders) > 20:
                 print(f"  ... and {len(available_folders) - 20} more")
@@ -405,29 +554,7 @@ def main():
             print("❌ No test folders found")
         return
     
-    mode_desc = {"vanilla": "Vanilla (No Embeddings)", "enhanced": "Enhanced (With Embeddings)", "all": "All Models"}
-    print(f"🗳️  Analyzing Medical Board Consensus - {mode_desc[args.mode]} (Round {args.round})")
-    
-    # Analyze consensus
-    consensus_results = analyzer.analyze_consensus(args.round, args.test)
-    
-    if not consensus_results:
-        print("No test results found for analysis")
-        return
-    
-    # Print summary
-    analyzer.print_consensus_summary(consensus_results)
-    
-    # Save detailed report
-    analyzer.save_consensus_report(consensus_results)
-    
-    # Check for second round needs
-    if args.round == 1:
-        failed_questions = analyzer.get_questions_needing_second_vote(consensus_results)
-        if failed_questions:
-            print(f"\n🔄 {len(failed_questions)} questions need a second vote with higher threshold")
-            print(f"   Run: python consensus_analyzer.py --mode {args.mode} --round 2")
-
+    analyzer.run_consensus_analysis(args.test)
 
 if __name__ == "__main__":
-    main() 
+    main()

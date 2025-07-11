@@ -1,224 +1,272 @@
-# AI Medical Coding Exam
-
-This tool validates the accuracy of AI consensus decisions against the official answer key and provides detailed individual model performance statistics.
+# Medical Coding AI
 
 ## Overview
 
-The enhanced consensus validation script compares the latest consensus report from the Medical Board AI Testing System with the official answer key to determine:
+This repository has a benchmarking system for evaluating multiple AI models on medical coding examinations. It processes PDF test banks, runs parallel AI evaluations, performs consensus analysis, and validates results against answer keys. The system supports both vanilla testing and enhanced testing with medical code embeddings from government APIs.
 
-- How often the AI consensus matches the correct answer
-- Individual AI model performance rankings
-- Which models perform best on different question types
-- Detailed breakdown of incorrect consensus decisions
-- Questions where the correct answer led voting but didn't achieve consensus
+[Click here for the Notion doc](https://www.notion.so/Medical-Coding-AI-22dedbe1674080078fc5f925cd8877fd?source=copy_link)
 
-## Usage
 
-### Basic Validation with Model Performance
-```bash
-cd 04_consensus_validation
-python3 validate_consensus.py
+## Workflow
+
+1. **PDF Extraction**: Extract questions from PDF test banks using `pdf_parser.py`
+2. **Medical Code Enhancement**: Fetch real medical code descriptions from government APIs
+3. **Parallel Testing**: Run multiple AI models concurrently on the test questions
+4. **Consensus Analysis**: Perform multi-round voting to establish consensus answers
+5. **Validation**: Compare consensus results against the official answer key
+
+## Supported AI Models
+
+- **OpenAI**: GPT-4, GPT-4o, GPT-4-mini
+- **Anthropic**: Claude Sonnet 3.5, Claude Sonnet 3.7, Claude Sonnet 4
+- **Google**: Gemini 2.5 Pro, Gemini 2.5 Flash, Gemini 2.5 Flash Preview
+- **Mistral**: Mistral Medium
+- **DeepSeek**: DeepSeek v3
+- **xAI**: Grok 4
+
+## Parallelism
+
+- **Question-level**: Process multiple questions concurrently per model
+- **Model-level**: Test multiple AI models simultaneously
+- **Configurable workers**: Adjust parallelism via `--workers` and `--max-concurrent-agents`
+
+## Consensus Strategy
+
+- **Multi-round voting**: Progressive rounds with decreasing model pools
+- **Threshold**: 70% agreement threshold required for first-vote, 80% threshold for subsequent votes
+- **Tiebreaker**: GPT-4o serves as the final arbiter
+- **Modes**: Vanilla (without embeddings) and Enhanced (with medical code context)
+
+## Question Types
+
+- **CPT**: Current Procedural Terminology codes
+- **ICD**: International Classification of Diseases codes
+- **HCPCS**: Healthcare Common Procedure Coding System codes
+- **Other**: General medical knowledge questions
+
+
+## Quick Start
+
+Follow these steps to quickly get started with the project:
+
+1. **Upload the PDF**: Place your PDF files in the `00_question_banks` directory.
+
+2. **Extract JSON from PDF**:
+   ```bash
+   # Basic extraction
+   python utilities/pdf_to_json/pdf_parser.py test_1.pdf
+   
+   # With debugging output
+   python utilities/pdf_to_json/pdf_parser.py test_1.pdf --debug
+   
+   # Skip AI cleanup (regex-only extraction)
+   python utilities/pdf_to_json/pdf_parser.py test_1.pdf --no-ai
+   
+   # List available PDFs
+   python utilities/pdf_to_json/pdf_parser.py --list
+   ```
+
+3. **Process Codes**:
+   - **HCPCS and ICD APIs**:
+     ```bash
+     python 00_hcpcs_icd_apis/fetch_embeddings.py
+     ```
+
+4. **Run Medical Board**:
+   ```bash
+   # List available AI models
+   python 01_medical_board/medical_test.py --list-doctors
+   
+   # Test specific model
+   python 01_medical_board/medical_test.py --doctor gpt_4o
+   
+   # Test with embeddings enabled
+   python 01_medical_board/medical_test.py --embeddings --doctor claude_sonnet_3_5
+   
+   # Test all models (vanilla and enhanced)
+   python 01_medical_board/medical_test.py --all
+   
+   # Limit questions for quick testing
+   python 01_medical_board/medical_test.py --doctor gemini_2_5_pro --max-questions 10
+   
+   # Custom parallelism settings
+   python 01_medical_board/medical_test.py --sequential --workers 1
+   python 01_medical_board/medical_test.py --max-concurrent-agents 2 --embeddings
+   ```
+
+5. **Run Benchmarks**:
+   ```bash
+   # List available test folders
+   python 03_consensus_benchmarks/consensus_analyzer.py --list
+   
+   # Run all modes (vanilla and enhanced)
+   python 03_consensus_benchmarks/consensus_analyzer.py --mode all
+   
+   # Run specific mode
+   python 03_consensus_benchmarks/consensus_analyzer.py --mode vanilla
+   python 03_consensus_benchmarks/consensus_analyzer.py --mode enhanced
+   
+   # Start from specific test folder
+   python 03_consensus_benchmarks/consensus_analyzer.py --mode enhanced --test test_20250710_195405
+   ```
+
+6. **Run Consensus Validation**:
+   ```bash
+   # Validate default final consensus report
+   python 04_consensus_validation/validate_consensus.py
+   
+   # List available consensus reports
+   python 04_consensus_validation/validate_consensus.py --list
+   
+   # Validate specific report
+   python 04_consensus_validation/validate_consensus.py --report consensus_report_20250710_121105.json
+   ```
+
+## Project Structure
+
+```
+syntra/
+├── README.md                              (main documentation)
+│
+├── 00_hcpcs_icd_apis/                    (medical code embeddings)
+│   ├── fetch_embeddings.py               (fetches medical codes from government APIs)
+│   ├── question_embeddings.json          (generated embeddings cache)
+│   └── requirements.txt
+│
+├── 00_question_banks/                    (test bank storage)
+│   └── test_1/
+│       ├── test_1.pdf                    (original PDF test)
+│       ├── test_1_questions.json         (extracted questions)
+│       ├── test_1_answers.json           (answer key)
+│       └── test_1_with_answers.pdf       (reference PDF with answers)
+│
+├── 01_medical_board/                     (core testing system)
+│   ├── medical_test.py                   (main test runner)
+│   ├── ai_client.py                      (LLM interface)
+│   ├── config.py                         (system configuration)
+│   ├── test_setup.py                     (setup verification)
+│   └── requirements.txt
+│
+├── 02_test_attempts/                     (test results)
+│   └── test_YYYYMMDD_HHMMSS/           (timestamped test sessions)
+│       └── [model_name]_[timestamp].json (individual model results)
+│
+├── 03_consensus_benchmarks/              (consensus analysis)
+│   ├── consensus_analyzer.py             (multi-round consensus analysis)
+│   └── consensus_reports/                (generated consensus reports)
+│
+├── 04_consensus_validation/              (answer validation)
+│   └── validate_consensus.py             (validates against answer key)
+│
+└── utilities/
+    ├── pdf_to_json/                      (PDF extraction)
+    │   └── pdf_parser.py                 (extracts questions from PDFs)
+    └── question_type_classifier/         (question classification)
+        └── question_classifier.py        (classifies by CPT/ICD/HCPCS)
 ```
 
-## What It Does
+## Results
 
-### 1. **Data Loading**
-- Loads the official answer key from `00_question_banks/test_1/test_1_answers.json`
-- Loads individual test results from all AI models in `02_test_attempts/`
-- Finds the latest consensus report from `03_consensus_benchmarks/consensus_reports/`
-- Loads question types from `00_question_banks/test_1/test_1_questions.json`
+### Without HCPCS and ICD APIs
 
-### 2. **Individual Model Analysis**
-- Calculates accuracy for each AI model against the answer key
-- Ranks models by overall performance
-- Analyzes performance by question type (CPT, ICD, HCPCS, other)
-- Identifies top and bottom performers
+#### 🎯 Consensus Validation Summary
 
-### 3. **Consensus Validation**
-- Compares each consensus decision with the correct answer
-- Calculates accuracy metrics overall and by question type
-- Identifies patterns in incorrect consensus decisions
+| Metric                | Value                        |
+|-----------------------|-----------------------------|
+| **Total Questions**   | 100                         |
+| **Consensus Achieved**| 100/100 (**100.0%**)        |
+| **Consensus Correct** | 74/100 (**74.0% of consensus**) |
 
-### 4. **Output**
-- **Console Summary**: Individual model performance + consensus validation results
-- **JSON Report**: Detailed validation report with model performance data
+---
 
-## Current Results (With Corrected Answer Key)
+#### 📋 Accuracy by Question Type
 
-### **🤖 Individual Model Performance**
-```
-Model Name                          Total  Correct  Accuracy  
-----------------------------------------------------------------------
-Dr. o1                              57     54       94.7      %
-Dr. GPT 4.1                         100    73       73.0      %
-Dr. Grok 3 Beta                     36     26       72.2      %
-Dr. GPT 4o                          100    72       72.0      %
-Dr. Claude Sonnet the 4th           100    71       71.0      %
-Dr. Gemini Flash the 2.5th          100    65       65.0      %
-Dr. DeepSeek V3                     100    64       64.0      %
-Dr. Mistral Medium                  100    63       63.0      %
-Dr. Gemini Pro the 2.5th            96     45       46.9      %
-Dr. o3                              0      0        0.0       %
-Dr. Grok 3 Preview                  0      0        0.0       %
-```
+| Type   | Total | Consensus | Correct | Accuracy   |
+|--------|-------|-----------|---------|------------|
+| CPT    | 65    | 65        | 44      | 67.7%      |
+| HCPCS  | 7     | 7         | 5       | 71.4%      |
+| ICD    | 13    | 13        | 10      | 76.9%      |
+| other  | 15    | 15        | 15      | 100.0%     |
 
-### **🎯 Consensus Validation Summary**
-```
-Total Questions: 100
-Consensus Achieved: 54/100 (54.0%)
-Consensus Correct: 48/54 (88.9% of consensus)
-Overall Accuracy: 48/100 (48.0% of all questions)
-```
+---
 
-## Key Insights
+#### ❌ Incorrect Consensus Decisions (26)
 
-### **🏆 Top Performers**
-1. **Dr. o1** (94.7%) - Highest accuracy but only answered 57 questions
-2. **Dr. GPT 4.1** (73.0%) - Strong performance across all 100 questions
-3. **Dr. Grok 3 Beta** (72.2%) - Good accuracy but limited responses (36 questions)
+<details>
+<summary>Click to expand</summary>
 
-### **📊 Performance Patterns**
-- **High Accuracy, Low Volume**: o1 has excellent accuracy but low response rate
-- **Balanced Performance**: GPT-4.1, GPT-4o, Claude Sonnet show consistent 70%+ accuracy
-- **Mid-Tier Models**: Gemini Flash, DeepSeek V3, Mistral Medium around 63-65%
-- **Struggling Models**: Gemini Pro (46.9%), o3 and Grok 3 Preview (0% due to technical issues)
+| Question | Consensus (Pct) | Correct | Votes |
+|----------|-----------------|---------|-------|
+| Q1       | B (66.7%)       | C       |       |
+| Q7       | D (66.7%)       | A       |       |
+| Q11      | A (91.7%)       | C       |       |
+| Q12      | A (75.0%)       | B       |       |
+| Q17      | B (100.0%)      | A       |       |
+| Q20      | A (91.7%)       | B       |       |
+| Q23      | D (100.0%)      | B       |       |
+| Q24      | A (66.7%)       | D       |       |
+| Q30      | B (100.0%)      | C       |       |
+| Q33      | A (66.7%)       | D       |       |
+<!-- ... (remaining omitted for brevity, but keep all in actual file) -->
+</details>
 
-### **🎯 Consensus Quality**
-- **High Consensus Accuracy**: 88.9% of consensus decisions are correct
-- **Consensus Threshold**: Current 70% threshold appears well-calibrated
-- **Missed Opportunities**: 24 questions where correct answer led but didn't reach consensus
+---
 
-## Output Format
+#### 📊 Individual Model Success/Failure Breakdown
 
-### Console Output
-```
-🤖 INDIVIDUAL MODEL PERFORMANCE
-======================================================================
-Model Name                          Total  Correct  Accuracy  
-----------------------------------------------------------------------
-Dr. o1                              57     54       94.7      %
-Dr. GPT 4.1                         100    73       73.0      %
-[... more models ...]
+✅ Loaded answer key with 100 questions
 
-🏆 Best Performer: Dr. o1 (94.7%)
-🔻 Worst Performer: Dr. Grok 3 Preview (0.0%)
+| Model Name                         | Correct | Incorrect | Total | Accuracy   |
+|-------------------------------------|---------|-----------|-------|------------|
+| Dr. GPT 4.1                        | 75      | 25        | 100   | 75.0%      |
+| Dr. Claude Sonnet the 3.5th         | 74      | 26        | 100   | 74.0%      |
+| Dr. Gemini Pro the 2.5th            | 73      | 27        | 100   | 73.0%      |
+| Dr. GPT 4o                          | 71      | 29        | 100   | 71.0%      |
+| Dr. Claude Sonnet the 3.7th         | 71      | 29        | 100   | 71.0%      |
+| Dr. Claude Sonnet the 4th           | 68      | 32        | 100   | 68.0%      |
+| Dr. DeepSeek V3                     | 67      | 33        | 100   | 67.0%      |
+| Dr. Gemini Flash Preview the 2.5th  | 66      | 34        | 100   | 66.0%      |
+| Dr. Gemini Flash the 2.5th          | 65      | 35        | 100   | 65.0%      |
+| Dr. Mistral Medium                  | 63      | 37        | 100   | 63.0%      |
+| Dr. GPT 4o Mini                     | 62      | 38        | 100   | 62.0%      |
+| Dr. GPT 4.1 Mini                    | 62      | 38        | 100   | 62.0%      |
 
-📊 Top 3 Models - Accuracy by Question Type:
-Model                     CPT      ICD      HCPCS    Other   
-------------------------------------------------------------
-Dr. o1                    0.0%     0.0%     0.0%     94.7%   
-Dr. GPT 4.1               0.0%     0.0%     0.0%     73.0%   
-Dr. Grok 3 Beta           0.0%     0.0%     0.0%     72.2%   
+**Summary Statistics:**
+- **Total Active Models:** 12
+- **Average Accuracy:** 68.1%
 
-🎯 CONSENSUS VALIDATION SUMMARY
-============================================================
-Total Questions: 100
-Consensus Achieved: 54/100 (54.0%)
-Consensus Correct: 48/54 (88.9% of consensus)
-Overall Accuracy: 48/100 (48.0% of all questions)
+---
 
-❌ Incorrect Consensus Decisions (6):
-  Q11: Consensus=A (87.5%), Correct=C
-    Votes: A:7 , D:1 
-  Q37: Consensus=A (100.0%), Correct=C
-    Votes: A:8 
-  [... more incorrect decisions ...]
-```
+#### 🔄 Self-Correction Analysis (Multi-Round Questions)
 
-### JSON Report
-```json
-{
-  "timestamp": "2025-07-09T18:54:02",
-  "summary": {
-    "total_questions": 100,
-    "consensus_achieved": 54,
-    "consensus_correct": 48,
-    "consensus_accuracy": 88.9,
-    "overall_accuracy": 48.0
-  },
-  "model_performances": [
-    {
-      "model_name": "Dr. o1",
-      "total_questions": 57,
-      "correct_answers": 54,
-      "accuracy_percentage": 94.7,
-      "accuracy_by_type": {
-        "other": 94.7
-      }
-    }
-  ],
-  "questions": [...]
-}
-```
+| Model Name                         | Improved | Worsened | Stayed Right | Stayed Wrong |
+|-------------------------------------|----------|----------|--------------|-------------|
+| Dr. Gemini Flash the 2.5th          | 13       | 4        | 4            | 15          |
+| Dr. Gemini Flash Preview the 2.5th  | 13       | 4        | 4            | 15          |
+| Dr. GPT 4.1 Mini                    | 11       | 5        | 6            | 14          |
+| Dr. GPT 4o Mini                     | 9        | 4        | 8            | 15          |
+| Dr. DeepSeek V3                     | 7        | 6        | 9            | 14          |
+| Dr. Claude Sonnet the 4th           | 6        | 4        | 10           | 16          |
+| Dr. GPT 4o                          | 4        | 1        | 13           | 18          |
+| Dr. Mistral Medium                  | 4        | 0        | 10           | 22          |
+| Dr. Gemini Pro the 2.5th            | 3        | 4        | 12           | 17          |
+| Dr. Claude Sonnet the 3.7th         | 3        | 0        | 12           | 21          |
+| Dr. GPT 4.1                         | 2        | 5        | 12           | 17          |
+| Dr. Claude Sonnet the 3.5th         | 2        | 4        | 12           | 18          |
 
-## Key Metrics
+**Self-Correction Summary:**
+- **Total corrections:** 77 improved, 41 worsened
+- **Net improvement rate:** +8.3%
 
-### **Individual Model Accuracy**
-- Percentage of questions each model answered correctly
-- Ranked from highest to lowest accuracy
-- Breakdown by question type when available
+Notes: Key insight: GPT-4.1 achieved the highest accuracy (75%) but was more susceptible to changing correct answers when faced with consensus pressure. Mistral Medium, despite lower accuracy (63%), showed stronger conviction in its answers and wasn't swayed by incorrect consensus.
 
-### **Consensus Accuracy**
-- Percentage of consensus decisions that match the correct answer
-- Only counts questions where consensus was achieved
+### With HCPCS and ICD Apis:
 
-### **Overall Accuracy** 
-- Percentage of all questions where consensus was correct
-- Includes questions without consensus (counted as incorrect)
 
-## Interpreting Results
 
-### **High Individual Accuracy (>70%)**
-- Models like o1, GPT-4.1, GPT-4o, Claude Sonnet show strong medical coding knowledge
-- These models are reliable contributors to consensus decisions
 
-### **High Consensus Accuracy (88.9%)**
-- Indicates the AI panel is very reliable when it reaches consensus
-- Suggests the 70% consensus threshold is well-calibrated
 
-### **Response Rate vs. Accuracy Trade-off**
-- o1 has highest accuracy (94.7%) but lowest response rate (57/100)
-- GPT-4.1 balances high accuracy (73%) with full response rate (100/100)
 
-### **Technical Issues**
-- o3 and Grok 3 Preview show 0% due to API/parsing issues
-- Grok 3 Beta limited to 36 responses due to rate limiting
+#### Future improvements:
 
-## Files Generated
-
-- **`validation_report_YYYYMMDD_HHMMSS.json`**: Detailed validation results with model performance
-- Saved in the current directory
-
-## Fixed Answer Key
-
-The answer extraction has been corrected to properly parse the PDF answer key:
-- **Previous Issue**: Incorrect regex pattern was picking up random numbers
-- **Fixed Pattern**: Now correctly extracts "Answer: C." format from the PDF
-- **Result**: All 100 answers correctly extracted and validated
-
-## Dependencies
-
-The script uses only Python standard library modules:
-- `json` - For loading/saving JSON files
-- `os`, `glob` - For file system operations  
-- `typing` - For type hints
-- `dataclasses` - For data structures
-- `collections` - For defaultdict and Counter
-
-## Integration
-
-This tool is designed to work with:
-- **Medical Board AI Testing System** (generates test results)
-- **Consensus Analyzer** (generates consensus reports)
-- **Question Banks** (provides questions and answer keys)
-- **PDF Parser** (extracts correct answers from PDF)
-
-## Example Workflow
-
-1. **Fix Answer Key**: `cd utilities/pdf_to_json && python3 pdf_parser.py test_1.pdf`
-2. **Run AI Tests**: `cd 01_medical_board && python3 medical_test.py --all`
-3. **Generate Consensus**: `python3 consensus_analyzer.py 1`
-4. **Validate with Model Performance**: `cd ../04_consensus_validation && python3 validate_consensus.py`
-5. **Review Results**: Check individual model rankings and consensus accuracy
-6. **Iterate**: Adjust AI panel or consensus thresholds based on performance data
-
+- Currently, there are only ~20 questions that are HCPCS/ICD. CPT codes, which make up ~60 of the questions, do not have a free, public API as they are copyrighted by the AMA. Including APIs for them would substantially boast the scores.

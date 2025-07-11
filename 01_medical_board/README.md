@@ -40,7 +40,7 @@ python pdf_parser.py test_1.pdf
 ### 4. Generate Medical Code Embeddings (Optional)
 For enhanced testing with real medical code data:
 ```bash
-cd ../00_code_embeddings
+cd ../00_hcpcs_icd_apis
 python fetch_embeddings.py
 ```
 
@@ -291,7 +291,7 @@ python medical_test.py --all --sequential --sequential-agents --max-questions 5
 ### For Enhanced Analysis
 ```bash
 # Generate embeddings first, then test
-cd ../00_code_embeddings && python fetch_embeddings.py
+cd ../00_hcpcs_icd_apis && python fetch_embeddings.py
 cd ../01_medical_board && python medical_test.py --all
 ```
 

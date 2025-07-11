@@ -63,7 +63,7 @@ class DoctorTestResults:
 class EmbeddingsLoader:
     """Class to load and provide medical code embeddings"""
     
-    def __init__(self, embeddings_file: str = "../00_code_embeddings/question_embeddings.json"):
+    def __init__(self, embeddings_file: str = "../00_hcpcs_icd_apis/question_embeddings.json"):
         self.embeddings_file = embeddings_file
         self.embeddings = {}
         self.load_embeddings()
@@ -115,11 +115,12 @@ class EmbeddingsLoader:
 class MedicalBoardTest:
     """Main test runner for medical board tests"""
     
-    def __init__(self, use_embeddings: bool = False, max_workers: int = None):
+    def __init__(self, use_embeddings: bool = False, max_workers: int = None, questions_file: str = "../00_question_banks/test_1/test_1_questions.json"):
         self.ai_client = AIClient()
         self.use_embeddings = use_embeddings
         self.embeddings_loader = EmbeddingsLoader() if use_embeddings else None
         self.max_workers = max_workers or PARALLEL_WORKERS
+        self.questions_file = questions_file
         self.test_session_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")  # Shared timestamp for this test session
         
         if use_embeddings and self.embeddings_loader:
@@ -310,7 +311,7 @@ class MedicalBoardTest:
         print(f"   Model: {model_id}")
         
         # Load questions and answers
-        questions = self.load_questions()
+        questions = self.load_questions(self.questions_file)
         answers = self.load_answers()
         
         if max_questions:
@@ -434,7 +435,7 @@ class MedicalBoardTest:
         print(f"   Model: {model_id}")
         
         # Load questions and answers
-        questions = self.load_questions()
+        questions = self.load_questions(self.questions_file)
         answers = self.load_answers()
         
         if max_questions:
@@ -551,6 +552,8 @@ def main():
                        help=f"Maximum concurrent agents when testing multiple models (default: {DEFAULT_MAX_CONCURRENT_AGENTS})")
     parser.add_argument("--sequential-agents", action="store_true",
                        help="Test agents sequentially instead of in parallel")
+    parser.add_argument("--questions-file", type=str, default="../00_question_banks/test_1/test_1_questions.json",
+                       help="Path to custom questions file")
     
     args = parser.parse_args()
     
@@ -575,65 +578,100 @@ def main():
         print("🐌 Sequential agent processing enabled")
     
     if args.all:
-        # Test all doctors in both modes with parallel processing
-        print("🏥 Testing all doctors in both vanilla and enhanced modes...")
+        # Test all doctors - check if we should run both modes or just one
         all_doctor_keys = list(AI_DOCTORS.keys())
         
-        # Test vanilla mode first
-        print("\n" + "="*60)
-        print("📝 VANILLA MODE (No Embeddings)")
-        print("="*60)
-        vanilla_test = MedicalBoardTest(use_embeddings=False, max_workers=args.workers)
-        
-        if parallel_agents:
-            vanilla_results = vanilla_test.run_multiple_doctors(
-                all_doctor_keys, args.max_questions, args.max_concurrent_agents, parallel_questions
-            )
-        else:
-            vanilla_results = []
-            for doctor_key in all_doctor_keys:
-                try:
-                    result = vanilla_test.run_single_doctor_test(doctor_key, args.max_questions, parallel_questions)
-                    if result:
-                        vanilla_results.append(result)
-                except Exception as e:
-                    print(f"Error testing {doctor_key} (vanilla): {e}")
-        
-        # Test enhanced mode
-        print("\n" + "="*60)
-        print("🧠 ENHANCED MODE (With Embeddings)")
-        print("="*60)
-        enhanced_test = MedicalBoardTest(use_embeddings=True, max_workers=args.workers)
-        
-        if parallel_agents:
-            enhanced_results = enhanced_test.run_multiple_doctors(
-                all_doctor_keys, args.max_questions, args.max_concurrent_agents, parallel_questions
-            )
-        else:
-            enhanced_results = []
-            for doctor_key in all_doctor_keys:
-                try:
-                    result = enhanced_test.run_single_doctor_test(doctor_key, args.max_questions, parallel_questions)
-                    if result:
-                        enhanced_results.append(result)
-                except Exception as e:
-                    print(f"Error testing {doctor_key} (enhanced): {e}")
-        
-        # Print comparison summary
-        print("\n" + "="*80)
-        print("📊 COMPARISON SUMMARY - COMPLETION RATES")
-        print("="*80)
-        print(f"{'Doctor':<35} {'Vanilla':<10} {'Enhanced':<10} {'Difference':<12}")
-        print("-" * 80)
-        
-        for doctor_key in AI_DOCTORS.keys():
-            doctor_name = AI_DOCTORS[doctor_key]["display_name"]
-            vanilla_result = next((r for r in vanilla_results if r.doctor_name == doctor_name), None)
-            enhanced_result = next((r for r in enhanced_results if r.doctor_name == doctor_name), None)
+        if args.embeddings:
+            # Only run enhanced mode when --embeddings is specified
+            print("🏥 Testing all doctors with embeddings...")
+            print("\n" + "="*60)
+            print("🧠 ENHANCED MODE (With Embeddings)")
+            print("="*60)
+            enhanced_test = MedicalBoardTest(use_embeddings=True, max_workers=args.workers, questions_file=args.questions_file)
             
-            vanilla_rate = vanilla_result.completion_rate if vanilla_result else 0.0
-            enhanced_rate = enhanced_result.completion_rate if enhanced_result else 0.0
-            difference = enhanced_rate - vanilla_rate
+            if parallel_agents:
+                enhanced_results = enhanced_test.run_multiple_doctors(
+                    all_doctor_keys, args.max_questions, args.max_concurrent_agents, parallel_questions
+                )
+            else:
+                enhanced_results = []
+                for doctor_key in all_doctor_keys:
+                    try:
+                        result = enhanced_test.run_single_doctor_test(doctor_key, args.max_questions, parallel_questions)
+                        if result:
+                            enhanced_results.append(result)
+                    except Exception as e:
+                        print(f"Error testing {doctor_key} (enhanced): {e}")
+            
+            # Print summary for enhanced mode only
+            print("\n" + "="*80)
+            print("📊 ENHANCED MODE SUMMARY")
+            print("="*80)
+            print(f"{'Doctor':<35} {'Completion Rate':<15} {'Avg Time':<12}")
+            print("-" * 80)
+            
+            for result in enhanced_results:
+                print(f"{result.doctor_name:<35} {result.completion_rate:<15.1%} {result.avg_response_time:<12.2f}s")
+        
+        else:
+            # Default behavior: run both modes
+            print("🏥 Testing all doctors in both vanilla and enhanced modes...")
+            
+            # Test vanilla mode first
+            print("\n" + "="*60)
+            print("📝 VANILLA MODE (No Embeddings)")
+            print("="*60)
+            vanilla_test = MedicalBoardTest(use_embeddings=False, max_workers=args.workers, questions_file=args.questions_file)
+            
+            if parallel_agents:
+                vanilla_results = vanilla_test.run_multiple_doctors(
+                    all_doctor_keys, args.max_questions, args.max_concurrent_agents, parallel_questions
+                )
+            else:
+                vanilla_results = []
+                for doctor_key in all_doctor_keys:
+                    try:
+                        result = vanilla_test.run_single_doctor_test(doctor_key, args.max_questions, parallel_questions)
+                        if result:
+                            vanilla_results.append(result)
+                    except Exception as e:
+                        print(f"Error testing {doctor_key} (vanilla): {e}")
+            
+            # Test enhanced mode
+            print("\n" + "="*60)
+            print("🧠 ENHANCED MODE (With Embeddings)")
+            print("="*60)
+            enhanced_test = MedicalBoardTest(use_embeddings=True, max_workers=args.workers, questions_file=args.questions_file)
+            
+            if parallel_agents:
+                enhanced_results = enhanced_test.run_multiple_doctors(
+                    all_doctor_keys, args.max_questions, args.max_concurrent_agents, parallel_questions
+                )
+            else:
+                enhanced_results = []
+                for doctor_key in all_doctor_keys:
+                    try:
+                        result = enhanced_test.run_single_doctor_test(doctor_key, args.max_questions, parallel_questions)
+                        if result:
+                            enhanced_results.append(result)
+                    except Exception as e:
+                        print(f"Error testing {doctor_key} (enhanced): {e}")
+            
+            # Print comparison summary
+            print("\n" + "="*80)
+            print("📊 COMPARISON SUMMARY - COMPLETION RATES")
+            print("="*80)
+            print(f"{'Doctor':<35} {'Vanilla':<10} {'Enhanced':<10} {'Difference':<12}")
+            print("-" * 80)
+            
+            for doctor_key in AI_DOCTORS.keys():
+                doctor_name = AI_DOCTORS[doctor_key]["display_name"]
+                vanilla_result = next((r for r in vanilla_results if r.doctor_name == doctor_name), None)
+                enhanced_result = next((r for r in enhanced_results if r.doctor_name == doctor_name), None)
+                
+                vanilla_rate = vanilla_result.completion_rate if vanilla_result else 0.0
+                enhanced_rate = enhanced_result.completion_rate if enhanced_result else 0.0
+                difference = enhanced_rate - vanilla_rate
             
             vanilla_str = f"{vanilla_rate:.1f}%" if vanilla_result else "N/A"
             enhanced_str = f"{enhanced_rate:.1f}%" if enhanced_result else "N/A"
@@ -644,7 +682,7 @@ def main():
         return
     
     # Create test runner
-    test = MedicalBoardTest(use_embeddings=args.embeddings, max_workers=args.workers)
+    test = MedicalBoardTest(use_embeddings=args.embeddings, max_workers=args.workers, questions_file=args.questions_file)
     
     if args.doctor:
         # Test specific doctor

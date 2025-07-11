@@ -45,11 +45,11 @@ class AIClient:
         
         # Set model-specific token limits and configurations
         if "gemini" in model_id.lower():
-            max_tokens = 8000  # Gemini models need even more tokens for reasoning
+            max_tokens = 3000  # Gemini models need even more tokens for reasoning
         elif "o3" in model_id:
-            max_tokens = 8000  # Reasoning models need even more tokens
+            max_tokens = 3000  # Reasoning models need even more tokens
         else:
-            max_tokens = 6000  # Default for other models
+            max_tokens = 2000  # Default for other models
         
         payload = {
             "model": model_id,

@@ -1,0 +1,101 @@
+[
+  {
+    "question_number": 1,
+    "question": "During a regular checkup, Dr. Stevens discovered a suspicious lesion on the floor of Paul's mouth and decided to perform an excision. Which CPT code covers the excision of an oral lesion?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice B: 8 votes (66.7%) - Dr. Claude Sonnet the 3.7th, Dr. GPT 4.1, Dr. GPT 4o and 5 others\n\u2022 Choice C: 3 votes (25.0%) - Dr. Gemini Pro the 2.5th, Dr. Gemini Flash Preview the 2.5th, Dr. Gemini Flash the 2.5th\n\u2022 Choice D: 1 votes (8.3%) - Dr. GPT 4o Mini\n\nPlease reconsider your answer based on the voting pattern above.",
+    "choices": {
+      "A": "40800",
+      "B": "41105",
+      "C": "41113",
+      "D": "40804"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 7,
+    "question": "Ethan, experiencing persistent flank pain, underwent a diagnostic renal angiography. Which CPT code represents this procedure?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 1 votes (8.3%) - Dr. GPT 4.1\n\u2022 Choice C: 3 votes (25.0%) - Dr. Gemini Pro the 2.5th, Dr. Gemini Flash Preview the 2.5th, Dr. Gemini Flash the 2.5th\n\u2022 Choice D: 8 votes (66.7%) - Dr. Claude Sonnet the 3.7th, Dr. GPT 4o, Dr. GPT 4.1 Mini and 5 others\n\nPlease reconsider your answer based on the voting pattern above.",
+    "choices": {
+      "A": "50010",
+      "B": "50220",
+      "C": "50200",
+      "D": "50398"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 23,
+    "question": "After a car accident, Liam required a retrograde pyelography to assess kidney damage. Which CPT code should be used for this procedure?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice B: 5 votes (41.7%) - Dr. Claude Sonnet the 3.7th, Dr. Gemini Pro the 2.5th, Dr. GPT 4o and 2 others\n\u2022 Choice D: 7 votes (58.3%) - Dr. Gemini Flash Preview the 2.5th, Dr. GPT 4.1, Dr. Claude Sonnet the 3.5th and 4 others\n\nPlease reconsider your answer based on the voting pattern above.",
+    "choices": {
+      "A": "50320",
+      "B": "50430",
+      "C": "50200",
+      "D": "50390"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 24,
+    "question": "Olivia went to the pediatrician for her annual checkup. The doctor conducted a comprehensive review covering her past, family, and social history. Which CPT code represents this level of history-taking?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 8 votes (66.7%) - Dr. Claude Sonnet the 3.7th, Dr. GPT 4.1, Dr. GPT 4o and 5 others\n\u2022 Choice B: 1 votes (8.3%) - Dr. Claude Sonnet the 3.5th\n\u2022 Choice C: 3 votes (25.0%) - Dr. Gemini Pro the 2.5th, Dr. Gemini Flash Preview the 2.5th, Dr. Gemini Flash the 2.5th\n\nPlease reconsider your answer based on the voting pattern above.",
+    "choices": {
+      "A": "99391",
+      "B": "99382",
+      "C": "99392",
+      "D": "99381"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 29,
+    "question": "Leo had been experiencing difficulty breathing and went to a clinic. The doctor performed a procedure to remove nasal polyps. Which CPT code corresponds to this procedure?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 6 votes (50.0%) - Dr. Gemini Pro the 2.5th, Dr. Gemini Flash Preview the 2.5th, Dr. Mistral Medium and 3 others\n\u2022 Choice B: 3 votes (25.0%) - Dr. GPT 4.1, Dr. GPT 4o, Dr. GPT 4.1 Mini\n\u2022 Choice D: 3 votes (25.0%) - Dr. Claude Sonnet the 3.7th, Dr. Claude Sonnet the 3.5th, Dr. GPT 4o Mini\n\nPlease reconsider your answer based on the voting pattern above.",
+    "choices": {
+      "A": "30110",
+      "B": "30140",
+      "C": "30220",
+      "D": "31237"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 33,
+    "question": "Ella went to the doctor after experiencing pain from a swollen salivary gland. The doctor performed a sialolithotomy. Which CPT code represents this procedure?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 4 votes (33.3%) - Dr. GPT 4.1, Dr. Claude Sonnet the 3.5th, Dr. GPT 4o Mini and 1 others\n\u2022 Choice B: 3 votes (25.0%) - Dr. Gemini Pro the 2.5th, Dr. GPT 4.1 Mini, Dr. Claude Sonnet the 4th\n\u2022 Choice C: 4 votes (33.3%) - Dr. Claude Sonnet the 3.7th, Dr. Gemini Flash Preview the 2.5th, Dr. GPT 4o and 1 others\n\u2022 Choice D: 1 votes (8.3%) - Dr. Mistral Medium\n\nPlease reconsider your answer based on the voting pattern above.",
+    "choices": {
+      "A": "40810",
+      "B": "40812",
+      "C": "40819",
+      "D": "40820"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 59,
+    "question": "After a minor car accident, Emma was taken to the emergency room. They found a hematoma in her shoulder that needed incision and drainage. Which CPT code pertains to this procedure?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 7 votes (58.3%) - Dr. Gemini Pro the 2.5th, Dr. Gemini Flash Preview the 2.5th, Dr. GPT 4.1 Mini and 4 others\n\u2022 Choice B: 5 votes (41.7%) - Dr. Claude Sonnet the 3.7th, Dr. GPT 4.1, Dr. GPT 4o and 2 others\n\nPlease reconsider your answer based on the voting pattern above.",
+    "choices": {
+      "A": "20005",
+      "B": "20010",
+      "C": "20016",
+      "D": "20100"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 81,
+    "question": "During a football match, Ethan had a collision and developed a hematoma in his upper arm. The doctor performed an incision to drain it. Which CPT code is appropriate for this procedure?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 4 votes (33.3%) - Dr. Gemini Pro the 2.5th, Dr. GPT 4o Mini, Dr. Mistral Medium and 1 others\n\u2022 Choice B: 8 votes (66.7%) - Dr. Claude Sonnet the 3.7th, Dr. Gemini Flash Preview the 2.5th, Dr. GPT 4.1 and 5 others\n\nPlease reconsider your answer based on the voting pattern above.",
+    "choices": {
+      "A": "20005",
+      "B": "20002",
+      "C": "20010",
+      "D": "20100"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 84,
+    "question": "Nathan visited the clinic with flu-like symptoms. The doctor took a brief history, focusing mainly on the respiratory system. Which CPT code represents this level of history-taking?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 8 votes (66.7%) - Dr. Claude Sonnet the 3.7th, Dr. GPT 4.1, Dr. GPT 4o and 5 others\n\u2022 Choice B: 4 votes (33.3%) - Dr. Gemini Pro the 2.5th, Dr. Gemini Flash Preview the 2.5th, Dr. Mistral Medium and 1 others\n\nPlease reconsider your answer based on the voting pattern above.",
+    "choices": {
+      "A": "99201",
+      "B": "99202",
+      "C": "99203",
+      "D": "99204"
+    },
+    "question_type": "CPT"
+  }
+]

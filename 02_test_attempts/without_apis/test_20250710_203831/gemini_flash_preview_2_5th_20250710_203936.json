@@ -1,0 +1,218 @@
+{
+  "doctor_name": "Dr. Gemini Flash Preview the 2.5th",
+  "model_id": "google/gemini-2.5-flash-preview-05-20",
+  "timestamp": "20250710_203936",
+  "test_session_timestamp": "20250710_203831",
+  "total_questions": 12,
+  "completed_answers": 12,
+  "completion_rate": 100.0,
+  "average_response_time": 1.1179030833333334,
+  "use_embeddings": false,
+  "embeddings_count": 0,
+  "results": [
+    {
+      "question_number": 1,
+      "question": "During a regular checkup, Dr. Stevens discovered a suspicious lesion on the floor of Paul's mouth and decided to perform an excision. Which CPT code covers the excision of an oral lesion?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice B: 9 votes (75.0%) - Dr. Claude Sonnet the 4th, Dr. GPT 4o Mini, Dr. Mistral Medium and 6 others\n\u2022 Choice C: 3 votes (25.0%) - Dr. Gemini Flash Preview the 2.5th, Dr. Gemini Pro the 2.5th, Dr. Gemini Flash the 2.5th\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "40800",
+        "B": "41105",
+        "C": "41113",
+        "D": "40804"
+      },
+      "selected_answer": "C",
+      "reasoning": "The question specifies excision of an oral lesion. CPT code 41113 is for \"Excision of lesion of floor of mouth\". The other codes are for incision of an abscess (40800), biopsy of the tongue (41105), or incision of a salivary duct (40804).",
+      "response_time": 1.278011,
+      "raw_response": "{\n  \"id\": \"gen-1752197966-CqVZuVU7bbTlv9d7BGiu\",\n  \"provider\": \"Google\",\n  \"model\": \"google/gemini-2.5-flash-preview-05-20\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752197967,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"tool_calls\",\n      \"native_finish_reason\": \"STOP\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"tool_0_select_answer\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"reasoning\\\":\\\"The question specifies excision of an oral lesion. CPT code 41113 is for \\\\\\\"Excision of lesion of floor of mouth\\\\\\\". The other codes are for incision of an abscess (40800), biopsy of the tongue (41105), or incision of a salivary duct (40804).\\\",\\\"choice\\\":\\\"C\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 338,\n    \"completion_tokens\": 76,\n    \"total_tokens\": 414\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 7,
+      "question": "Ethan, experiencing persistent flank pain, underwent a diagnostic renal angiography. Which CPT code represents this procedure?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 1 votes (8.3%) - Dr. GPT 4.1\n\u2022 Choice C: 2 votes (16.7%) - Dr. Gemini Flash Preview the 2.5th, Dr. Gemini Flash the 2.5th\n\u2022 Choice D: 9 votes (75.0%) - Dr. Claude Sonnet the 4th, Dr. GPT 4o Mini, Dr. Mistral Medium and 6 others\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "50010",
+        "B": "50220",
+        "C": "50200",
+        "D": "50398"
+      },
+      "selected_answer": "C",
+      "reasoning": "CPT code 50200 is for renal biopsy, percutaneous, by trocar or needle. While not directly angiography, it is the closest option among the choices for a diagnostic procedure related to the kidney. The other codes are for different procedures: 50010 is for renal exploration, 50220 is for nephrectomy, and 50398 is for percutaneous antegrade pyelogram.",
+      "response_time": 1.141027,
+      "raw_response": "{\n  \"id\": \"gen-1752197966-iss4vzKBKEf59Egdl5sd\",\n  \"provider\": \"Google\",\n  \"model\": \"google/gemini-2.5-flash-preview-05-20\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752197967,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"tool_calls\",\n      \"native_finish_reason\": \"STOP\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"tool_0_select_answer\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"C\\\",\\\"reasoning\\\":\\\"CPT code 50200 is for renal biopsy, percutaneous, by trocar or needle. While not directly angiography, it is the closest option among the choices for a diagnostic procedure related to the kidney. The other codes are for different procedures: 50010 is for renal exploration, 50220 is for nephrectomy, and 50398 is for percutaneous antegrade pyelogram.\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 330,\n    \"completion_tokens\": 98,\n    \"total_tokens\": 428\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 12,
+      "question": "Jackson has been feeling pain and pressure in his sinuses. The ENT decided to perform a sinusotomy to improve drainage. Which CPT code represents this procedure?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 9 votes (75.0%) - Dr. Claude Sonnet the 4th, Dr. GPT 4.1, Dr. Gemini Flash Preview the 2.5th and 6 others\n\u2022 Choice B: 3 votes (25.0%) - Dr. GPT 4o Mini, Dr. Mistral Medium, Dr. GPT 4o\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "31020",
+        "B": "31256",
+        "C": "31287",
+        "D": "31288"
+      },
+      "selected_answer": "A",
+      "reasoning": "CPT code 31020 specifically describes a sinusotomy, maxillary; intranasal. This procedure aligns with the description of improving drainage for sinus pain and pressure.",
+      "response_time": 0.884364,
+      "raw_response": "{\n  \"id\": \"gen-1752197968-QwZYSrp6Q5htL63JWxir\",\n  \"provider\": \"Google\",\n  \"model\": \"google/gemini-2.5-flash-preview-05-20\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752197968,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"tool_calls\",\n      \"native_finish_reason\": \"STOP\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"tool_0_select_answer\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"A\\\",\\\"reasoning\\\":\\\"CPT code 31020 specifically describes a sinusotomy, maxillary; intranasal. This procedure aligns with the description of improving drainage for sinus pain and pressure.\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 324,\n    \"completion_tokens\": 42,\n    \"total_tokens\": 366\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 24,
+      "question": "Olivia went to the pediatrician for her annual checkup. The doctor conducted a comprehensive review covering her past, family, and social history. Which CPT code represents this level of history-taking?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 7 votes (58.3%) - Dr. Claude Sonnet the 4th, Dr. GPT 4o Mini, Dr. GPT 4.1 and 4 others\n\u2022 Choice B: 1 votes (8.3%) - Dr. Claude Sonnet the 3.5th\n\u2022 Choice C: 4 votes (33.3%) - Dr. Mistral Medium, Dr. Gemini Flash Preview the 2.5th, Dr. Gemini Pro the 2.5th and 1 others\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "99391",
+        "B": "99382",
+        "C": "99392",
+        "D": "99381"
+      },
+      "selected_answer": "C",
+      "reasoning": "CPT code 99392 is for a periodic comprehensive preventive medicine reevaluation and management of an individual aged 1-4 years. This code aligns with an annual checkup for a child, which would include a comprehensive history review.",
+      "response_time": 1.233965,
+      "raw_response": "{\n  \"id\": \"gen-1752197968-D11RyLQ6qvVQQd6XudRc\",\n  \"provider\": \"Google\",\n  \"model\": \"google/gemini-2.5-flash-preview-05-20\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752197968,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"tool_calls\",\n      \"native_finish_reason\": \"STOP\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"tool_0_select_answer\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"reasoning\\\":\\\"CPT code 99392 is for a periodic comprehensive preventive medicine reevaluation and management of an individual aged 1-4 years. This code aligns with an annual checkup for a child, which would include a comprehensive history review.\\\",\\\"choice\\\":\\\"C\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 363,\n    \"completion_tokens\": 55,\n    \"total_tokens\": 418\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 25,
+      "question": "During his physical therapy, John was provided with a therapeutic elastic band. Which HCPCS Level II code represents the supply of this band?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 3 votes (25.0%) - Dr. Mistral Medium, Dr. Gemini Flash Preview the 2.5th, Dr. Gemini Flash the 2.5th\n\u2022 Choice B: 8 votes (66.7%) - Dr. Claude Sonnet the 4th, Dr. GPT 4o Mini, Dr. GPT 4.1 and 5 others\n\u2022 Choice C: 1 votes (8.3%) - Dr. Gemini Pro the 2.5th\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "HCPCS",
+      "choices": {
+        "A": "A4450",
+        "B": "A4465",
+        "C": "A4466",
+        "D": "A4470"
+      },
+      "selected_answer": "B",
+      "reasoning": "HCPCS code A4465 specifically describes a \"therapeutic elastic band.\" The other codes are for different types of medical supplies: A4450 is for a \"tape, non-waterproof, per 18 square inches,\" A4466 is for a \"surgical dressing, not otherwise specified,\" and A4470 is for a \"surgical stocking, below knee, each.\"",
+      "response_time": 1.403692,
+      "raw_response": "{\n  \"id\": \"gen-1752197970-99vPP2UaBi0ZjU0pXqBw\",\n  \"provider\": \"Google\",\n  \"model\": \"google/gemini-2.5-flash-preview-05-20\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752197970,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"tool_calls\",\n      \"native_finish_reason\": \"STOP\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"tool_0_select_answer\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"B\\\",\\\"reasoning\\\":\\\"HCPCS code A4465 specifically describes a \\\\\\\"therapeutic elastic band.\\\\\\\" The other codes are for different types of medical supplies: A4450 is for a \\\\\\\"tape, non-waterproof, per 18 square inches,\\\\\\\" A4466 is for a \\\\\\\"surgical dressing, not otherwise specified,\\\\\\\" and A4470 is for a \\\\\\\"surgical stocking, below knee, each.\\\\\\\"\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 351,\n    \"completion_tokens\": 90,\n    \"total_tokens\": 441\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 29,
+      "question": "Leo had been experiencing difficulty breathing and went to a clinic. The doctor performed a procedure to remove nasal polyps. Which CPT code corresponds to this procedure?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 8 votes (66.7%) - Dr. Claude Sonnet the 4th, Dr. Mistral Medium, Dr. GPT 4.1 and 5 others\n\u2022 Choice B: 1 votes (8.3%) - Dr. GPT 4.1 Mini\n\u2022 Choice D: 3 votes (25.0%) - Dr. GPT 4o Mini, Dr. Claude Sonnet the 3.5th, Dr. Claude Sonnet the 3.7th\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "30110",
+        "B": "30140",
+        "C": "30220",
+        "D": "31237"
+      },
+      "selected_answer": "A",
+      "reasoning": "CPT code 30110 specifically describes \"Excision, nasal polyp(s), simple; unilateral or bilateral.\" This code accurately reflects the procedure performed to remove nasal polyps.",
+      "response_time": 0.966267,
+      "raw_response": "{\n  \"id\": \"gen-1752197970-QvGrQDGKYpkwlHljOSai\",\n  \"provider\": \"Google\",\n  \"model\": \"google/gemini-2.5-flash-preview-05-20\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752197970,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"tool_calls\",\n      \"native_finish_reason\": \"STOP\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"tool_0_select_answer\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"A\\\",\\\"reasoning\\\":\\\"CPT code 30110 specifically describes \\\\\\\"Excision, nasal polyp(s), simple; unilateral or bilateral.\\\\\\\" This code accurately reflects the procedure performed to remove nasal polyps.\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 350,\n    \"completion_tokens\": 44,\n    \"total_tokens\": 394\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 33,
+      "question": "Ella went to the doctor after experiencing pain from a swollen salivary gland. The doctor performed a sialolithotomy. Which CPT code represents this procedure?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 9 votes (75.0%) - Dr. Claude Sonnet the 4th, Dr. GPT 4o Mini, Dr. GPT 4.1 and 6 others\n\u2022 Choice D: 3 votes (25.0%) - Dr. Mistral Medium, Dr. Gemini Flash Preview the 2.5th, Dr. Gemini Flash the 2.5th\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "40810",
+        "B": "40812",
+        "C": "40819",
+        "D": "40820"
+      },
+      "selected_answer": "D",
+      "reasoning": "The procedure described is a sialolithotomy, which is the surgical removal of a salivary gland stone. CPT code 40820 specifically refers to \"Excision of lesion or calculus (sialolithiasis) from the oral mucosa or salivary duct, intraoral.\" The other codes are for different procedures: 40810 is for biopsy, 40812 is for excision of a lesion, and 40819 is for repair of a laceration.",
+      "response_time": 1.377239,
+      "raw_response": "{\n  \"id\": \"gen-1752197971-RKIlibtqJzUDw27sDsh2\",\n  \"provider\": \"Google\",\n  \"model\": \"google/gemini-2.5-flash-preview-05-20\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752197971,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"tool_calls\",\n      \"native_finish_reason\": \"STOP\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"tool_0_select_answer\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"D\\\",\\\"reasoning\\\":\\\"The procedure described is a sialolithotomy, which is the surgical removal of a salivary gland stone. CPT code 40820 specifically refers to \\\\\\\"Excision of lesion or calculus (sialolithiasis) from the oral mucosa or salivary duct, intraoral.\\\\\\\" The other codes are for different procedures: 40810 is for biopsy, 40812 is for excision of a lesion, and 40819 is for repair of a laceration.\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 328,\n    \"completion_tokens\": 111,\n    \"total_tokens\": 439\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 59,
+      "question": "After a minor car accident, Emma was taken to the emergency room. They found a hematoma in her shoulder that needed incision and drainage. Which CPT code pertains to this procedure?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 7 votes (58.3%) - Dr. Mistral Medium, Dr. Gemini Flash Preview the 2.5th, Dr. Claude Sonnet the 3.5th and 4 others\n\u2022 Choice B: 4 votes (33.3%) - Dr. Claude Sonnet the 4th, Dr. GPT 4.1, Dr. Claude Sonnet the 3.7th and 1 others\n\u2022 Choice D: 1 votes (8.3%) - Dr. GPT 4o Mini\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "20005",
+        "B": "20010",
+        "C": "20016",
+        "D": "20100"
+      },
+      "selected_answer": "A",
+      "reasoning": "CPT code 20005 is specifically for incision of soft tissue abscess (e.g., hematoma) of the shoulder area. The other codes are for different procedures or body parts: 20010 is for incision of soft tissue abscess (e.g., hematoma) of the forearm/wrist, 20016 is not a valid CPT code, and 20100 is for drainage of a hematoma in the hand.",
+      "response_time": 1.295275,
+      "raw_response": "{\n  \"id\": \"gen-1752197971-z9cVZBvKgkmbyTbQyTBs\",\n  \"provider\": \"Google\",\n  \"model\": \"google/gemini-2.5-flash-preview-05-20\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752197971,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"tool_calls\",\n      \"native_finish_reason\": \"STOP\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"tool_0_select_answer\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"A\\\",\\\"reasoning\\\":\\\"CPT code 20005 is specifically for incision of soft tissue abscess (e.g., hematoma) of the shoulder area. The other codes are for different procedures or body parts: 20010 is for incision of soft tissue abscess (e.g., hematoma) of the forearm/wrist, 20016 is not a valid CPT code, and 20100 is for drainage of a hematoma in the hand.\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 363,\n    \"completion_tokens\": 105,\n    \"total_tokens\": 468\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 62,
+      "question": "John, an avid gardener, discovered a wart on his finger. Concerned about its appearance, he consulted a physician who recommended its removal. Which CPT code covers the excision of a wart?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 1 votes (8.3%) - Dr. Gemini Flash the 2.5th\n\u2022 Choice B: 7 votes (58.3%) - Dr. GPT 4o Mini, Dr. GPT 4.1, Dr. Gemini Flash Preview the 2.5th and 4 others\n\u2022 Choice D: 4 votes (33.3%) - Dr. Claude Sonnet the 4th, Dr. Mistral Medium, Dr. Gemini Pro the 2.5th and 1 others\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "10021",
+        "B": "10040",
+        "C": "10060",
+        "D": "10120"
+      },
+      "selected_answer": "B",
+      "reasoning": "CPT code 10040 is for the excision of a wart, which aligns with the procedure described in the scenario.",
+      "response_time": 0.700262,
+      "raw_response": "{\n  \"id\": \"gen-1752197973-N5jVqwkudYwvrdffWjHO\",\n  \"provider\": \"Google\",\n  \"model\": \"google/gemini-2.5-flash-preview-05-20\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752197973,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"tool_calls\",\n      \"native_finish_reason\": \"STOP\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"tool_0_select_answer\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"reasoning\\\":\\\"CPT code 10040 is for the excision of a wart, which aligns with the procedure described in the scenario.\\\",\\\"choice\\\":\\\"B\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 362,\n    \"completion_tokens\": 33,\n    \"total_tokens\": 395\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 70,
+      "question": "Peter visited a dermatologist for a persistent rash. The doctor diagnosed him with atopic dermatitis of the hands. What ICD-10-CM code represents this diagnosis?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 9 votes (75.0%) - Dr. GPT 4o Mini, Dr. GPT 4.1, Dr. Gemini Flash Preview the 2.5th and 6 others\n\u2022 Choice B: 2 votes (16.7%) - Dr. Claude Sonnet the 4th, Dr. Claude Sonnet the 3.7th\n\u2022 Choice C: 1 votes (8.3%) - Dr. Mistral Medium\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "ICD",
+      "choices": {
+        "A": "L20.81",
+        "B": "L20.82",
+        "C": "L20.83",
+        "D": "L20.84"
+      },
+      "selected_answer": "A",
+      "reasoning": "L20.81 is the correct ICD-10-CM code for atopic dermatitis of the hands. The L20 category is for Atopic dermatitis, and the .81 subcategory specifically denotes involvement of the hands.",
+      "response_time": 1.114719,
+      "raw_response": "{\n  \"id\": \"gen-1752197973-67nIAB1OZXaeRSZolo4M\",\n  \"provider\": \"Google\",\n  \"model\": \"google/gemini-2.5-flash-preview-05-20\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752197973,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"tool_calls\",\n      \"native_finish_reason\": \"STOP\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"tool_0_select_answer\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"reasoning\\\":\\\"L20.81 is the correct ICD-10-CM code for atopic dermatitis of the hands. The L20 category is for Atopic dermatitis, and the .81 subcategory specifically denotes involvement of the hands.\\\",\\\"choice\\\":\\\"A\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 358,\n    \"completion_tokens\": 55,\n    \"total_tokens\": 413\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 71,
+      "question": "Sophia went to a dermatologist for a facial consultation. The doctor noticed a milia near her eye and removed it. Which CPT code represents the removal of milia?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice A: 2 votes (16.7%) - Dr. Gemini Flash Preview the 2.5th, Dr. Gemini Flash the 2.5th\n\u2022 Choice C: 9 votes (75.0%) - Dr. Claude Sonnet the 4th, Dr. GPT 4o Mini, Dr. GPT 4.1 and 6 others\n\u2022 Choice D: 1 votes (8.3%) - Dr. Mistral Medium\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "10021",
+        "B": "10030",
+        "C": "10040",
+        "D": "10120"
+      },
+      "selected_answer": "C",
+      "reasoning": "Milia are considered cysts, and CPT code 10040 is used for the drainage of a cyst. The other codes are for different procedures: 10021 is for fine needle aspiration, 10030 is for removal of a lesion, and 10120 is for incision and removal of a foreign body.",
+      "response_time": 1.104297,
+      "raw_response": "{\n  \"id\": \"gen-1752197974-lY9fynEjEmlBxoNK5E5A\",\n  \"provider\": \"Google\",\n  \"model\": \"google/gemini-2.5-flash-preview-05-20\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752197974,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"tool_calls\",\n      \"native_finish_reason\": \"STOP\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"tool_0_select_answer\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"C\\\",\\\"reasoning\\\":\\\"Milia are considered cysts, and CPT code 10040 is used for the drainage of a cyst. The other codes are for different procedures: 10021 is for fine needle aspiration, 10030 is for removal of a lesion, and 10120 is for incision and removal of a foreign body.\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 343,\n    \"completion_tokens\": 81,\n    \"total_tokens\": 424\n  }\n}",
+      "success": true,
+      "error_message": null
+    },
+    {
+      "question_number": 78,
+      "question": "During a dental cleaning, Dr. Adams noticed a white patch inside Hannah's mouth. She suggested a biopsy of the oral mucosa. Which CPT code covers a biopsy of the oral mucosa?\n\n--- Previous Vote Results ---\nConsensus threshold not met. Previous votes:\n\u2022 Choice B: 9 votes (75.0%) - Dr. GPT 4o Mini, Dr. GPT 4.1, Dr. Gemini Flash Preview the 2.5th and 6 others\n\u2022 Choice D: 3 votes (25.0%) - Dr. Claude Sonnet the 4th, Dr. Mistral Medium, Dr. Gemini Pro the 2.5th\n\nPlease reconsider your answer based on the voting pattern above.",
+      "question_type": "CPT",
+      "choices": {
+        "A": "40000",
+        "B": "41105",
+        "C": "40100",
+        "D": "40804"
+      },
+      "selected_answer": "B",
+      "reasoning": "CPT code 41105 specifically refers to a biopsy of the oral mucosa, which aligns with the procedure described in the scenario.",
+      "response_time": 0.915719,
+      "raw_response": "{\n  \"id\": \"gen-1752197975-VqSxbhkMlgiqfJsqs6g3\",\n  \"provider\": \"Google\",\n  \"model\": \"google/gemini-2.5-flash-preview-05-20\",\n  \"object\": \"chat.completion\",\n  \"created\": 1752197975,\n  \"choices\": [\n    {\n      \"logprobs\": null,\n      \"finish_reason\": \"tool_calls\",\n      \"native_finish_reason\": \"STOP\",\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"\",\n        \"refusal\": null,\n        \"reasoning\": null,\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"tool_0_select_answer\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"select_answer\",\n              \"arguments\": \"{\\\"choice\\\":\\\"B\\\",\\\"reasoning\\\":\\\"CPT code 41105 specifically refers to a biopsy of the oral mucosa, which aligns with the procedure described in the scenario.\\\"}\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 335,\n    \"completion_tokens\": 35,\n    \"total_tokens\": 370\n  }\n}",
+      "success": true,
+      "error_message": null
+    }
+  ]
+}

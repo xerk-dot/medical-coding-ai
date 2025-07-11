@@ -82,35 +82,33 @@ class ConsensusValidator:
         return sorted(files, reverse=True)
     
     def get_consensus_report(self, report_filename: Optional[str] = None) -> Optional[str]:
-        """Get consensus report path - either specified or latest"""
+        """Get consensus report path - by default uses consensus_report_final.json"""
+        # Default to final consensus report
+        if not report_filename:
+            report_filename = "consensus_report_final.json"
+        
+        # Handle both full path and just filename
+        if os.path.exists(report_filename):
+            print(f"📊 Using consensus report: {report_filename}")
+            return report_filename
+        
+        # Try in consensus reports directory
+        full_path = os.path.join(self.consensus_reports_dir, report_filename)
+        if os.path.exists(full_path):
+            print(f"📊 Using consensus report: {report_filename}")
+            return full_path
+        
+        # If final report not found, show available reports
+        print(f"❌ Consensus report '{report_filename}' not found")
         available_reports = self.get_available_consensus_reports()
-        
-        if not available_reports:
-            print(f"❌ No consensus reports found in {self.consensus_reports_dir}")
-            return None
-        
-        # If specific report requested, validate it exists
-        if report_filename:
-            # Handle both full path and just filename
-            if os.path.exists(report_filename):
-                return report_filename
-            
-            # Try in consensus reports directory
-            full_path = os.path.join(self.consensus_reports_dir, report_filename)
-            if os.path.exists(full_path):
-                print(f"📊 Using consensus report: {report_filename}")
-                return full_path
-            
-            print(f"❌ Consensus report '{report_filename}' not found")
+        if available_reports:
             print(f"Available reports (showing first 10):")
             for report in available_reports[:10]:
                 print(f"  - {os.path.basename(report)}")
-            return None
+        else:
+            print(f"No consensus reports found in {self.consensus_reports_dir}")
         
-        # Use latest report
-        latest_file = available_reports[0]
-        print(f"📊 Using latest consensus report: {os.path.basename(latest_file)}")
-        return latest_file
+        return None
     
     def load_consensus_report(self, filepath: str) -> Optional[Dict]:
         """Load a consensus report"""
@@ -128,11 +126,14 @@ class ConsensusValidator:
             print(f"❌ Invalid JSON in consensus report: {e}")
             return None
     
-    def validate_consensus(self, report_filename: Optional[str] = None) -> List[ValidationResult]:
+    def validate_consensus(self, report_filename: Optional[str] = None) -> Tuple[List[ValidationResult], Dict]:
         """Validate a consensus report against the answer key
         
         Args:
-            report_filename: Specific consensus report to validate (uses latest if None)
+            report_filename: Specific consensus report to validate (uses consensus_report_final.json if None)
+            
+        Returns:
+            Tuple of (validation_results, consensus_report)
         """
         # Load data
         answer_key = self.load_answer_key()
@@ -140,18 +141,18 @@ class ConsensusValidator:
         
         if not answer_key:
             print("❌ Cannot validate without answer key")
-            return []
+            return [], {}
         
         # Get consensus report
         report_file = self.get_consensus_report(report_filename)
         if not report_file:
             print("❌ Cannot validate without consensus report")
-            return []
+            return [], {}
         
         consensus_report = self.load_consensus_report(report_file)
         if not consensus_report:
             print("❌ Cannot validate without valid consensus report")
-            return []
+            return [], {}
         
         # Validate each question
         validation_results = []
@@ -164,9 +165,12 @@ class ConsensusValidator:
                 print(f"⚠️  No answer key found for question {question_num}")
                 continue
             
-            consensus_choice = question_data.get("consensus_choice")
-            consensus_achieved = question_data.get("consensus_achieved", False)
-            consensus_percentage = question_data.get("consensus_percentage", 0.0)
+            # For final reports, use final_consensus_choice if available
+            consensus_choice = question_data.get("final_consensus_choice") or question_data.get("consensus_choice")
+            consensus_percentage = question_data.get("final_consensus_percentage", question_data.get("consensus_percentage", 0.0))
+            
+            # For final reports, consensus is always achieved (that's why it's final)
+            consensus_achieved = True if "final_consensus_choice" in question_data else question_data.get("consensus_achieved", False)
             
             # Determine if consensus is correct
             is_consensus_correct = False
@@ -187,15 +191,22 @@ class ConsensusValidator:
             
             validation_results.append(result)
         
-        return validation_results
+        return validation_results, consensus_report
     
-    def print_model_success_failure_summary(self, results: List[ValidationResult]):
-        """Print individual model success/failure statistics"""
+    def print_model_success_failure_summary(self, results: List[ValidationResult], consensus_report: Dict):
+        """Print individual model success/failure statistics with self-correction analysis"""
         print(f"\n📊 INDIVIDUAL MODEL SUCCESS/FAILURE BREAKDOWN")
         print("=" * 80)
         
         # Track each model's performance on each question
         model_stats = defaultdict(lambda: {"correct": 0, "incorrect": 0, "total": 0})
+        model_correction_stats = defaultdict(lambda: {
+            "corrected_to_right": 0,  # Wrong -> Right
+            "corrected_to_wrong": 0,  # Right -> Wrong  
+            "stayed_right": 0,        # Right -> Right
+            "stayed_wrong": 0,        # Wrong -> Wrong
+            "total_multi_round": 0    # Questions that went to multiple rounds
+        })
         
         # Get the answer key for comparison
         answer_key = self.load_answer_key()
@@ -221,30 +232,60 @@ class ConsensusValidator:
                         else:
                             model_stats[doctor_name]["incorrect"] += 1
         
-        # If we don't have votes_by_doctor, fall back to loading individual test results
-        if not model_stats:
-            print("⚠️  No individual vote data found in consensus report")
-            print("   Loading individual test results for model performance...")
+        # Process vote history from consensus report to track model performance
+        for question_data in consensus_report.get("questions", []):
+            question_num = question_data["question_number"]
+            correct_answer = answer_key.get(question_num)
+            vote_history = question_data.get("vote_history", [])
             
-            # Load individual test results
-            individual_results = self.load_individual_test_results()
+            if not correct_answer or not vote_history:
+                continue
             
-            for model_name, test_session in individual_results.items():
-                doctor_name = test_session.get("doctor_name", model_name)
-                test_results = test_session.get("results", [])
+            # Process first round votes
+            if vote_history:
+                first_round = vote_history[0]
+                for choice, doctors in first_round.get("votes", {}).items():
+                    for doctor in doctors:
+                        model_stats[doctor]["total"] += 1
+                        if choice == correct_answer:
+                            model_stats[doctor]["correct"] += 1
+                        else:
+                            model_stats[doctor]["incorrect"] += 1
+            
+            # Analyze self-correction if multiple rounds
+            if len(vote_history) > 1:
+                # Track how each model changed their vote
+                first_round = vote_history[0]
+                last_round = vote_history[-1]
                 
-                for test_result in test_results:
-                    if test_result.get("success") and test_result.get("selected_answer"):
-                        question_num = test_result["question_number"]
-                        selected_answer = test_result["selected_answer"]
-                        correct_answer = answer_key.get(question_num)
+                # Get each model's first and last vote
+                first_votes = {}
+                last_votes = {}
+                
+                for choice, doctors in first_round.get("votes", {}).items():
+                    for doctor in doctors:
+                        first_votes[doctor] = choice
+                
+                for choice, doctors in last_round.get("votes", {}).items():
+                    for doctor in doctors:
+                        last_votes[doctor] = choice
+                
+                # Analyze changes
+                for doctor in first_votes:
+                    if doctor in last_votes:
+                        model_correction_stats[doctor]["total_multi_round"] += 1
                         
-                        if correct_answer:
-                            model_stats[doctor_name]["total"] += 1
-                            if selected_answer == correct_answer:
-                                model_stats[doctor_name]["correct"] += 1
-                            else:
-                                model_stats[doctor_name]["incorrect"] += 1
+                        first_correct = first_votes[doctor] == correct_answer
+                        last_correct = last_votes[doctor] == correct_answer
+                        
+                        if first_correct and last_correct:
+                            model_correction_stats[doctor]["stayed_right"] += 1
+                        elif not first_correct and last_correct:
+                            model_correction_stats[doctor]["corrected_to_right"] += 1
+                        elif first_correct and not last_correct:
+                            model_correction_stats[doctor]["corrected_to_wrong"] += 1
+                        else:  # not first_correct and not last_correct
+                            model_correction_stats[doctor]["stayed_wrong"] += 1
         
         # Sort models by accuracy
         sorted_models = sorted(model_stats.items(), 
@@ -280,11 +321,44 @@ class ConsensusValidator:
             if total_answered > 0:
                 avg_accuracy = (total_correct / total_answered) * 100
                 print(f"   📊 Average Accuracy: {avg_accuracy:.1f}%")
+        
+        # Show self-correction analysis
+        if any(stats["total_multi_round"] > 0 for stats in model_correction_stats.values()):
+            print(f"\n🔄 SELF-CORRECTION ANALYSIS (Multi-Round Questions)")
+            print("=" * 80)
+            print(f"{'Model Name':<35} {'Improved':<10} {'Worsened':<10} {'Stayed Right':<12} {'Stayed Wrong':<12}")
+            print("-" * 80)
+            
+            # Sort by improvement rate
+            correction_sorted = sorted(
+                [(name, stats) for name, stats in model_correction_stats.items() if stats["total_multi_round"] > 0],
+                key=lambda x: (x[1]["corrected_to_right"] / x[1]["total_multi_round"]) if x[1]["total_multi_round"] > 0 else 0,
+                reverse=True
+            )
+            
+            for model_name, stats in correction_sorted:
+                if stats["total_multi_round"] > 0:
+                    improved = stats["corrected_to_right"]
+                    worsened = stats["corrected_to_wrong"]
+                    stayed_right = stats["stayed_right"]
+                    stayed_wrong = stats["stayed_wrong"]
+                    
+                    print(f"{model_name:<35} {improved:<10} {worsened:<10} {stayed_right:<12} {stayed_wrong:<12}")
+            
+            # Summary
+            print(f"\n📊 Self-Correction Summary:")
+            total_improved = sum(stats["corrected_to_right"] for stats in model_correction_stats.values())
+            total_worsened = sum(stats["corrected_to_wrong"] for stats in model_correction_stats.values())
+            total_multi_round = sum(stats["total_multi_round"] for stats in model_correction_stats.values())
+            
+            if total_multi_round > 0:
+                print(f"   Total corrections: {total_improved} improved, {total_worsened} worsened")
+                print(f"   Net improvement rate: {(total_improved - total_worsened) / total_multi_round * 100:+.1f}%")
     
     def load_individual_test_results(self) -> Dict[str, Dict]:
         """Load individual test results from all AI models"""
-        02_test_attempts_dir = "../02_test_attempts"
-        pattern = os.path.join(02_test_attempts_dir, "*.json")
+        test_attempts_dir = "../02_test_attempts"
+        pattern = os.path.join(test_attempts_dir, "*.json")
         files = glob.glob(pattern)
         
         # Group files by model name and find the latest for each
@@ -475,7 +549,7 @@ def main():
     print("=" * 60)
     
     # Validate consensus
-    results = validator.validate_consensus(args.report)
+    results, consensus_report = validator.validate_consensus(args.report)
     
     if not results:
         print("❌ No validation results to display")
@@ -484,8 +558,8 @@ def main():
     # Print summary
     validator.print_validation_summary(results)
     
-    # Print individual model success/failure breakdown
-    validator.print_model_success_failure_summary(results)
+    # Print individual model success/failure breakdown with self-correction analysis
+    validator.print_model_success_failure_summary(results, consensus_report)
     
     # Save detailed report
     validator.save_validation_report(results)
