@@ -8,19 +8,18 @@ This analysis examined which AI models showed the best consistency and independe
 
 ### 🏆 Top Performing Models for Independent Decision-Making
 
-**Based on Composite Score (60% Independence + 40% Individual Accuracy):**
 
-1. **Dr. Gemini Pro the 2.5th** - Score: 0.384
+1. **Dr. Gemini Pro the 2.5th**
    - Independence: 15.4% (4/26 correct when consensus wrong)
    - Individual Accuracy: 73.0%
    - Resisted wrong consensus on questions: 1, 70, 75, 81
 
-2. **Dr. Claude Sonnet the 3.7th** - Score: 0.376
+2. **Dr. Claude Sonnet the 3.7th**
    - Independence: 15.4% (4/26 correct when consensus wrong)
    - Individual Accuracy: 71.0%
    - Resisted wrong consensus on questions: 34, 47, 70, 75
 
-3. **Dr. Mistral Medium** - Score: 0.367
+3. **Dr. Mistral Medium** 
    - Independence: 19.2% (5/26 correct when consensus wrong) - **HIGHEST INDEPENDENCE**
    - Individual Accuracy: 63.0%
    - Resisted wrong consensus on questions: 1, 12, 33, 38, 81
