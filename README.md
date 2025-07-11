@@ -263,6 +263,12 @@ syntra/
 Notes: Key insight: GPT-4.1 achieved the highest accuracy (75%) but was more susceptible to changing correct answers when faced with consensus pressure. Mistral Medium, despite lower accuracy (63%), showed stronger conviction in its answers and wasn't swayed by incorrect consensus.
 </details>
 
-#### Future improvements:
+### Which AI would I choose for health data?
 
-- Currently, there are only ~20 questions that are HCPCS/ICD. CPT codes, which make up ~60 of the questions, do not have a free, public API as they are copyrighted by the AMA. Including APIs for them would substantially boast the scores.
+### Future improvements, current limitations:
+
+- Unbalanced categories: 65% CPT vs 13% ICD vs 7% HCPCS skews results. 
+- CPT codes do not have a free, public API as they are copyrighted by the AMA. Including APIs for them would substantially boast the scores.
+- Small sample size: 100 questions isn't sufficient for definitive model ranking
+- Single domain focus: Only medical coding, not broader medical knowledge
+- No difficulty stratification: Easy and complex questions weighted equally
