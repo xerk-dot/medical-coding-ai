@@ -263,11 +263,38 @@ syntra/
 Notes: Key insight: GPT-4.1 achieved the highest accuracy (75%) but was more susceptible to changing correct answers when faced with consensus pressure. Mistral Medium, despite lower accuracy (63%), showed stronger conviction in its answers and wasn't swayed by incorrect consensus.
 </details>
 
-### Which AI would I choose for health data?
+## Which AI would I choose for health data?
 
-### Future improvements, current limitations:
+```python3
+python3 consensus_independence_analysis.py
+```
 
-- Unbalanced categories: 65% CPT vs 13% ICD vs 7% HCPCS skews results. 
+Out of 100 consensus decisions, 26 were incorrect (74% accuracy). The study reveals concerning patterns of groupthink while identifying models with superior independent reasoning capabilities.
+
+**Based on Composite Score (60% Independence + 40% Individual Accuracy):**
+
+1. **Dr. Gemini Pro the 2.5th** - Score: 0.384
+    - Independence: 15.4% (4/26 correct when consensus wrong)
+    - Individual Accuracy: 73.0%
+    - Resisted wrong consensus on questions: 1, 70, 75, 81
+2. **Dr. Claude Sonnet the 3.7th** - Score: 0.376
+    - Independence: 15.4% (4/26 correct when consensus wrong)
+    - Individual Accuracy: 71.0%
+    - Resisted wrong consensus on questions: 34, 47, 70, 75
+3. **Dr. Mistral Medium** - Score: 0.367
+    - Independence: 19.2% (5/26 correct when consensus wrong) - **HIGHEST INDEPENDENCE**
+    - Individual Accuracy: 63.0%
+    - Resisted wrong consensus on questions: 1, 12, 33, 38, 81
+
+Widespread Groupthink Problem
+
+- **15 out of 26 wrong consensus questions** had NO models vote correctly in the final round
+- Questions with 100% groupthink: 7, 11, 17, 20, 23, 24, 30, 41, 46, 57, 59, 64, 65, 91, 97
+- This represents 57% of wrong decisions where ALL models were swayed by group pressure
+
+### Current limitations, future improvements:
+
+- Unbalanced categories: 65% CPT vs 13% ICD vs 7% HCPCS skews results.
 - CPT codes do not have a free, public API as they are copyrighted by the AMA. Including APIs for them would substantially boast the scores.
 - Small sample size: 100 questions isn't sufficient for definitive model ranking
 - Single domain focus: Only medical coding, not broader medical knowledge
