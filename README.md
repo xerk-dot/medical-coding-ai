@@ -17,7 +17,7 @@ This repository has a benchmarking system for evaluating multiple AI models on m
 
 ## Supported AI Models
 
-- **OpenAI**: GPT-4.1, GPT-4o, GPT-4.1-mini, GPT-4.1-mini, GPT-4o-mini
+- **OpenAI**: GPT-4.1, GPT-4o, GPT-4.1-mini, GPT-4o-mini
 - **Anthropic**: Claude Sonnet 3.5, Claude Sonnet 3.7, Claude Sonnet 4
 - **Google**: Gemini 2.5 Pro, Gemini 2.5 Flash, Gemini 2.5 Flash Preview
 - **Mistral**: Mistral Medium
