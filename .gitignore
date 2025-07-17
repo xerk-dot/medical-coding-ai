@@ -3,3 +3,7 @@
 **/.env
 **/.env.*
 criticism.md
+
+02_test_attempts/test_*
+03_consensus_benchmarks/consensus_*
+03_consensus_benchmarks/temp_*

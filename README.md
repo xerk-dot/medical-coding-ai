@@ -285,6 +285,30 @@ syntra/
         └── question_classifier.py        (classifies by CPT/ICD/HCPCS)
 ```
 
+## Regarding Tool Call Usage on a Multiple Choice Test
+
+  The system uses tool calls to select A/B/C/D choices. Here's how it
+  works:
+
+  1. Primary Method - Tool Calls (lines 59-84): The system defines a
+  function tool called select_answer that forces the AI to respond with:
+    - choice: Must be one of ["A", "B", "C", "D"]
+    - reasoning: Explanation for the choice
+  2. Fallback Parsing (lines 114-131): If tool calls fail, it has multiple
+   fallback parsers:
+    - _parse_reasoning_details(): For Gemini models that put responses in
+  reasoning_details
+    - _parse_response(): Pattern matching for various text formats
+    - _parse_json_response(): For models that return JSON instead of tool
+  calls
+  3. Text Pattern Matching (lines 169-229): The _parse_response() method
+  looks for:
+    - A:, B., C) at the start
+    - "Answer: A" patterns
+    - "The answer is B" patterns
+    - "I choose C" patterns
+    - Standalone letters followed by explanations
+
 ## Results
 
 

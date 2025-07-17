@@ -29,14 +29,14 @@ AI_DOCTORS: Dict[str, Dict[str, str]] = {
         "cost_tier": 2,  # $0.15/$0.60 per M tokens
         "cost_note": "$0.14/M input, $2.49/M output"
     },
-    """
+    
     "gemini_2_5_flash": {
         "model_id": "google/gemini-2.5-flash",
         "display_name": "Dr. Gemini Flash the 2.5th",
         "short_name": "gemini_2_5_flash",
         "cost_tier": 1,  # $0.15/$0.60 per M tokens
         "cost_note": "$0.15/$0.60 per M tokens"
-    },
+    },"""
     "deepseek_v3": {
         "model_id": "deepseek/deepseek-chat-v3-0324",
         "display_name": "Dr. DeepSeek V3",

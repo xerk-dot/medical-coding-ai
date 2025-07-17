@@ -126,7 +126,7 @@ class ConsensusAnalyzer:
                             context += f" and {len(doctors)-3} others"
                         context += "\n"
                     
-                    context += f"\nPlease reconsider your answer based on the voting pattern above."
+                    context += f"\nYou are a medical professional. You failed to reach a consensus with other medical professionals on this multiple choice question. Please reconsider your answer based on the voting pattern above."
                     
                     # Create new question with context
                     new_question = q.copy()
