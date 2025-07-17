@@ -292,7 +292,6 @@ syntra/
 
   1. Primary Method - Tool Calls (lines 59-84): The system defines a
   function tool called select_answer that forces the AI to respond with:
-
     - **choice**: Must be one of `["A", "B", "C", "D"]`
     - **reasoning**: Explanation for the choice
 
