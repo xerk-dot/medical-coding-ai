@@ -39,13 +39,14 @@ class QuestionConsensus:
 class ConsensusAnalyzer:
     """Multi-round consensus analyzer for AI medical board decisions"""
     
-    def __init__(self, mode: str = "all"):
+    def __init__(self, mode: str = "all", auto_continue: bool = False):
         self.mode = mode
+        self.auto_continue = auto_continue
         self.results_dir = "../02_test_attempts"
         self.threshold_first = 0.7  # 70% consensus needed for first round
         self.threshold_subsequent = 0.8  # 80% consensus needed for subsequent rounds
         self.consensus_reports_dir = "./consensus_reports"
-        self.questions_file = "../00_question_banks/test_1/test_1_questions.json"
+        self.questions_file = "../00_question_banks/final_questions.json"
         self.max_rounds = 5
         
         # Create directories
@@ -457,12 +458,15 @@ class ConsensusAnalyzer:
             else:
                 print(f"   Questions: {', '.join(map(str, sorted(failed_questions[:10])))}, ... and {len(failed_questions)-10} more")
             
-            # Ask user if they want to continue
+            # Ask user if they want to continue (unless auto_continue is enabled)
             if round_num < self.max_rounds:
-                response = input(f"\nContinue to round {round_num + 1}? (y/n): ")
-                if response.lower() != 'y':
-                    print("Stopping consensus analysis")
-                    break
+                if self.auto_continue:
+                    print(f"\nAuto-continuing to round {round_num + 1}...")
+                else:
+                    response = input(f"\nContinue to round {round_num + 1}? (y/n): ")
+                    if response.lower() != 'y':
+                        print("Stopping consensus analysis")
+                        break
             
             # Prepare next round
             round_num += 1
@@ -537,10 +541,12 @@ def main():
                        help="Initial test folder to start from")
     parser.add_argument("--list", action="store_true",
                        help="List available test folders")
+    parser.add_argument("--auto", action="store_true",
+                       help="Auto-continue through all rounds without user input")
     
     args = parser.parse_args()
     
-    analyzer = ConsensusAnalyzer(mode=args.mode)
+    analyzer = ConsensusAnalyzer(mode=args.mode, auto_continue=args.auto)
     
     if args.list:
         available_folders = analyzer.get_available_test_folders()

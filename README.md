@@ -1,13 +1,48 @@
-# Medical Coding AI
+# Syntra: AI Medical Board Consensus Analysis System
 
-## Overview
+A comprehensive system for testing AI models on medical board questions and analyzing consensus patterns through multi-round voting.
 
-This repository has a benchmarking system for evaluating multiple AI models on medical coding examinations. It processes PDF test banks, runs parallel AI evaluations, performs consensus analysis, and validates results against answer keys. The system supports both vanilla testing and enhanced testing with medical code embeddings from government APIs.
+## System Overview
+
+The Syntra system consists of four main components that work together to evaluate AI performance on medical coding questions:
+
+1. **Question Bank Management** (`00_question_banks/`)
+2. **AI Medical Board Testing** (`01_medical_board/`)
+3. **Consensus Analysis** (`03_consensus_benchmarks/`)
+4. **Consensus Validation** (`04_consensus_validation/`)
 
 [Click here for the Notion doc](https://www.notion.so/Medical-Coding-AI-22dedbe1674080078fc5f925cd8877fd?source=copy_link)
 
 
 ## Workflow
+
+### Standard Pipeline
+
+1. **Question Bank Creation**: Create custom question banks from source tests
+   ```bash
+   cd utilities/question_selector
+   python3 question_selector.py --random --test1-count 50 --test2-count 50
+   ```
+
+2. **AI Medical Board Testing**: Run multiple AI models on the question bank
+   ```bash
+   cd 01_medical_board
+   python3 medical_test.py
+   ```
+
+3. **Consensus Analysis**: Perform multi-round voting to establish consensus answers
+   ```bash
+   cd 03_consensus_benchmarks
+   python3 consensus_analyzer.py --mode all --auto
+   ```
+
+4. **Validation**: Compare consensus results against the official answer key
+   ```bash
+   cd 04_consensus_validation
+   python3 validate_consensus.py
+   ```
+
+### Advanced Pipeline (with PDF extraction)
 
 1. **PDF Extraction**: Extract questions from PDF test banks using `pdf_parser.py`
 2. **Medical Code Enhancement**: Fetch real medical code descriptions from government APIs
@@ -47,82 +82,157 @@ This repository has a benchmarking system for evaluating multiple AI models on m
 
 ## Quick Start
 
-Follow these steps to quickly get started with the project:
+### Standard Pipeline (Recommended)
 
-1. **Upload the PDF**: Place your PDF files in the `00_question_banks` directory.
+#### 1. Create a Question Bank
 
-2. **Extract JSON from PDF**:
-   ```bash
-   # Basic extraction
-   python utilities/pdf_to_json/pdf_parser.py test_1.pdf
-   
-   # With debugging output
-   python utilities/pdf_to_json/pdf_parser.py test_1.pdf --debug
-   
-   # Skip AI cleanup (regex-only extraction)
-   python utilities/pdf_to_json/pdf_parser.py test_1.pdf --no-ai
-   
-   # List available PDFs
-   python utilities/pdf_to_json/pdf_parser.py --list
-   ```
+```bash
+cd utilities/question_selector
+python3 question_selector.py --random --test1-count 50 --test2-count 50
+```
 
-3. **Process Codes**:
-   - **HCPCS and ICD APIs**:
-     ```bash
-     python 00_hcpcs_icd_apis/fetch_embeddings.py
-     ```
+This creates `final_questions.json` and `final_answers.json` in `00_question_banks/`.
 
-4. **Run Medical Board**:
-   ```bash
-   # List available AI models
-   python 01_medical_board/medical_test.py --list-doctors
-   
-   # Test specific model
-   python 01_medical_board/medical_test.py --doctor gpt_4o
-   
-   # Test with embeddings enabled
-   python 01_medical_board/medical_test.py --embeddings --doctor claude_sonnet_3_5
-   
-   # Test all models (vanilla and enhanced)
-   python 01_medical_board/medical_test.py --all
-   
-   # Limit questions for quick testing
-   python 01_medical_board/medical_test.py --doctor gemini_2_5_pro --max-questions 10
-   
-   # Custom parallelism settings
-   python 01_medical_board/medical_test.py --sequential --workers 1
-   python 01_medical_board/medical_test.py --max-concurrent-agents 2 --embeddings
-   ```
+#### 2. Run Medical Board Tests
 
-5. **Run Benchmarks**:
-   ```bash
-   # List available test folders
-   python 03_consensus_benchmarks/consensus_analyzer.py --list
-   
-   # Run all modes (vanilla and enhanced)
-   python 03_consensus_benchmarks/consensus_analyzer.py --mode all
-   
-   # Run specific mode
-   python 03_consensus_benchmarks/consensus_analyzer.py --mode vanilla
-   python 03_consensus_benchmarks/consensus_analyzer.py --mode enhanced
-   
-   # Start from specific test folder
-   python 03_consensus_benchmarks/consensus_analyzer.py --mode enhanced --test test_20250710_195405
-   ```
+```bash
+cd 01_medical_board
+python3 medical_test.py
+```
 
-6. **Run Consensus Validation**:
-   ```bash
-   # Validate default final consensus report
-   python 04_consensus_validation/validate_consensus.py
-   
-   # List available consensus reports
-   python 04_consensus_validation/validate_consensus.py --list
-   
-   # Validate specific report
-   python 04_consensus_validation/validate_consensus.py --report consensus_report_20250710_121105.json
-   ```
+Tests all configured AI models on the question bank.
 
-## Project Structure
+#### 3. Analyze Consensus
+
+```bash
+cd 03_consensus_benchmarks
+python3 consensus_analyzer.py --mode all --auto
+```
+
+Runs multi-round consensus analysis with automatic progression.
+
+#### 4. Validate Results
+
+```bash
+cd 04_consensus_validation
+python3 validate_consensus.py
+```
+
+Validates consensus decisions against the official answer key.
+
+### Advanced Pipeline (with PDF extraction)
+
+#### 1. Extract Questions from PDF
+
+```bash
+# Basic extraction
+python utilities/pdf_to_json/pdf_parser.py test_1.pdf
+
+# With debugging output
+python utilities/pdf_to_json/pdf_parser.py test_1.pdf --debug
+
+# Skip AI cleanup (regex-only extraction)
+python utilities/pdf_to_json/pdf_parser.py test_1.pdf --no-ai
+
+# List available PDFs
+python utilities/pdf_to_json/pdf_parser.py --list
+```
+
+#### 2. Process Medical Codes
+
+```bash
+python 00_hcpcs_icd_apis/fetch_embeddings.py
+```
+
+#### 3. Run Medical Board Tests
+
+```bash
+# List available AI models
+python 01_medical_board/medical_test.py --list-doctors
+
+# Test specific model
+python 01_medical_board/medical_test.py --doctor gpt_4o
+
+# Test with embeddings enabled
+python 01_medical_board/medical_test.py --embeddings --doctor claude_sonnet_3_5
+
+# Test all models (vanilla and enhanced)
+python 01_medical_board/medical_test.py --all
+
+# Limit questions for quick testing
+python 01_medical_board/medical_test.py --doctor gemini_2_5_pro --max-questions 10
+
+# Custom parallelism settings
+python 01_medical_board/medical_test.py --sequential --workers 1
+python 01_medical_board/medical_test.py --max-concurrent-agents 2 --embeddings
+```
+
+#### 4. Run Consensus Analysis
+
+```bash
+# List available test folders
+python 03_consensus_benchmarks/consensus_analyzer.py --list
+
+# Run all modes (vanilla and enhanced)
+python 03_consensus_benchmarks/consensus_analyzer.py --mode all --auto
+
+# Run specific mode
+python 03_consensus_benchmarks/consensus_analyzer.py --mode vanilla --auto
+python 03_consensus_benchmarks/consensus_analyzer.py --mode enhanced --auto
+
+# Start from specific test folder
+python 03_consensus_benchmarks/consensus_analyzer.py --mode enhanced --test test_20250710_195405 --auto
+```
+
+#### 5. Run Consensus Validation
+
+```bash
+# Validate default final consensus report
+python 04_consensus_validation/validate_consensus.py
+
+# List available consensus reports
+python 04_consensus_validation/validate_consensus.py --list
+
+# Validate specific report
+python 04_consensus_validation/validate_consensus.py --report consensus_report_20250710_121105.json
+```
+
+## System Architecture
+
+### Data Flow
+
+```
+00_question_banks/
+├── test_1/                    # Source test bank 1
+├── test_2/                    # Source test bank 2
+├── final_questions.json       # Active question bank
+└── final_answers.json         # Corresponding answers
+
+        ↓
+
+01_medical_board/
+├── medical_test.py           # AI testing engine
+└── config.py                 # AI model configuration
+
+        ↓
+
+02_test_attempts/
+└── test_YYYYMMDD_HHMMSS/     # Test result storage
+
+        ↓
+
+03_consensus_benchmarks/
+├── consensus_analyzer.py     # Multi-round consensus analysis
+└── consensus_reports/        # Consensus analysis results
+
+        ↓
+
+04_consensus_validation/
+├── validate_consensus.py     # Validation against answer key
+└── validation_report_*.json  # Validation results
+```
+
+### Directory Structure
 
 ```
 syntra/
@@ -134,11 +244,17 @@ syntra/
 │   └── requirements.txt
 │
 ├── 00_question_banks/                    (test bank storage)
-│   └── test_1/
-│       ├── test_1.pdf                    (original PDF test)
-│       ├── test_1_questions.json         (extracted questions)
-│       ├── test_1_answers.json           (answer key)
-│       └── test_1_with_answers.pdf       (reference PDF with answers)
+│   ├── test_1/
+│   │   ├── test_1.pdf                    (original PDF test)
+│   │   ├── test_1_questions.json         (extracted questions)
+│   │   ├── test_1_answers.json           (answer key)
+│   │   └── test_1_with_answers.pdf       (reference PDF with answers)
+│   ├── test_2/
+│   │   ├── test_2_questions.json         (extracted questions)
+│   │   ├── test_2_answers.json           (answer key)
+│   │   └── test_2_with_answers.pdf       (reference PDF with answers)
+│   ├── final_questions.json              (active question bank)
+│   └── final_answers.json                (active answer bank)
 │
 ├── 01_medical_board/                     (core testing system)
 │   ├── medical_test.py                   (main test runner)
@@ -156,11 +272,15 @@ syntra/
 │   └── consensus_reports/                (generated consensus reports)
 │
 ├── 04_consensus_validation/              (answer validation)
-│   └── validate_consensus.py             (validates against answer key)
+│   ├── validate_consensus.py             (validates against answer key)
+│   └── validation_report_*.json          (validation results)
 │
 └── utilities/
     ├── pdf_to_json/                      (PDF extraction)
     │   └── pdf_parser.py                 (extracts questions from PDFs)
+    ├── question_selector/                (question bank management)
+    │   ├── question_selector.py          (bank creation tool)
+    │   └── README.md                     (tool documentation)
     └── question_type_classifier/         (question classification)
         └── question_classifier.py        (classifies by CPT/ICD/HCPCS)
 ```

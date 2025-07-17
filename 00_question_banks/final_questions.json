@@ -1,0 +1,132 @@
+[
+  {
+    "question_number": 1,
+    "question": "During a regular checkup, Dr. Stevens discovered a suspicious lesion on the floor of Paul's mouth and decided to perform an excision. Which CPT code covers the excision of an oral lesion?",
+    "choices": {
+      "A": "40800",
+      "B": "41105",
+      "C": "41113",
+      "D": "40804"
+    },
+    "question_type": "CPT",
+    "source_test": "test_1",
+    "original_question_number": 1
+  },
+  {
+    "question_number": 2,
+    "question": "While shaving, Robert accidentally caused a small cut on his chin that later became infected. He visited a healthcare provider who incised and drained the infected area. Which CPT code covers the incision and drainage of an infected cut?",
+    "choices": {
+      "A": "10080",
+      "B": "10021",
+      "C": "10060",
+      "D": "10160"
+    },
+    "question_type": "CPT",
+    "source_test": "test_1",
+    "original_question_number": 2
+  },
+  {
+    "question_number": 3,
+    "question": "Lucas, a professional swimmer, developed a cyst in his arm due to repetitive motion. The doctor decided to excise the cyst. Which CPT code represents the excision of a cyst?",
+    "choices": {
+      "A": "20005",
+      "B": "20055",
+      "C": "20010",
+      "D": "20020"
+    },
+    "question_type": "CPT",
+    "source_test": "test_1",
+    "original_question_number": 3
+  },
+  {
+    "question_number": 4,
+    "question": "Ella's doctor suspected she might have diabetes. He ordered a Hemoglobin A1c test to assess her average blood sugar levels over the past three months. Which CPT code represents the Hemoglobin A1c test?",
+    "choices": {
+      "A": "83036",
+      "B": "83033",
+      "C": "83035",
+      "D": "83034"
+    },
+    "question_type": "CPT",
+    "source_test": "test_1",
+    "original_question_number": 4
+  },
+  {
+    "question_number": 5,
+    "question": "Riley had an overactive thyroid and was recommended for a thyroid lobectomy. Which CPT code pertains to this procedure?",
+    "choices": {
+      "A": "60210",
+      "B": "60212",
+      "C": "60220",
+      "D": "60225"
+    },
+    "question_type": "CPT",
+    "source_test": "test_1",
+    "original_question_number": 5
+  },
+  {
+    "question_number": 6,
+    "question": "Dr. Lopez performs an excision of a tumor on the knee joint, deep, measuring 3.5 cm. What CPT code should be used for this procedure?",
+    "choices": {
+      "A": "27327",
+      "B": "27328",
+      "C": "27329",
+      "D": "27330"
+    },
+    "question_type": "CPT",
+    "source_test": "test_2",
+    "original_question_number": 1
+  },
+  {
+    "question_number": 7,
+    "question": "A patient has an abscess on the arm that Dr. Clarke incises and drains. Which CPT code best describes this service?",
+    "choices": {
+      "A": "10060",
+      "B": "10061",
+      "C": "10080",
+      "D": "10081"
+    },
+    "question_type": "CPT",
+    "source_test": "test_2",
+    "original_question_number": 2
+  },
+  {
+    "question_number": 8,
+    "question": "A patient was administered an injection of zoledronic acid, 1 mg, for osteoporosis. Which HCPCS Level II code should be used for this drug?",
+    "choices": {
+      "A": "J3487",
+      "B": "J3488",
+      "C": "J3489",
+      "D": "J3490"
+    },
+    "question_type": "HCPCS",
+    "source_test": "test_2",
+    "original_question_number": 3
+  },
+  {
+    "question_number": 9,
+    "question": "Dr. Mitchell administered anesthesia for a patient having a closed procedure on the humerus and elbow. What CPT code should be used?",
+    "choices": {
+      "A": "01610",
+      "B": "01620",
+      "C": "01622",
+      "D": "01630"
+    },
+    "question_type": "CPT",
+    "source_test": "test_2",
+    "original_question_number": 4
+  },
+  {
+    "question_number": 10,
+    "question": "A patient had a percutaneous nephrostomy tube placement. What CPT code should be used for this service?",
+    "choices": {
+      "A": "50392",
+      "B": "50393",
+      "C": "50394",
+      "D": "50395"
+    },
+    "question_type": "CPT",
+    "source_test": "test_2",
+    "original_question_number": 5
+  }
+]

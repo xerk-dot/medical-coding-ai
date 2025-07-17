@@ -481,21 +481,25 @@ def create_questions_json(questions: List[Dict], output_file: str):
         json.dump(questions, f, indent=2, ensure_ascii=False)
     print(f"Questions saved to: {output_file}")
 
-def list_test_files():
-    """List available test PDF files"""
-    project_root = Path(__file__).parent.parent.parent
-    test_dir = project_root / "00_question_banks/test_1"
+def list_test_files(directory=None):
+    """List available test PDF files in a directory"""
+    if directory:
+        test_dir = Path(directory)
+    else:
+        # Default to original location for backwards compatibility
+        project_root = Path(__file__).parent.parent.parent
+        test_dir = project_root / "00_question_banks/test_1"
     
     if not test_dir.exists():
-        print("No test directory found at 00_question_banks/test_1")
+        print(f"No directory found at {test_dir}")
         return []
     
     pdf_files = list(test_dir.glob("*.pdf"))
     if not pdf_files:
-        print("No PDF files found in 00_question_banks/test_1")
+        print(f"No PDF files found in {test_dir}")
         return []
     
-    print("Available PDF files in 00_question_banks/test_1:")
+    print(f"Available PDF files in {test_dir}:")
     for i, pdf_file in enumerate(pdf_files, 1):
         print(f"  {i}. {pdf_file.name}")
     
@@ -549,8 +553,8 @@ def parse_pdf(pdf_file: str, save_debug: bool = False, use_ai_cleanup: bool = Tr
     # Save results
     print(f"\n=== Saving Results ===")
     base_name = os.path.splitext(os.path.basename(pdf_file))[0]
-    output_dir = Path(__file__).parent.parent.parent / "00_question_banks/test_1"
-    output_dir.mkdir(exist_ok=True)
+    # Save output files in the same directory as the input PDF
+    output_dir = Path(pdf_file).parent
     
     questions_file = output_dir / f"{base_name}_questions.json"
     create_questions_json(questions, str(questions_file))
@@ -595,8 +599,11 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Process test file
+  # Process test file from default directory
   %(prog)s test_1.pdf
+  
+  # Process file from specific path
+  %(prog)s /path/to/test_2/test_2_with_answers.pdf
   
   # Save raw text for debugging
   %(prog)s test_1.pdf --debug
@@ -604,8 +611,11 @@ Examples:
   # Skip AI text cleanup
   %(prog)s test_1.pdf --no-ai
   
-  # List available files
+  # List available files in default directory
   %(prog)s --list
+  
+  # List available files in specific directory
+  %(prog)s --list /path/to/test_2
         """
     )
     
@@ -617,8 +627,11 @@ Examples:
     
     parser.add_argument(
         "--list", "-l",
-        action="store_true",
-        help="List available PDF files"
+        nargs="?",
+        const=True,
+        default=False,
+        metavar="DIR",
+        help="List available PDF files (optionally in specified directory)"
     )
     
     parser.add_argument(
@@ -637,7 +650,10 @@ Examples:
     
     # Handle --list
     if args.list:
-        list_test_files()
+        if isinstance(args.list, str):
+            list_test_files(args.list)
+        else:
+            list_test_files()
         return 0
     
     # Validate arguments
@@ -647,12 +663,17 @@ Examples:
     
     # Resolve file path
     pdf_path = Path(args.pdf_file)
-    if not pdf_path.is_absolute():
-        project_root = Path(__file__).parent.parent.parent
-        test_path = project_root / "00_question_banks/test_1" / args.pdf_file
-        if test_path.exists():
-            pdf_path = test_path
-        elif not pdf_path.exists():
+    if not pdf_path.exists():
+        # Try looking in the default test directory as a fallback
+        if not pdf_path.is_absolute():
+            project_root = Path(__file__).parent.parent.parent
+            test_path = project_root / "00_question_banks/test_1" / args.pdf_file
+            if test_path.exists():
+                pdf_path = test_path
+            else:
+                print(f"ERROR: PDF file not found: {args.pdf_file}")
+                return 1
+        else:
             print(f"ERROR: PDF file not found: {args.pdf_file}")
             return 1
     

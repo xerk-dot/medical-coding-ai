@@ -15,13 +15,21 @@ OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 # AI Models Configuration - The Medical AI Panel (ordered by cost - cheapest first)
 # Updated with Summer 2025 OpenRouter pricing
 AI_DOCTORS: Dict[str, Dict[str, str]] = {
-    "grok_4": {
+   """  "grok_4": {
         "model_id": "x-ai/grok-4",
         "display_name": "Dr. Grok the 4th",
         "short_name": "grok_4",
         "cost_tier": 5,  # $0.15/$0.60 per M tokens
         "cost_note": "$3.00/$15.00 per M tokens"
+    }, 
+    "kim_k2": {
+        "model_id": "moonshootai/kimi-k2",
+        "display_name": "Dr. Kimi K2",
+        "short_name": "kim_k2",
+        "cost_tier": 2,  # $0.15/$0.60 per M tokens
+        "cost_note": "$0.14/M input, $2.49/M output"
     },
+    """
     "gemini_2_5_flash": {
         "model_id": "google/gemini-2.5-flash",
         "display_name": "Dr. Gemini Flash the 2.5th",
@@ -99,13 +107,13 @@ AI_DOCTORS: Dict[str, Dict[str, str]] = {
         "cost_tier": 6,  # Similar to Claude pricing
         "cost_note": "~$3.00/$15.00 per M tokens"
     },
-    "gemini_2_5_flash_preview": {
-        "model_id": "google/gemini-2.5-flash-preview-05-20",
-        "display_name": "Dr. Gemini Flash Preview the 2.5th",
-        "short_name": "gemini_2_5_flash_preview",
-        "cost_tier": 1,  # $3.00/$15.00 per M tokens
-        "cost_note": "$0.15/$0.60 per M tokens"
-    }
+    # "gemini_2_5_flash_preview": {
+    #     "model_id": "google/gemini-2.5-flash-preview-05-20",
+    #     "display_name": "Dr. Gemini Flash Preview the 2.5th",
+    #     "short_name": "gemini_2_5_flash_preview",
+    #     "cost_tier": 1,  # $3.00/$15.00 per M tokens
+    #     "cost_note": "$0.15/$0.60 per M tokens"
+    # }
 }
 
 # System prompts for different question types
@@ -131,7 +139,7 @@ You must respond with only A, B, C, or D followed by a brief explanation of your
 }
 
 # File paths
-QUESTIONS_FILE = "../00_question_banks/test_1/test_1_questions.json"
+QUESTIONS_FILE = "../00_question_banks/final_questions.json"
 RESULTS_DIR = "../02_test_attempts"
 
 # Testing configuration

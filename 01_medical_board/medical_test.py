@@ -115,7 +115,7 @@ class EmbeddingsLoader:
 class MedicalBoardTest:
     """Main test runner for medical board tests"""
     
-    def __init__(self, use_embeddings: bool = False, max_workers: int = None, questions_file: str = "../00_question_banks/test_1/test_1_questions.json"):
+    def __init__(self, use_embeddings: bool = False, max_workers: int = None, questions_file: str = "../00_question_banks/final_questions.json"):
         self.ai_client = AIClient()
         self.use_embeddings = use_embeddings
         self.embeddings_loader = EmbeddingsLoader() if use_embeddings else None
@@ -128,12 +128,12 @@ class MedicalBoardTest:
         else:
             print("📝 Standard mode: Running without embeddings")
     
-    def load_questions(self, questions_file: str = "../00_question_banks/test_1/test_1_questions.json") -> List[Dict]:
+    def load_questions(self, questions_file: str = "../00_question_banks/final_questions.json") -> List[Dict]:
         """Load questions from JSON file"""
         with open(questions_file, 'r') as f:
             return json.load(f)
     
-    def load_answers(self, answers_file: str = "../00_question_banks/test_1/test_1_answers.json") -> Dict:
+    def load_answers(self, answers_file: str = "../00_question_banks/final_answers.json") -> Dict:
         """Load correct answers from JSON file and create lookup dictionary"""
         with open(answers_file, 'r') as f:
             answers_list = json.load(f)
@@ -552,7 +552,7 @@ def main():
                        help=f"Maximum concurrent agents when testing multiple models (default: {DEFAULT_MAX_CONCURRENT_AGENTS})")
     parser.add_argument("--sequential-agents", action="store_true",
                        help="Test agents sequentially instead of in parallel")
-    parser.add_argument("--questions-file", type=str, default="../00_question_banks/test_1/test_1_questions.json",
+    parser.add_argument("--questions-file", type=str, default="../00_question_banks/final_questions.json",
                        help="Path to custom questions file")
     
     args = parser.parse_args()

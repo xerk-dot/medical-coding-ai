@@ -1,0 +1,1102 @@
+[
+  {
+    "question_number": 1,
+    "question": "Dr. Lopez performs an excision of a tumor on the knee joint, deep, measuring 3.5 cm. What CPT code should be used for this procedure?",
+    "choices": {
+      "A": "27327",
+      "B": "27328",
+      "C": "27329",
+      "D": "27330"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 2,
+    "question": "A patient has an abscess on the arm that Dr. Clarke incises and drains. Which CPT code best describes this service?",
+    "choices": {
+      "A": "10060",
+      "B": "10061",
+      "C": "10080",
+      "D": "10081"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 3,
+    "question": "A patient was administered an injection of zoledronic acid, 1 mg, for osteoporosis. Which HCPCS Level II code should be used for this drug?",
+    "choices": {
+      "A": "J3487",
+      "B": "J3488",
+      "C": "J3489",
+      "D": "J3490"
+    },
+    "question_type": "HCPCS"
+  },
+  {
+    "question_number": 4,
+    "question": "Dr. Mitchell administered anesthesia for a patient having a closed procedure on the humerus and elbow. What CPT code should be used?",
+    "choices": {
+      "A": "01610",
+      "B": "01620",
+      "C": "01622",
+      "D": "01630"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 5,
+    "question": "A patient had a percutaneous nephrostomy tube placement. What CPT code should be used for this service?",
+    "choices": {
+      "A": "50392",
+      "B": "50393",
+      "C": "50394",
+      "D": "50395"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 6,
+    "question": "Dr. Thompson performed a pyelostomy for drainage. Which CPT code should be used for this procedure?",
+    "choices": {
+      "A": "50020",
+      "B": "50021",
+      "C": "50040",
+      "D": "50045"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 7,
+    "question": "What does the term 'thrombocytopenia' describe?",
+    "choices": {
+      "A": "Increased number of red blood cells",
+      "B": "Decreased number of white blood cells",
+      "C": "Increased number of platelets",
+      "D": "Decreased number of platelets"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 8,
+    "question": "A patient undergoes an excision of a lesion on their lip, measuring 2 cm. Which CPT code corresponds to this procedure?",
+    "choices": {
+      "A": "40490",
+      "B": "40500",
+      "C": "40510",
+      "D": "40520"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 9,
+    "question": "The term 'arthralgia' refers to which of the following conditions?",
+    "choices": {
+      "A": "Joint pain",
+      "B": "Muscle pain",
+      "C": "Bone pain",
+      "D": "Nerve pain"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 10,
+    "question": "Dr. Watson ordered an MRI of the brain without contrast material. What CPT code corresponds to this service?",
+    "choices": {
+      "A": "70551",
+      "B": "70552",
+      "C": "70553",
+      "D": "70554"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 11,
+    "question": "A patient was diagnosed with streptococcal pharyngitis. Which ICD-10-CM code represents this condition?",
+    "choices": {
+      "A": "J02.0",
+      "B": "J02.8",
+      "C": "J03.0",
+      "D": "J03.8"
+    },
+    "question_type": "ICD"
+  },
+  {
+    "question_number": 12,
+    "question": "A patient was diagnosed with acute bronchitis due to respiratory syncytial virus. Which ICD-10-CM code represents this diagnosis?",
+    "choices": {
+      "A": "J20.2",
+      "B": "J20.3",
+      "C": "J20.4",
+      "D": "J20.5"
+    },
+    "question_type": "ICD"
+  },
+  {
+    "question_number": 13,
+    "question": "Dr. Allen saw a 7-year-old patient for an annual checkup. He took a comprehensive history and performed a detailed examination. Which CPT code should be used for this service?",
+    "choices": {
+      "A": "99382",
+      "B": "99383",
+      "C": "99384",
+      "D": "99385"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 14,
+    "question": "Which of the following is a consequence of non-compliance with the Stark Law?",
+    "choices": {
+      "A": "Increased reimbursement rates",
+      "B": "Mandatory community service",
+      "C": "Referral prohibition",
+      "D": "Fines and potential jail time"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 15,
+    "question": "A patient was diagnosed with generalized anxiety disorder. What ICD-10-CM code should be used for this diagnosis?",
+    "choices": {
+      "A": "F41.0",
+      "B": "F41.1",
+      "C": "F41.8",
+      "D": "F41.9"
+    },
+    "question_type": "ICD"
+  },
+  {
+    "question_number": 16,
+    "question": "A child was diagnosed with otitis media, unspecified. Which ICD-10-CM code corresponds to this diagnosis?",
+    "choices": {
+      "A": "H66.90",
+      "B": "H66.91",
+      "C": "H66.92",
+      "D": "H66.93"
+    },
+    "question_type": "ICD"
+  },
+  {
+    "question_number": 17,
+    "question": "A patient underwent a thyroidectomy, total or complete. Which CPT code is appropriate for this procedure?",
+    "choices": {
+      "A": "60240",
+      "B": "60252",
+      "C": "60254",
+      "D": "60260"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 18,
+    "question": "What is the main purpose of the Health Insurance Portability and Accountability Act (HIPAA)?",
+    "choices": {
+      "A": "Provide health insurance to those without it",
+      "B": "Regulate the health insurance industry",
+      "C": "Protect patient health information",
+      "D": "Ensure all Americans have access to healthcare"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 19,
+    "question": "A patient with diabetes was provided with an insulin pump. Which HCPCS Level II code corresponds to this device?",
+    "choices": {
+      "A": "A4223",
+      "B": "E0784",
+      "C": "K0552",
+      "D": "K0553"
+    },
+    "question_type": "HCPCS"
+  },
+  {
+    "question_number": 20,
+    "question": "Dr. Hamilton had a 10-minute phone consultation with a patient to discuss lab results. Which CPT code corresponds to this service?",
+    "choices": {
+      "A": "99441",
+      "B": "99442",
+      "C": "99443",
+      "D": "99444"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 21,
+    "question": "Dr. Patterson had a 20-minute consultation with a 55-year-old male with a family history of heart disease. What CPT code corresponds to this service?",
+    "choices": {
+      "A": "99241",
+      "B": "99242",
+      "C": "99243",
+      "D": "99244"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 22,
+    "question": "A patient was provided with a semi-electric (motorized) hospital bed due to mobility challenges. Which HCPCS Level II code represents this type of hospital bed?",
+    "choices": {
+      "A": "E0250",
+      "B": "E0251",
+      "C": "E0260",
+      "D": "E0261"
+    },
+    "question_type": "HCPCS"
+  },
+  {
+    "question_number": 23,
+    "question": "Dr. Patterson performed a coronary therapeutic services and coronary artery bypass graft. Which CPT code represents a single coronary artery bypass graft using a venous graft?",
+    "choices": {
+      "A": "33510",
+      "B": "33511",
+      "C": "33512",
+      "D": "33513"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 24,
+    "question": "In CPT coding, what is the purpose of a modifier?",
+    "choices": {
+      "A": "Indicate that a service or procedure has been altered by specific circumstances",
+      "B": "Distinguish between different services or procedures",
+      "C": "Indicate the location of a service or procedure",
+      "D": "Assign a specific dollar value to a service or procedure"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 25,
+    "question": "A patient had a tumor excised from the floor of their mouth, measuring 2.5 cm. Which CPT code is appropriate for this procedure?",
+    "choices": {
+      "A": "41108",
+      "B": "41110",
+      "C": "41112",
+      "D": "41113"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 26,
+    "question": "A patient was diagnosed with type 2 diabetes mellitus with hyperosmolarity without nonketotic hyperglycemic-hyperosmolar coma (NKHHC). Which ICD-10-CM code corresponds to this diagnosis?",
+    "choices": {
+      "A": "E11.00",
+      "B": "E11.01",
+      "C": "E11.1",
+      "D": "E11.9"
+    },
+    "question_type": "ICD"
+  },
+  {
+    "question_number": 27,
+    "question": "A patient underwent a diagnostic electromyography on 2 extremities. Which CPT code is appropriate for this procedure?",
+    "choices": {
+      "A": "95860",
+      "B": "95861",
+      "C": "95863",
+      "D": "95864"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 28,
+    "question": "A patient has an incision and drainage of an abscess in the submandibular space. Which CPT code represents this procedure?",
+    "choices": {
+      "A": "41000",
+      "B": "41005",
+      "C": "41006",
+      "D": "41007"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 29,
+    "question": "A patient had a lipid panel test. Which CPT code should be used for this service?",
+    "choices": {
+      "A": "80059",
+      "B": "80061",
+      "C": "80069",
+      "D": "80074"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 30,
+    "question": "A patient underwent a CT scan of the abdomen and pelvis with contrast. Which CPT code should be used for this procedure?",
+    "choices": {
+      "A": "74176",
+      "B": "74177",
+      "C": "74178",
+      "D": "74179"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 31,
+    "question": "Dr. Clark ordered a basic metabolic panel (8 tests). What CPT code should be used for this lab service?",
+    "choices": {
+      "A": "80047",
+      "B": "80048",
+      "C": "80050",
+      "D": "80051"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 32,
+    "question": "Dr. Roberts performed a subtotal thyroid lobectomy with contralateral subtotal lobectomy. What CPT code should be used for this procedure?",
+    "choices": {
+      "A": "60212",
+      "B": "60220",
+      "C": "60225",
+      "D": "60240"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 33,
+    "question": "Dr. Harris performs a removal of a 2 cm malignant lesion from a patient's chest. What CPT code should be used for this procedure?",
+    "choices": {
+      "A": "11600",
+      "B": "11601",
+      "C": "11602",
+      "D": "11603"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 34,
+    "question": "Dr. Hughes performed a parathyroidectomy or exploration of the parathyroid. Which CPT code should be used for this service?",
+    "choices": {
+      "A": "60500",
+      "B": "60502",
+      "C": "60505",
+      "D": "60512"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 35,
+    "question": "The scapula is commonly known as which bone?",
+    "choices": {
+      "A": "Shoulder blade",
+      "B": "Collarbone",
+      "C": "Shinbone",
+      "D": "Hip bone"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 36,
+    "question": "Dr. Smith performs a removal of a 1.5 cm benign lesion from a patient's face. Which CPT code best represents this procedure?",
+    "choices": {
+      "A": "10040",
+      "B": "11401",
+      "C": "11420",
+      "D": "11440"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 37,
+    "question": "Dr. Allen treats a patient for a skin tag removal on the neck. What CPT code corresponds to this service?",
+    "choices": {
+      "A": "11200",
+      "B": "11300",
+      "C": "11305",
+      "D": "11310"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 38,
+    "question": "For outpatient coding, what should be the primary diagnosis?",
+    "choices": {
+      "A": "The diagnosis that is most resource intensive",
+      "B": "The diagnosis that was chiefly responsible for the outpatient service",
+      "C": "The condition that was most severe",
+      "D": "The first condition listed in the medical record"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 39,
+    "question": "Dr. Gray performs a biopsy of the larynx through an endoscope. Which CPT code should be used for this procedure?",
+    "choices": {
+      "A": "31511",
+      "B": "31512",
+      "C": "31513",
+      "D": "31515"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 40,
+    "question": "What does the term 'nephrolithiasis' refer to?",
+    "choices": {
+      "A": "Inflammation of the kidney",
+      "B": "Stone in the kidney",
+      "C": "Enlargement of the kidney",
+      "D": "Absence of the kidney"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 41,
+    "question": "A patient received an injection of epoetin alfa, 1000 units, for anemia. Which HCPCS Level II code corresponds to this drug?",
+    "choices": {
+      "A": "J0885",
+      "B": "J0886",
+      "C": "J0887",
+      "D": "J0888"
+    },
+    "question_type": "HCPCS"
+  },
+  {
+    "question_number": 42,
+    "question": "Dr. White performed a urethral dilation for a female patient. Which CPT code is appropriate for this procedure?",
+    "choices": {
+      "A": "53600",
+      "B": "53601",
+      "C": "53602",
+      "D": "53603"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 43,
+    "question": "What is the main goal of the Health Information Technology for Economic and Clinical Health (HITECH) Act?",
+    "choices": {
+      "A": "Promote the adoption and meaningful use of health information technology",
+      "B": "Ensure all Americans have health insurance",
+      "C": "Protect patient privacy and health information",
+      "D": "Regulate the health insurance industry"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 44,
+    "question": "A patient had a complete blood count (CBC) with automated differential WBC count. Which CPT code represents this test?",
+    "choices": {
+      "A": "85025",
+      "B": "85027",
+      "C": "85028",
+      "D": "85029"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 45,
+    "question": "Dr. Sanders ordered an ultrasound of a pregnant uterus with a detailed fetal and maternal evaluation for the first trimester. What CPT code is appropriate for this service?",
+    "choices": {
+      "A": "76801",
+      "B": "76805",
+      "C": "76810",
+      "D": "76815"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 46,
+    "question": "What does the term 'hepatitis' describe?",
+    "choices": {
+      "A": "Inflammation of the heart",
+      "B": "Inflammation of the liver",
+      "C": "Inflammation of the kidneys",
+      "D": "Inflammation of the lungs"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 47,
+    "question": "A child had a frenotomy performed on the tongue. What CPT code should be used for this service?",
+    "choices": {
+      "A": "41010",
+      "B": "41015",
+      "C": "41016",
+      "D": "41017"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 48,
+    "question": "A patient had a liver function test. Which CPT code is suitable for this test?",
+    "choices": {
+      "A": "80055",
+      "B": "80059",
+      "C": "80061",
+      "D": "80076"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 49,
+    "question": "A patient undergoes a biopsy of a soft tissue mass on the forearm, subcutaneous. Which CPT code is appropriate for this procedure?",
+    "choices": {
+      "A": "20200",
+      "B": "20205",
+      "C": "20206",
+      "D": "20225"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 50,
+    "question": "A patient was diagnosed with mild intermittent asthma, uncomplicated. Which ICD-10-CM code is appropriate for this condition?",
+    "choices": {
+      "A": "J45.20",
+      "B": "J45.21",
+      "C": "J45.22",
+      "D": "J45.30"
+    },
+    "question_type": "ICD"
+  },
+  {
+    "question_number": 51,
+    "question": "What does the term 'cholecystectomy' mean?",
+    "choices": {
+      "A": "Removal of the colon",
+      "B": "Removal of the gallbladder",
+      "C": "Removal of the liver",
+      "D": "Removal of the kidney"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 52,
+    "question": "Dr. Lee performs a biopsy of the tongue. Which CPT code is suitable for this procedure?",
+    "choices": {
+      "A": "41100",
+      "B": "41105",
+      "C": "41108",
+      "D": "41110"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 53,
+    "question": "Which part of the human brain is responsible for memory, thought, and judgment?",
+    "choices": {
+      "A": "Cerebellum",
+      "B": "Medulla oblongata",
+      "C": "Cerebrum",
+      "D": "Thalamus"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 54,
+    "question": "When coding for a patient with hypertensive heart and chronic kidney disease, which condition should be sequenced first?",
+    "choices": {
+      "A": "Hypertensive heart disease",
+      "B": "Chronic kidney disease",
+      "C": "Both can be coded as primary",
+      "D": "Neither should be coded as primary"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 55,
+    "question": "A patient underwent a colonoscopy because of a family history of colorectal cancer. Which CPT code best represents a diagnostic colonoscopy?",
+    "choices": {
+      "A": "44388",
+      "B": "44389",
+      "C": "44394",
+      "D": "44397"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 56,
+    "question": "A patient was diagnosed with viral conjunctivitis, unspecified. Which ICD-10-CM code should be used for this diagnosis?",
+    "choices": {
+      "A": "B30.9",
+      "B": "B30.1",
+      "C": "B30.2",
+      "D": "B30.3"
+    },
+    "question_type": "ICD"
+  },
+  {
+    "question_number": 57,
+    "question": "A patient has a cyst aspirated from the soft tissue of the foot. Which CPT code best represents this service?",
+    "choices": {
+      "A": "20600",
+      "B": "20605",
+      "C": "20610",
+      "D": "20612"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 58,
+    "question": "A patient has a lipoma removed from the back, subcutaneous, measuring 5 cm. Which CPT code best describes this service?",
+    "choices": {
+      "A": "21930",
+      "B": "21931",
+      "C": "21932",
+      "D": "21933"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 59,
+    "question": "Dr. Owens administered anesthesia for a patient undergoing a knee arthroscopy. What CPT code should be used for this anesthesia service?",
+    "choices": {
+      "A": "01400",
+      "B": "01402",
+      "C": "01404",
+      "D": "01420"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 60,
+    "question": "Dr. Mitchell performs an endoscopic control of nosebleed. What CPT code should be used for this service?",
+    "choices": {
+      "A": "30901",
+      "B": "30903",
+      "C": "30905",
+      "D": "30906"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 61,
+    "question": "A patient underwent a colonoscopy due to a family history of colon cancer. During the procedure, a polyp was discovered and removed. Which CPT code corresponds to a colonoscopy with polypectomy?",
+    "choices": {
+      "A": "44388",
+      "B": "44389",
+      "C": "44392",
+      "D": "44394"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 62,
+    "question": "Dr. Adams ordered a urinalysis with microscopic examination. What CPT code corresponds to this service?",
+    "choices": {
+      "A": "81000",
+      "B": "81001",
+      "C": "81002",
+      "D": "81003"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 63,
+    "question": "A patient underwent a diagnostic laparoscopy. Which CPT code is suitable for this procedure?",
+    "choices": {
+      "A": "49320",
+      "B": "49321",
+      "C": "49322",
+      "D": "49323"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 64,
+    "question": "Dr. Robinson performed a diagnostic direct laryngoscopy. What CPT code should be used for this procedure?",
+    "choices": {
+      "A": "31515",
+      "B": "31525",
+      "C": "31526",
+      "D": "31527"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 65,
+    "question": "Dr. Smith performed an incisional biopsy of a lesion on the palate. Which CPT code should be used for this procedure?",
+    "choices": {
+      "A": "41112",
+      "B": "41113",
+      "C": "41114",
+      "D": "41115"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 66,
+    "question": "The False Claims Act is primarily concerned with:",
+    "choices": {
+      "A": "Regulating the billing practices of healthcare providers",
+      "B": "Ensuring the quality of care provided to patients",
+      "C": "Protecting whistleblowers who report fraud",
+      "D": "Penalizing entities that submit false claims to government programs"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 67,
+    "question": "Dr. Ross performs an excision of a 2.5 cm malignant soft tissue tumor on the patient's arm, deep. Which CPT code is appropriate for this procedure?",
+    "choices": {
+      "A": "24071",
+      "B": "24072",
+      "C": "24073",
+      "D": "24075"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 68,
+    "question": "What does the 'Minimum Necessary Standard' refer to in terms of HIPAA?",
+    "choices": {
+      "A": "Healthcare providers must provide the minimum necessary care to patients",
+      "B": "Only the minimum necessary amount of protected health information should be disclosed",
+      "C": "All patients should receive a minimum level of care",
+      "D": "All healthcare organizations must have a minimum number of policies in place"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 69,
+    "question": "A patient comes in with a foreign body embedded in the foot. Dr. Martin removes this foreign body without making an incision. Which CPT code represents this procedure?",
+    "choices": {
+      "A": "10120",
+      "B": "10121",
+      "C": "10140",
+      "D": "10160"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 70,
+    "question": "A patient with severe acne underwent a chemical peel for acne scars. Which CPT code pertains to a chemical exfoliation for acne scars?",
+    "choices": {
+      "A": "15790",
+      "B": "15791",
+      "C": "15792",
+      "D": "15793"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 71,
+    "question": "A patient undergoes a punch biopsy on a suspicious lesion on the back. Which CPT code is appropriate for this procedure?",
+    "choices": {
+      "A": "11100",
+      "B": "11101",
+      "C": "11102",
+      "D": "11103"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 72,
+    "question": "A patient had an X-ray of the chest with a minimum of 2 views. Which CPT code represents this service?",
+    "choices": {
+      "A": "71010",
+      "B": "71015",
+      "C": "71020",
+      "D": "71021"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 73,
+    "question": "Nancy visited the ER with chest pain. The doctor took a detailed history and performed an examination. Which CPT code should be used for this ER visit?",
+    "choices": {
+      "A": "99281",
+      "B": "99282",
+      "C": "99283",
+      "D": "99284"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 74,
+    "question": "A patient had a needle biopsy of the thyroid. Which CPT code corresponds to this procedure?",
+    "choices": {
+      "A": "60100",
+      "B": "60101",
+      "C": "60210",
+      "D": "60220"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 75,
+    "question": "A patient had a polyp removed from their sinus using a nasal endoscope. Which CPT code corresponds to this procedure?",
+    "choices": {
+      "A": "31237",
+      "B": "31238",
+      "C": "31239",
+      "D": "31240"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 76,
+    "question": "A patient underwent anesthesia for a procedure on the upper anterior abdominal wall. Which CPT code best represents this anesthesia service?",
+    "choices": {
+      "A": "00790",
+      "B": "00792",
+      "C": "00800",
+      "D": "00802"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 77,
+    "question": "A patient had a thyroid lobectomy, with or without isthmectomy. Which CPT code represents this procedure?",
+    "choices": {
+      "A": "60210",
+      "B": "60212",
+      "C": "60220",
+      "D": "60225"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 78,
+    "question": "The term 'leukocytosis' refers to which of the following conditions?",
+    "choices": {
+      "A": "Decrease in white blood cells",
+      "B": "Increase in white blood cells",
+      "C": "Absence of white blood cells",
+      "D": "Normal white blood cell count"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 79,
+    "question": "A patient underwent a removal of a foreign body from the pharynx. Which CPT code is appropriate for this procedure?",
+    "choices": {
+      "A": "31500",
+      "B": "31505",
+      "C": "31510",
+      "D": "31525"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 80,
+    "question": "A patient underwent an excision of a cyst or adenoma of the thyroid. What CPT code should be used for this procedure?",
+    "choices": {
+      "A": "60100",
+      "B": "60200",
+      "C": "60201",
+      "D": "60212"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 81,
+    "question": "A patient was diagnosed with chronic obstructive pulmonary disease with acute lower respiratory infection. What ICD-10-CM code should be used?",
+    "choices": {
+      "A": "J44.0",
+      "B": "J44.1",
+      "C": "J44.9",
+      "D": "J45.0"
+    },
+    "question_type": "ICD"
+  },
+  {
+    "question_number": 82,
+    "question": "Dr. Bennett performs an incision and drainage of an abscess located deep within the patient's shoulder area. Which CPT code best represents this procedure?",
+    "choices": {
+      "A": "20000",
+      "B": "20005",
+      "C": "20100",
+      "D": "20150"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 83,
+    "question": "A patient received anesthesia for a procedure on the esophagus. Which CPT code is appropriate for this service?",
+    "choices": {
+      "A": "00400",
+      "B": "00402",
+      "C": "00404",
+      "D": "00410"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 84,
+    "question": "In ICD-10-CM coding, when a patient has both a confirmed diagnosis and symptoms related to that diagnosis, how should it be coded?",
+    "choices": {
+      "A": "Only the confirmed diagnosis",
+      "B": "Only the symptoms",
+      "C": "Both the diagnosis and the symptoms",
+      "D": "Neither the diagnosis nor the symptoms"
+    },
+    "question_type": "ICD"
+  },
+  {
+    "question_number": 85,
+    "question": "A patient underwent removal of a bladder stone without an incision. Which CPT code corresponds to this procedure?",
+    "choices": {
+      "A": "52317",
+      "B": "52318",
+      "C": "52320",
+      "D": "52325"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 86,
+    "question": "Dr. Carter excises a 4 cm benign lesion from a patient's back. Which CPT code corresponds to this procedure?",
+    "choices": {
+      "A": "11404",
+      "B": "11406",
+      "C": "11420",
+      "D": "11426"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 87,
+    "question": "Dr. Hayes removes a foreign body from the thigh, without making an incision. Which CPT code corresponds to this procedure?",
+    "choices": {
+      "A": "20500",
+      "B": "20520",
+      "C": "20525",
+      "D": "20526 (continued on next page)"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 88,
+    "question": "According to ICD-10-CM guidelines, how should a coder handle a diagnosis that is described as 'probable' or 'suspected'?",
+    "choices": {
+      "A": "Code as if the diagnosis is confirmed",
+      "B": "Code only the symptoms or signs",
+      "C": "Use a code for an uncertain diagnosis",
+      "D": "Do not code the diagnosis"
+    },
+    "question_type": "ICD"
+  },
+  {
+    "question_number": 89,
+    "question": "Which organ is primarily responsible for detoxifying chemicals and metabolizing drugs?",
+    "choices": {
+      "A": "Liver",
+      "B": "Kidneys",
+      "C": "Lungs",
+      "D": "Stomach"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 90,
+    "question": "A patient with chronic renal failure underwent a hemodialysis procedure. Which HCPCS Level II code corresponds to this procedure?",
+    "choices": {
+      "A": "G0326",
+      "B": "G0327",
+      "C": "G0328",
+      "D": "G0329"
+    },
+    "question_type": "HCPCS"
+  },
+  {
+    "question_number": 91,
+    "question": "The trachea is commonly known as which of the following?",
+    "choices": {
+      "A": "Windpipe",
+      "B": "Food pipe",
+      "C": "Voice box",
+      "D": "Gullet"
+    },
+    "question_type": "other"
+  },
+  {
+    "question_number": 92,
+    "question": "Dr. Martin performs a surgical laparoscopy for treatment of ovarian cyst. What CPT code should be used for this procedure?",
+    "choices": {
+      "A": "58660",
+      "B": "58661",
+      "C": "58662",
+      "D": "58670"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 93,
+    "question": "A patient was diagnosed with major depressive disorder, single episode, moderate. Which ICD-10-CM code is appropriate for this diagnosis?",
+    "choices": {
+      "A": "F32.0",
+      "B": "F32.1",
+      "C": "F32.2",
+      "D": "F32.3"
+    },
+    "question_type": "ICD"
+  },
+  {
+    "question_number": 94,
+    "question": "A patient was diagnosed with non-allergic rhinitis. What ICD-10-CM code corresponds to this diagnosis?",
+    "choices": {
+      "A": "J30.0",
+      "B": "J31.0",
+      "C": "J32.0",
+      "D": "J33.0"
+    },
+    "question_type": "ICD"
+  },
+  {
+    "question_number": 95,
+    "question": "A patient had a comprehensive nursing facility assessment with a detailed interval history and examination. Which CPT code should be used for this service?",
+    "choices": {
+      "A": "99304",
+      "B": "99305",
+      "C": "99306",
+      "D": "99307"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 96,
+    "question": "A patient underwent a diagnostic nasal endoscopy. Which CPT code best represents this procedure?",
+    "choices": {
+      "A": "31231",
+      "B": "31233",
+      "C": "31235",
+      "D": "31237"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 97,
+    "question": "According to the ICD-10-CM coding guidelines, which of the following would be coded first when a patient is admitted for dehydration due to chemotherapy?",
+    "choices": {
+      "A": "Dehydration",
+      "B": "Adverse effect of chemotherapy",
+      "C": "Neoplasm related to the chemotherapy",
+      "D": "All are coded equally"
+    },
+    "question_type": "ICD"
+  },
+  {
+    "question_number": 98,
+    "question": "A patient underwent a diagnostic cystourethroscopy. Which CPT code best represents this procedure?",
+    "choices": {
+      "A": "52000",
+      "B": "52001",
+      "C": "52005",
+      "D": "52007"
+    },
+    "question_type": "CPT"
+  },
+  {
+    "question_number": 99,
+    "question": "A patient received a therapeutic injection of infliximab, 10 mg. Which HCPCS Level II code should be used for this drug?",
+    "choices": {
+      "A": "J1745",
+      "B": "J1746",
+      "C": "J1750",
+      "D": "J1756"
+    },
+    "question_type": "HCPCS"
+  },
+  {
+    "question_number": 100,
+    "question": "A patient with a spinal injury was fitted with a thoracic to lumbar orthosis (TLSO), anterior-posterior-lateral control. Which HCPCS Level II code corresponds to this device?",
+    "choices": {
+      "A": "L0460",
+      "B": "L0462",
+      "C": "L0464",
+      "D": "L0466 Answer Key Use the [ ] boxes to mark your correct answers and count your score :). Want to know why a particular answer was more correct? Explanations for every question are in the section after this, labeled “Explanations”. Passing score: 70 correct out of 100 questions total. [ ] 1. B. 27328 [ ] 2. A. 10060 [ ] 3. A. J3487 [ ] 4. A. 01610 [ ] 5. B. 50393 [ ] 6. A. 50020 [ ] 7. D. Decreased number of platelets [ ] 8. B. 40500 [ ] 9. A. Joint pain [ ] 10. A. 70551 [ ] 11. A. J02.0 [ ] 12. D. J20.5 [ ] 13. B. 99383 [ ] 14. D. Fines and potential jail time [ ] 15. B. F41.1 [ ] 16. A. H66.90 [ ] 17. A. 60240 [ ] 18. C. Protect patient health information [ ] 19. B. E0784 [ ] 20. A. 99441 [ ] 21. B. 99242 [ ] 22. C. E0260 [ ] 23. A. 33510 [ ] 24. A. Indicate that a service or procedure has been altered by specific circumstances [ ] 25. B. 41110 [ ] 26. A. E11.00 [ ] 27. B. 95861 [ ] 28. B. 41005 [ ] 29. B. 80061 [ ] 30. B. 74177 [ ] 31. B. 80048 [ ] 32. C. 60225 [ ] 33. C. 11602 [ ] 34. A. 60500 [ ] 35. A. Shoulder blade [ ] 36. C. 11420 [ ] 37. A. 11200 [ ] 38. B. The diagnosis that was chiefly responsible for the outpatient service [ ] 39. B. 31512 [ ] 40. B. Stone in the kidney [ ] 41. A. J0885 [ ] 42. A. 53600 [ ] 43. A. Promote the adoption and meaningful use of health information technology [ ] 44. A. 85025 [ ] 45. A. 76801 [ ] 46. B. Inflammation of the liver [ ] 47. A. 41010 [ ] 48. D. 80076 [ ] 49. C. 20206 [ ] 50. A. J45.20 [ ] 51. B. Removal of the gallbladder [ ] 52. A. 41100 [ ] 53. C. Cerebrum [ ] 54. A. Hypertensive heart disease [ ] 55. A. 44388 [ ] 56. A. B30.9 [ ] 57. A. 20600 [ ] 58. B. 21931 [ ] 59. B. 01402 [ ] 60. B. 30903 [ ] 61. B. 44389 [ ] 62. B. 81001 [ ] 63. A. 49320 [ ] 64. B. 31525 [ ] 65. B. 41113 [ ] 66. D. Penalizing entities that submit false claims to government programs [ ] 67. B. 24072 [ ] 68. B. Only the minimum necessary amount of protected health information should be disclosed [ ] 69. A. 10120 [ ] 70. C. 15792 [ ] 71. C. 11102 [ ] 72. C. 71020 [ ] 73. C. 99283 [ ] 74. A. 60100 [ ] 75. A. 31237 [ ] 76. A. 00790 [ ] 77. A. 60210 [ ] 78. B. Increase in white blood cells [ ] 79. B. 31505 [ ] 80. B. 60200 [ ] 81. A. J44.0 [ ] 82. B. 20005 [ ] 83. B. 00402 [ ] 84. A. Only the confirmed diagnosis [ ] 85. A. 52317 [ ] 86. B. 11406 [ ] 87. B. 20520 [ ] 88. B. Code only the symptoms or signs [ ] 89. A. Liver [ ] 90. A. G0326 [ ] 91. A. Windpipe [ ] 92. B. 58661 [ ] 93. B. F32.1 [ ] 94. B. J31.0 [ ] 95. B. 99305 [ ] 96. A. 31231 [ ] 97. A. Dehydration [ ] 98. A. 52000 [ ] 99. A. J1745 [ ] 100. C. L0464 Explanations 1. Dr. Lopez performs an excision of a tumor on the knee joint, deep, measuring 3.5 cm. What CPT code should be used for this procedure? Answer: B. 27328 Explanation: The correct CPT code for excision of tumor, soft tissue of knee area; deep (subfascial or intramuscular), 3 cm or greater is 27328. The other codes represent different sizes, depths, or types of excisions. 2. A patient has an abscess on the arm that Dr. Clarke incises and drains. Which CPT code best describes this service? Answer: A. 10060 Explanation: The correct CPT code for the incision and drainage of an abscess (simple or single) is 10060. Code 10061 represents the incision and drainage of an abscess that is more complicated or recurrent. Codes 10080 and 10081 pertain to the incision and drainage of a pilonidal cyst. 3. A patient was administered an injection of zoledronic acid, 1 mg, for osteoporosis. Which HCPCS Level II code should be used for this drug? Answer: A. J3487 Explanation: The correct HCPCS Level II code for an injection of zoledronic acid, 1 mg, for osteoporosis is J3487. The other codes represent either different drugs or unclassified drugs. 4. Dr. Mitchell administered anesthesia for a patient having a closed procedure on the humerus and elbow. What CPT code should be used? Answer: A. 01610 Explanation: The correct CPT code for anesthesia for all closed procedures on the humerus and elbow; not otherwise specified is 01610. The other codes represent anesthesia for different procedures on the upper arm or elbow. 5. A patient had a percutaneous nephrostomy tube placement. What CPT code should be used for this service? Answer: B. 50393 Explanation: The correct CPT code for introduction of nephrostomy catheter, percutaneous, including diagnostic nephrostogram and/or ureterogram when performed, imaging guidance (e.g., ultrasound and/or fluoroscopy) and all associated radiological supervision and interpretation is 50393. The other codes represent different renal procedures. 6. Dr. Thompson performed a pyelostomy for drainage. Which CPT code should be used for this procedure? Answer: A. 50020 Explanation: The correct CPT code for pyelostomy; for drainage is 50020. The other codes represent different renal procedures or interventions. 7. What does the term 'thrombocytopenia' describe? Answer: D. Decreased number of platelets Explanation: The term 'thrombocytopenia' describes a condition where there's a decreased number of platelets in the blood. The prefix 'thrombo-' refers to clot and 'cyto-' refers to cell. The suffix '-penia' indicates a decrease in number. 8. A patient undergoes an excision of a lesion on their lip, measuring 2 cm. Which CPT code corresponds to this procedure? Answer: B. 40500 Explanation: The correct CPT code for excision of lesion of lip; up to half of lip is 40500. The other codes represent excisions of different sizes or parts of the lip. 9. The term 'arthralgia' refers to which of the following conditions? Answer: A. Joint pain Explanation: Arthralgia refers to pain in a joint or joints. It can be caused by various conditions, including arthritis, injury, or infection. 10. Dr. Watson ordered an MRI of the brain without contrast material. What CPT code corresponds to this service? Answer: A. 70551 Explanation: The correct CPT code for magnetic resonance (e.g., proton) imaging, brain (including brain stem); without contrast material is 70551. The other codes represent MRI of the brain with different specifications or with contrast. 11. A patient was diagnosed with streptococcal pharyngitis. Which ICD-10-CM code represents this condition? Answer: A. J02.0 Explanation: The correct ICD-10-CM code for streptococcal pharyngitis is J02.0. The other codes represent pharyngitis due to other pathogens or tonsillitis. 12. A patient was diagnosed with acute bronchitis due to respiratory syncytial virus. Which ICD-10-CM code represents this diagnosis? Answer: D. J20.5 Explanation: The correct ICD-10-CM code for acute bronchitis due to respiratory syncytial virus is J20.5. The other codes represent acute bronchitis due to different pathogens. 13. Dr. Allen saw a 7-year-old patient for an annual checkup. He took a comprehensive history and performed a detailed examination. Which CPT code should be used for this service? Answer: B. 99383 Explanation: The correct CPT code for a preventive medicine evaluation and management of an individual including an age and gender appropriate history, examination, counseling/anticipatory guidance/risk factor reduction interventions, and the ordering of laboratory/diagnostic procedures, new patient; age 5-11 years is 99383. The other codes represent different age groups or types of patients. 14. Which of the following is a consequence of non-compliance with the Stark Law? Answer: D. Fines and potential jail time Explanation: The Stark Law prohibits physicians from referring patients to receive designated health services payable by Medicare or Medicaid from entities with which the physician, or an immediate family member, has a financial relationship. Non-compliance with the Stark Law can result in fines and potential jail time. 15. A patient was diagnosed with generalized anxiety disorder. What ICD-10-CM code should be used for this diagnosis? Answer: B. F41.1 Explanation: The correct ICD-10-CM code for generalized anxiety disorder is F41.1. The other codes represent other types or unspecified anxiety disorders. 16. A child was diagnosed with otitis media, unspecified. Which ICD-10-CM code corresponds to this diagnosis? Answer: A. H66.90 Explanation: The correct ICD-10-CM code for otitis media, unspecified is H66.90. The other codes represent otitis media of specified types or localizations. 17. A patient underwent a thyroidectomy, total or complete. Which CPT code is appropriate for this procedure? Answer: A. 60240 Explanation: The correct CPT code for thyroidectomy, total or complete is 60240. The other codes represent varying extents or methods of thyroidectomy. 18. What is the main purpose of the Health Insurance Portability and Accountability Act (HIPAA)? Answer: C. Protect patient health information Explanation: The main purpose of the Health Insurance Portability and Accountability Act (HIPAA) is to protect patient health information. It sets standards for the privacy and security of patient data and establishes rules for its use and disclosure. 19. A patient with diabetes was provided with an insulin pump. Which HCPCS Level II code corresponds to this device? Answer: B. E0784 Explanation: The correct HCPCS Level II code for an insulin pump for a patient with diabetes is E0784. The other codes represent supplies or different equipment related to diabetes care. 20. Dr. Hamilton had a 10-minute phone consultation with a patient to discuss lab results. Which CPT code corresponds to this service? Answer: A. 99441 Explanation: The correct CPT code for a telephone evaluation and management service provided by a physician to an established patient, parent, or guardian not originating from a related E/M service provided within the previous 7 days nor leading to an E/M service or procedure within the next 24 hours or soonest available appointment; 5-10 minutes of medical discussion is 99441. The other codes represent different lengths of telephone consultations. 21. Dr. Patterson had a 20-minute consultation with a 55-year-old male with a family history of heart disease. What CPT code corresponds to this service? Answer: B. 99242 Explanation: The correct CPT code for an office consultation that typically requires 20 minutes face-to-face time with the patient or family is 99242. The other codes represent different lengths or complexities of office consultations. 22. A patient was provided with a semi-electric (motorized) hospital bed due to mobility challenges. Which HCPCS Level II code represents this type of hospital bed? Answer: C. E0260 Explanation: The correct HCPCS Level II code for a semi-electric (motorized) hospital bed is E0260. The other codes represent different types of hospital beds or beds with different features. 23. Dr. Patterson performed a coronary therapeutic services and coronary artery bypass graft. Which CPT code represents a single coronary artery bypass graft using a venous graft? Answer: A. 33510 Explanation: The correct CPT code for coronary artery bypass, vein only; single coronary venous graft is 33510. The other codes represent different numbers or types of coronary artery bypass grafts. 24. In CPT coding, what is the purpose of a modifier? Answer: A. Indicate that a service or procedure has been altered by specific circumstances Explanation: In CPT coding, a modifier is used to indicate that a service or procedure has been altered by specific circumstances, but not changed in its definition or code. It provides additional information to the main code to ensure accurate reimbursement. 25. A patient had a tumor excised from the floor of their mouth, measuring 2.5 cm. Which CPT code is appropriate for this procedure? Answer: B. 41110 Explanation: The correct CPT code for excision of lesion of floor of mouth without closure or with simple closure is 41110. The other codes represent excisions of different sizes or complexities from the floor of the mouth. 26. A patient was diagnosed with type 2 diabetes mellitus with hyperosmolarity without nonketotic hyperglycemic-hyperosmolar coma (NKHHC). Which ICD-10-CM code corresponds to this diagnosis? Answer: A. E11.00 Explanation: The correct ICD-10-CM code for type 2 diabetes mellitus with hyperosmolarity without nonketotic hyperglycemic-hyperosmolar coma (NKHHC) is E11.00. The other codes represent different manifestations or complications of type 2 diabetes mellitus. 27. A patient underwent a diagnostic electromyography on 2 extremities. Which CPT code is appropriate for this procedure? Answer: B. 95861 Explanation: The correct CPT code for electromyography; 2 extremities with or without related paraspinal areas is 95861. The other codes represent electromyography for different numbers of extremities or areas. 28. A patient has an incision and drainage of an abscess in the submandibular space. Which CPT code represents this procedure? Answer: B. 41005 Explanation: The correct CPT code for incision and drainage of abscess, cyst, hematoma, or infection, submandibular or sublingual salivary gland is 41005. The other codes represent different locations or types of incision and drainage procedures. 29. A patient had a lipid panel test. Which CPT code should be used for this service? Answer: B. 80061 Explanation: The correct CPT code for lipid panel is 80061. The other codes represent different panels or lab tests. 30. A patient underwent a CT scan of the abdomen and pelvis with contrast. Which CPT code should be used for this procedure? Answer: B. 74177 Explanation: The correct CPT code for computed tomography, abdomen and pelvis; with contrast material(s) is 74177. The other codes represent CT scans of the abdomen and pelvis with different specifications or without contrast. 31. Dr. Clark ordered a basic metabolic panel (8 tests). What CPT code should be used for this lab service? Answer: B. 80048 Explanation: The correct CPT code for basic metabolic panel (Calcium, total) is 80048. The other codes represent different panels or combinations of lab tests. 32. Dr. Roberts performed a subtotal thyroid lobectomy with contralateral subtotal lobectomy. What CPT code should be used for this procedure? Answer: C. 60225 Explanation: The correct CPT code for thyroid lobectomy, subtotal (e.g., subtotal thyroidectomy); with contralateral subtotal lobectomy (subtotal or total thyroidectomy) is 60225. The other codes represent different extents of thyroid lobectomy. 33. Dr. Harris performs a removal of a 2 cm malignant lesion from a patient's chest. What CPT code should be used for this procedure? Answer: C. 11602 Explanation: The correct CPT code for the excision of a malignant lesion on the trunk measuring 1.1 cm to 2.0 cm is 11602. The other codes represent different sizes or locations of malignant lesion excisions. 34. Dr. Hughes performed a parathyroidectomy or exploration of the parathyroid. Which CPT code should be used for this service? Answer: A. 60500 Explanation: The correct CPT code for parathyroidectomy or exploration of parathyroid(s) is 60500. The other codes represent different parathyroid procedures. 35. The scapula is commonly known as which bone? Answer: A. Shoulder blade Explanation: The scapula is commonly known as the shoulder blade. It is the bone that connects the humerus (upper arm bone) with the clavicle (collar bone). 36. Dr. Smith performs a removal of a 1.5 cm benign lesion from a patient's face. Which CPT code best represents this procedure? Answer: C. 11420 Explanation: The correct CPT code for the excision of a benign lesion from the face measuring 1.0 cm to 2.0 cm is 11420. Code 10040 represents acne surgery; 11401 pertains to the excision of a benign lesion on the trunk, arms, or legs measuring 0.6 cm to 1.0 cm; and 11440 is for excision of benign lesions on the face measuring 0.6 cm to 1.0 cm. 37. Dr. Allen treats a patient for a skin tag removal on the neck. What CPT code corresponds to this service? Answer: A. 11200 Explanation: The correct CPT code for skin tag removal (up to and including 15 lesions) is 11200. Code 11300 represents the shaving of epidermal or dermal lesions, and 11305 and 11310 are for specific locations and sizes of lesions, not skin tags. 38. For outpatient coding, what should be the primary diagnosis? Answer: B. The diagnosis that was chiefly responsible for the outpatient service Explanation: For outpatient coding, the primary diagnosis is the condition that was chiefly responsible for the outpatient service. It is the main reason for the encounter, even if treatment or diagnostic procedures are performed for other conditions. 39. Dr. Gray performs a biopsy of the larynx through an endoscope. Which CPT code should be used for this procedure? Answer: B. 31512 Explanation: The correct CPT code for laryngoscopy, indirect; with biopsy is 31512. The other codes represent different procedures related to indirect laryngoscopy. 40. What does the term 'nephrolithiasis' refer to? Answer: B. Stone in the kidney Explanation: The term 'nephrolithiasis' refers to the presence of stones (calculi) in the kidney. The prefix 'nephro-' pertains to the kidney and '-lithiasis' refers to the formation of stony concretions. 41. A patient received an injection of epoetin alfa, 1000 units, for anemia. Which HCPCS Level II code corresponds to this drug? Answer: A. J0885 Explanation: The correct HCPCS Level II code for epoetin alfa, 1000 units, for anemia is J0885. The other codes represent either different dosages or different forms of epoetin alfa or related drugs. 42. Dr. White performed a urethral dilation for a female patient. Which CPT code is appropriate for this procedure? Answer: A. 53600 Explanation: The correct CPT code for dilation of urethra, female, general or conduction (spinal) anesthesia is 53600. The other codes represent different methods or complexities of urethral dilation. 43. What is the main goal of the Health Information Technology for Economic and Clinical Health (HITECH) Act? Answer: A. Promote the adoption and meaningful use of health information technology Explanation: The main goal of the Health Information Technology for Economic and Clinical Health (HITECH) Act is to promote the adoption and meaningful use of health information technology. It was enacted to improve healthcare delivery and patient care through increased use of technology. 44. A patient had a complete blood count (CBC) with automated differential WBC count. Which CPT code represents this test? Answer: A. 85025 Explanation: The correct CPT code for blood count; complete (CBC), automated (Hgb, Hct, RBC, WBC and platelet count) and automated differential WBC count is 85025. The other codes represent different types or complexities of CBC tests. 45. Dr. Sanders ordered an ultrasound of a pregnant uterus with a detailed fetal and maternal evaluation for the first trimester. What CPT code is appropriate for this service? Answer: A. 76801 Explanation: The correct CPT code for ultrasound, pregnant uterus, real time with image documentation, fetal and maternal evaluation, first trimester (less than 14 weeks 0 days), transabdominal approach; single or first gestation is 76801. The other codes represent ultrasounds of the pregnant uterus for different trimesters or with different evaluations. 46. What does the term 'hepatitis' describe? Answer: B. Inflammation of the liver Explanation: Hepatitis refers to inflammation of the liver. It can be caused by several factors, including viral infections, alcohol consumption, or certain medications. 47. A child had a frenotomy performed on the tongue. What CPT code should be used for this service? Answer: A. 41010 Explanation: The correct CPT code for frenotomy, tongue (frenulectomy, frenulotomy) is 41010. The other codes represent different procedures related to the tongue or frenulum. 48. A patient had a liver function test. Which CPT code is suitable for this test? Answer: D. 80076 Explanation: The correct CPT code for hepatic function panel is 80076. The other codes represent different panels or lab tests. 49. A patient undergoes a biopsy of a soft tissue mass on the forearm, subcutaneous. Which CPT code is appropriate for this procedure? Answer: C. 20206 Explanation: The correct CPT code for a biopsy, soft tissue of forearm and/or wrist; superficial is 20206. The other codes represent different depths or locations of soft tissue biopsies. 50. A patient was diagnosed with mild intermittent asthma, uncomplicated. Which ICD-10-CM code is appropriate for this condition? Answer: A. J45.20 Explanation: The correct ICD-10-CM code for mild intermittent asthma, uncomplicated is J45.20. The other codes represent different types or severities of asthma. 51. What does the term 'cholecystectomy' mean? Answer: B. Removal of the gallbladder Explanation: A cholecystectomy is a surgical procedure to remove the gallbladder. The gallbladder is a small organ located below the liver that stores bile. 52. Dr. Lee performs a biopsy of the tongue. Which CPT code is suitable for this procedure? Answer: A. 41100 Explanation: The correct CPT code for biopsy of tongue; anterior two-thirds is 41100. The other codes represent biopsies of different parts of the tongue or other procedures on the tongue. 53. Which part of the human brain is responsible for memory, thought, and judgment? Answer: C. Cerebrum Explanation: The cerebrum is the largest part of the human brain and is responsible for memory, thought, judgment, and many other functions. 54. When coding for a patient with hypertensive heart and chronic kidney disease, which condition should be sequenced first? Answer: A. Hypertensive heart disease Explanation: According to ICD-10-CM coding guidelines, when a patient has both hypertensive heart and chronic kidney disease, the hypertensive heart disease should be sequenced first. 55. A patient underwent a colonoscopy because of a family history of colorectal cancer. Which CPT code best represents a diagnostic colonoscopy? Answer: A. 44388 Explanation: The correct CPT code for a colonoscopy through stoma; diagnostic, with or without collection of specimen(s) by brushing or washing is 44388. The other codes represent different types or complexities of colonoscopies. 56. A patient was diagnosed with viral conjunctivitis, unspecified. Which ICD-10-CM code should be used for this diagnosis? Answer: A. B30.9 Explanation: The correct ICD-10-CM code for viral conjunctivitis, unspecified is B30.9. The other codes represent viral conjunctivitis due to specific viruses. 57. A patient has a cyst aspirated from the soft tissue of the foot. Which CPT code best represents this service? Answer: A. 20600 Explanation: The correct CPT code for arthrocentesis, aspiration and/or injection, small joint or bursa (e.g., fingers, toes); without ultrasound guidance is 20600. The other codes represent different sizes or types of joint or bursal aspirations or injections. 58. A patient has a lipoma removed from the back, subcutaneous, measuring 5 cm. Which CPT code best describes this service? Answer: B. 21931 Explanation: The correct CPT code for excision, tumor, soft tissue of back or flank, subcutaneous; excised diameter over 4 cm up to 10 cm is 21931. The other codes represent different sizes or depths of tumor excisions. 59. Dr. Owens administered anesthesia for a patient undergoing a knee arthroscopy. What CPT code should be used for this anesthesia service? Answer: B. 01402 Explanation: The correct CPT code for anesthesia for open or surgical arthroscopic procedures on the knee joint; meniscectomy is 01402. The other codes represent anesthesia for different procedures on the knee or leg. 60. Dr. Mitchell performs an endoscopic control of nosebleed. What CPT code should be used for this service? Answer: B. 30903 Explanation: The correct CPT code for control of nasal hemorrhage, anterior, complex (anterior/posterior packing, cautery, and/or diathermy, any method) is 30903. The other codes represent different methods or complexities of controlling a nosebleed. 61. A patient underwent a colonoscopy due to a family history of colon cancer. During the procedure, a polyp was discovered and removed. Which CPT code corresponds to a colonoscopy with polypectomy? Answer: B. 44389 Explanation: The correct CPT code for a colonoscopy where a polyp is removed is 44389. The other codes represent different types of colonoscopy procedures or interventions. 62. Dr. Adams ordered a urinalysis with microscopic examination. What CPT code corresponds to this service? Answer: B. 81001 Explanation: The correct CPT code for urinalysis, by dip stick or tablet reagent for bilirubin, glucose, hemoglobin, ketones, leukocytes, nitrite, pH, protein, specific gravity, urobilinogen, any number of these constituents; with microscopy is 81001. The other codes represent different methods or complexities of urinalysis. 63. A patient underwent a diagnostic laparoscopy. Which CPT code is suitable for this procedure? Answer: A. 49320 Explanation: The correct CPT code for laparoscopy, abdomen, peritoneum, and omentum, diagnostic, with or without collection of specimen(s) by brushing or washing (separate procedure) is 49320. The other codes represent additional procedures beyond a simple diagnostic laparoscopy. 64. Dr. Robinson performed a diagnostic direct laryngoscopy. What CPT code should be used for this procedure? Answer: B. 31525 Explanation: The correct CPT code for laryngoscopy, direct, with or without tracheoscopy; diagnostic (separate procedure) is 31525. The other codes represent different procedures related to direct laryngoscopy. 65. Dr. Smith performed an incisional biopsy of a lesion on the palate. Which CPT code should be used for this procedure? Answer: B. 41113 Explanation: The correct CPT code for biopsy of palate, uvula is 41113. The other codes represent different procedures or types of biopsies related to the mouth. 66. The False Claims Act is primarily concerned with: Answer: D. Penalizing entities that submit false claims to government programs Explanation: The False Claims Act is primarily concerned with penalizing entities that knowingly submit false claims to government programs. It allows for significant financial penalties against providers who defraud governmental healthcare programs. 67. Dr. Ross performs an excision of a 2.5 cm malignant soft tissue tumor on the patient's arm, deep. Which CPT code is appropriate for this procedure? Answer: B. 24072 Explanation: The correct CPT code for excision, tumor, soft tissue of upper arm or elbow area; deep (subfascial or intramuscular), 3 cm or less is 24072. The other codes represent different sizes or locations of malignant tumor excisions. 68. What does the 'Minimum Necessary Standard' refer to in terms of HIPAA? Answer: B. Only the minimum necessary amount of protected health information should be disclosed Explanation: The 'Minimum Necessary Standard' in terms of HIPAA means that only the minimum necessary amount of protected health information should be disclosed for a particular purpose. It's a principle that requires healthcare entities to limit the use and disclosure of patient information to the least amount necessary to accomplish a task. 69. A patient comes in with a foreign body embedded in the foot. Dr. Martin removes this foreign body without making an incision. Which CPT code represents this procedure? Answer: A. 10120 Explanation: The correct CPT code for the removal of a foreign body from subcutaneous tissues without an incision is 10120. Code 10121 represents removal with an incision, 10140 pertains to the incision and drainage of a hematoma or seroma, and 10160 is for needle aspiration. 70. A patient with severe acne underwent a chemical peel for acne scars. Which CPT code pertains to a chemical exfoliation for acne scars? Answer: C. 15792 Explanation: The correct CPT code for chemical exfoliation, dermabrasion (eg, acne scars, fine wrinkling, rhytids, general keratosis); medium is 15792. The other codes represent different methods or depths of chemical peels. 71. A patient undergoes a punch biopsy on a suspicious lesion on the back. Which CPT code is appropriate for this procedure? Answer: C. 11102 Explanation: The correct CPT code for a punch biopsy of the skin, such as for a single lesion, is 11102. Code 11100 represents a biopsy of skin, subcutaneous tissue, and mucous membrane, and 11101 is an add-on code for each separate/additional lesion. 11103 pertains to the shaving of skin lesions. 72. A patient had an X-ray of the chest with a minimum of 2 views. Which CPT code represents this service? Answer: C. 71020 Explanation: The correct CPT code for radiologic examination, chest; 2 views, frontal and lateral is 71020. The other codes represent different methods or complexities of chest X-rays. 73. Nancy visited the ER with chest pain. The doctor took a detailed history and performed an examination. Which CPT code should be used for this ER visit? Answer: C. 99283 Explanation: The correct CPT code for an emergency department visit for the evaluation and management of a patient, which requires these 3 key components: An expanded problem focused history; An expanded problem focused examination; and Medical decision making of moderate complexity is 99283. The other codes represent different levels of emergency department visits. 74. A patient had a needle biopsy of the thyroid. Which CPT code corresponds to this procedure? Answer: A. 60100 Explanation: The correct CPT code for biopsy, thyroid, needle is 60100. The other codes represent different thyroid procedures. 75. A patient had a polyp removed from their sinus using a nasal endoscope. Which CPT code corresponds to this procedure? Answer: A. 31237 Explanation: The correct CPT code for nasal/sinus endoscopy, surgical; with biopsy, polypectomy or debridement is 31237. The other codes represent different types or purposes of nasal endoscopies. 76. A patient underwent anesthesia for a procedure on the upper anterior abdominal wall. Which CPT code best represents this anesthesia service? Answer: A. 00790 Explanation: The correct CPT code for anesthesia for intraperitoneal procedures in the upper abdomen including laparoscopy; not otherwise specified is 00790. The other codes represent anesthesia for different procedures or locations. 77. A patient had a thyroid lobectomy, with or without isthmectomy. Which CPT code represents this procedure? Answer: A. 60210 Explanation: The correct CPT code for thyroid lobectomy, partial, unilateral; with or without isthmectomy is 60210. The other codes represent different thyroid procedures. 78. The term 'leukocytosis' refers to which of the following conditions? Answer: B. Increase in white blood cells Explanation: Leukocytosis refers to an increase in the number of white blood cells in the blood. It typically indicates an infection or inflammation in the body. 79. A patient underwent a removal of a foreign body from the pharynx. Which CPT code is appropriate for this procedure? Answer: B. 31505 Explanation: The correct CPT code for laryngoscopy, indirect; with removal of foreign body is 31505. The other codes represent different types of indirect laryngoscopies or associated procedures. 80. A patient underwent an excision of a cyst or adenoma of the thyroid. What CPT code should be used for this procedure? Answer: B. 60200 Explanation: The correct CPT code for excision of cyst or adenoma of thyroid is 60200. The other codes represent different thyroid procedures. 81. A patient was diagnosed with chronic obstructive pulmonary disease with acute lower respiratory infection. What ICD-10-CM code should be used? Answer: A. J44.0 Explanation: The correct ICD-10-CM code for chronic obstructive pulmonary disease with acute lower respiratory infection is J44.0. The other codes represent different manifestations or types of respiratory diseases. 82. Dr. Bennett performs an incision and drainage of an abscess located deep within the patient's shoulder area. Which CPT code best represents this procedure? Answer: B. 20005 Explanation: The correct CPT code for incision and drainage of an abscess, cyst, hematoma, or infection; deep (subfascial or intramuscular) is 20005. The other codes represent different locations or types of incisions and drainage procedures. 83. A patient received anesthesia for a procedure on the esophagus. Which CPT code is appropriate for this service? Answer: B. 00402 Explanation: The correct CPT code for anesthesia for procedures on the esophagus; diagnostic, esophagoscopy is 00402. The other codes represent anesthesia for different procedures or locations. 84. In ICD-10-CM coding, when a patient has both a confirmed diagnosis and symptoms related to that diagnosis, how should it be coded? Answer: A. Only the confirmed diagnosis Explanation: In ICD-10-CM coding, when a patient has both a confirmed diagnosis and symptoms related to that diagnosis, only the confirmed diagnosis should be coded. The symptoms that are routinely associated with the diagnosis are not coded separately. 85. A patient underwent removal of a bladder stone without an incision. Which CPT code corresponds to this procedure? Answer: A. 52317 Explanation: The correct CPT code for cystourethroscopy with removal of foreign body, calculus, or ureteral stent from urethra or bladder (separate procedure); simple is 52317. The other codes represent varying complexities of similar procedures. 86. Dr. Carter excises a 4 cm benign lesion from a patient's back. Which CPT code corresponds to this procedure? Answer: B. 11406 Explanation: The correct CPT code for the excision of a benign lesion on the trunk measuring 3.1 cm to 4.0 cm is 11406. The other codes represent different sizes or locations of benign lesion excisions. 87. Dr. Hayes removes a foreign body from the thigh, without making an incision. Which CPT code corresponds to this procedure? Answer: B. 20520 Explanation: The correct CPT code for the removal of a foreign body in the muscle or tendon sheath; simple is 20520. The other codes represent different types or locations of foreign body removals. 88. According to ICD-10-CM guidelines, how should a coder handle a diagnosis that is described as 'probable' or 'suspected'? Answer: B. Code only the symptoms or signs Explanation: According to ICD-10-CM guidelines, if a condition is described as 'probable', 'suspected', 'likely', 'questionable', 'possible', or 'still to be ruled out', the condition should be coded as if it existed or was established. However, for outpatient coding, such uncertain diagnoses should not be coded as if they exist. Instead, only the symptoms or signs should be coded. 89. Which organ is primarily responsible for detoxifying chemicals and metabolizing drugs? Answer: A. Liver Explanation: The liver plays a key role in detoxifying chemicals, metabolizing drugs, and filtering the blood. It also produces bile, which is essential for digestion. 90. A patient with chronic renal failure underwent a hemodialysis procedure. Which HCPCS Level II code corresponds to this procedure? Answer: A. G0326 Explanation: The correct HCPCS Level II code for a hemodialysis procedure for a patient with chronic renal failure is G0326. The other codes represent different forms or stages of dialysis or related procedures. 91. The trachea is commonly known as which of the following? Answer: A. Windpipe Explanation: The trachea, commonly known as the windpipe, is the tube that connects the pharynx and larynx to the lungs, allowing the passage of air. 92. Dr. Martin performs a surgical laparoscopy for treatment of ovarian cyst. What CPT code should be used for this procedure? Answer: B. 58661 Explanation: The correct CPT code for laparoscopy, surgical; with removal of adnexal structures (partial or total oophorectomy and/or salpingectomy) is 58661. The other codes represent different types of laparoscopic procedures. 93. A patient was diagnosed with major depressive disorder, single episode, moderate. Which ICD-10-CM code is appropriate for this diagnosis? Answer: B. F32.1 Explanation: The correct ICD-10-CM code for major depressive disorder, single episode, moderate is F32.1. The other codes represent different severities or types of major depressive disorder, single episode. 94. A patient was diagnosed with non-allergic rhinitis. What ICD-10-CM code corresponds to this diagnosis? Answer: B. J31.0 Explanation: The correct ICD-10-CM code for non-allergic rhinitis is J31.0. The other codes represent different types of rhinitis or sinusitis. 95. A patient had a comprehensive nursing facility assessment with a detailed interval history and examination. Which CPT code should be used for this service? Answer: B. 99305 Explanation: The correct CPT code for an initial nursing facility care, per day, for the evaluation and management of a patient, which requires these 3 key components: A comprehensive history; A comprehensive examination; and Medical decision making of moderate complexity is 99305. The other codes represent different levels or complexities of nursing facility care. 96. A patient underwent a diagnostic nasal endoscopy. Which CPT code best represents this procedure? Answer: A. 31231 Explanation: The correct CPT code for nasal endoscopy, diagnostic, unilateral or bilateral (separate procedure) is 31231. The other codes represent different types or purposes of nasal endoscopies. 97. According to the ICD-10-CM coding guidelines, which of the following would be coded first when a patient is admitted for dehydration due to chemotherapy? Answer: A. Dehydration Explanation: The correct answer is Dehydration. According to ICD-10-CM coding guidelines, when a patient is admitted for a condition that occurs as a direct result of chemotherapy, the condition (such as dehydration) is coded first, followed by the appropriate codes for the neoplasm and adverse effect of chemotherapy. 98. A patient underwent a diagnostic cystourethroscopy. Which CPT code best represents this procedure? Answer: A. 52000 Explanation: The correct CPT code for cystourethroscopy (separate procedure) is 52000. The other codes represent different types or purposes of cystourethroscopies. 99. A patient received a therapeutic injection of infliximab, 10 mg. Which HCPCS Level II code should be used for this drug? Answer: A. J1745 Explanation: The correct HCPCS Level II code for a therapeutic injection of infliximab, 10 mg, is J1745. The other codes represent different drugs or different dosages. 100. A patient with a spinal injury was fitted with a thoracic to lumbar orthosis (TLSO), anterior-posterior-lateral control. Which HCPCS Level II code corresponds to this device? Answer: C. L0464 Explanation: The correct HCPCS Level II code for a thoracic to lumbar orthosis (TLSO), anterior-posterior-lateral control is L0464. The other codes represent different types or features of orthotic devices. Congrats on finishing the practice exam! How’d you do? For additional materials, check out all our full-length practice tests, and our Practice Tool, at .com/practice. Great job!"
+    },
+    "question_type": "HCPCS"
+  }
+]

@@ -6,7 +6,15 @@ A systematic 4-step approach to extract questions and answers from PDF test file
 
 ```bash
 cd utilities/pdf_to_json
+
+# Process a file from the default test_1 directory
 python pdf_parser.py test_1.pdf
+
+# Process a file from any location
+python pdf_parser.py /path/to/your/pdf/file.pdf
+
+# Process a file from test_2 directory
+python pdf_parser.py test_2/test_2_with_answers.pdf
 ```
 
 ## How It Works
@@ -35,11 +43,20 @@ OPENAI_API_KEY=your_api_key_here
 # Full processing with AI cleanup
 python pdf_parser.py test_1.pdf
 
+# Process file from specific path
+python pdf_parser.py /path/to/test_2/test_2_with_answers.pdf
+
 # Skip AI cleanup (faster, but text won't be formatted)
 python pdf_parser.py test_1.pdf --no-ai
 
 # Save raw extracted text for debugging
 python pdf_parser.py test_1.pdf --debug
+
+# List available PDF files in default directory
+python pdf_parser.py --list
+
+# List available PDF files in specific directory
+python pdf_parser.py --list /path/to/test_2
 ```
 
 ## What This Produces
@@ -69,6 +86,12 @@ python pdf_parser.py test_1.pdf --debug
 
 ## Output
 
-Results are saved to: `../../00_tests/test_1_questions.json`
+Results are saved in the same directory as the input PDF file:
+- Questions: `[basename]_questions.json`
+- Answers (if `_with_answers.pdf` file exists): `[basename]_answers.json`
+
+For example:
+- Input: `/path/to/test_2/test_2.pdf`
+- Output: `/path/to/test_2/test_2_questions.json`
 
 The parser successfully extracts all 100 questions with properly formatted text and complete A/B/C/D choices. 
