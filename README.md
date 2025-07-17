@@ -1,13 +1,13 @@
-# Syntra: AI Medical Board Consensus Analysis System
+# AI Medical Code Solver
 
-A comprehensive system for testing AI models on medical board questions and analyzing consensus patterns through multi-round voting.
+A comprehensive system for testing AI models on medical coding questions and analyzing consensus patterns through multi-round voting.
 
 ## System Overview
 
-The Syntra system consists of four main components that work together to evaluate AI performance on medical coding questions:
+The system consists of four main components that work together to evaluate AI performance on medical coding questions:
 
 1. **Question Bank Management** (`00_question_banks/`)
-2. **AI Medical Board Testing** (`01_medical_board/`)
+2. **AI Model Testing** (`01_medical_board/`)
 3. **Consensus Analysis** (`03_consensus_benchmarks/`)
 4. **Consensus Validation** (`04_consensus_validation/`)
 
