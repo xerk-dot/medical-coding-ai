@@ -1,92 +1,47 @@
 [
   {
-    "question_number": 13,
-    "question_type": "ICD",
-    "question": "During a routine check-up, Mark was diagnosed with essential (primary) hypertension. Which ICD 10 CM code represents this condition?",
-    "choices": [
-      {
-        "choice": "A",
-        "code": "I10",
-        "embedding": {
-          "code": "I10",
-          "description": "Essential (primary) hypertension",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "B",
-        "code": "I11.9",
-        "embedding": {
-          "code": "I11.9",
-          "description": "Hypertensive heart disease without heart failure",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "C",
-        "code": "I12.9",
-        "embedding": {
-          "code": "I12.9",
-          "description": "Hypertensive chronic kidney disease with stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "D",
-        "code": "I13.10",
-        "embedding": {
-          "code": "I13.10",
-          "description": "Hypertensive heart and chronic kidney disease without heart failure, with stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      }
-    ]
-  },
-  {
-    "question_number": 15,
+    "question_number": 1,
     "question_type": "HCPCS",
-    "question": "David uses a manual wheelchair due to his mobility limitations. Which HCPCS Level II code pertains to a standard manual wheelchair?",
+    "question": "A patient was administered an injection of zoledronic acid, 1 mg, for osteoporosis. Which HCPCS Level II code should be used for this drug?",
     "choices": [
       {
         "choice": "A",
-        "code": "K0001",
+        "code": "J3487",
         "embedding": {
-          "code": "K0001",
-          "description": "Standard wheelchair",
+          "code": "J3487",
+          "description": "HCPCS code (no additional information available)",
           "system": "HCPCS",
-          "source": "NLM Clinical Tables"
+          "source": "API fetch failed",
+          "note": "Could not fetch HCPCS information from NLM API"
         }
       },
       {
         "choice": "B",
-        "code": "K0002",
+        "code": "J3488",
         "embedding": {
-          "code": "K0002",
-          "description": "Stnd hemi (low seat) whlchr",
+          "code": "J3488",
+          "description": "HCPCS code (no additional information available)",
           "system": "HCPCS",
-          "source": "NLM Clinical Tables"
+          "source": "API fetch failed",
+          "note": "Could not fetch HCPCS information from NLM API"
         }
       },
       {
         "choice": "C",
-        "code": "K0003",
+        "code": "J3489",
         "embedding": {
-          "code": "K0003",
-          "description": "Lightweight wheelchair",
+          "code": "J3489",
+          "description": "Zoledronic acid 1mg",
           "system": "HCPCS",
           "source": "NLM Clinical Tables"
         }
       },
       {
         "choice": "D",
-        "code": "K0004",
+        "code": "J3490",
         "embedding": {
-          "code": "K0004",
-          "description": "High strength ltwt whlchr",
+          "code": "J3490",
+          "description": "Drugs unclassified injection",
           "system": "HCPCS",
           "source": "NLM Clinical Tables"
         }
@@ -94,195 +49,7 @@
     ]
   },
   {
-    "question_number": 18,
-    "question_type": "ICD",
-    "question": "During a routine check-up, Brian was diagnosed with benign essential hypertension. What ICD 10 CM code should be used for this diagnosis?",
-    "choices": [
-      {
-        "choice": "A",
-        "code": "I10",
-        "embedding": {
-          "code": "I10",
-          "description": "Essential (primary) hypertension",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "B",
-        "code": "I15.0",
-        "embedding": {
-          "code": "I15.0",
-          "description": "Renovascular hypertension",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "C",
-        "code": "I15.1",
-        "embedding": {
-          "code": "I15.1",
-          "description": "Hypertension secondary to other renal disorders",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "D",
-        "code": "I15.2",
-        "embedding": {
-          "code": "I15.2",
-          "description": "Hypertension secondary to endocrine disorders",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      }
-    ]
-  },
-  {
-    "question_number": 22,
-    "question_type": "ICD",
-    "question": "After a trip to a tropical country, Jessica was diagnosed with Dengue fever without warning signs. Which ICD-10-CM code represents this diagnosis?",
-    "choices": [
-      {
-        "choice": "A",
-        "code": "A90",
-        "embedding": {
-          "code": "A90",
-          "description": "Dengue fever [classical dengue]",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "B",
-        "code": "A91",
-        "embedding": {
-          "code": "A91",
-          "description": "Dengue hemorrhagic fever",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "C",
-        "code": "A92.0",
-        "embedding": {
-          "code": "A92.0",
-          "description": "Chikungunya virus disease",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "D",
-        "code": "A92.8",
-        "embedding": {
-          "code": "A92.8",
-          "description": "Other specified mosquito-borne viral fevers",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      }
-    ]
-  },
-  {
-    "question_number": 25,
-    "question_type": "HCPCS",
-    "question": "During his physical therapy, John was provided with a therapeutic elastic band. Which HCPCS Level II code represents the supply of this band?",
-    "choices": [
-      {
-        "choice": "A",
-        "code": "A4450",
-        "embedding": {
-          "code": "A4450",
-          "description": "Non-waterproof tape",
-          "system": "HCPCS",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "B",
-        "code": "A4465",
-        "embedding": {
-          "code": "A4465",
-          "description": "Non-elastic extremity binder",
-          "system": "HCPCS",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "C",
-        "code": "A4466",
-        "embedding": {
-          "code": "A4466",
-          "description": "Elastic garment/covering",
-          "system": "HCPCS",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "D",
-        "code": "A4470",
-        "embedding": {
-          "code": "A4470",
-          "description": "Gravlee jet washer",
-          "system": "HCPCS",
-          "source": "NLM Clinical Tables"
-        }
-      }
-    ]
-  },
-  {
-    "question_number": 30,
-    "question_type": "HCPCS",
-    "question": "For his severe back pain, Dr. Simmons administers an epidural injection to Mike. Which HCPCS Level II code corresponds to the supply of the injection?",
-    "choices": [
-      {
-        "choice": "A",
-        "code": "J1020",
-        "embedding": {
-          "code": "J1020",
-          "description": "Methylprednisolone 20 mg inj",
-          "system": "HCPCS",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "B",
-        "code": "J1030",
-        "embedding": {
-          "code": "J1030",
-          "description": "Methylprednisolone 40 mg inj",
-          "system": "HCPCS",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "C",
-        "code": "J1040",
-        "embedding": {
-          "code": "J1040",
-          "description": "Methylprednisolone 80 mg inj",
-          "system": "HCPCS",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "D",
-        "code": "J1050",
-        "embedding": {
-          "code": "J1050",
-          "description": "Medroxyprogesterone acetate",
-          "system": "HCPCS",
-          "source": "NLM Clinical Tables"
-        }
-      }
-    ]
-  },
-  {
-    "question_number": 40,
+    "question_number": 3,
     "question_type": "HCPCS",
     "question": "Sarah uses a continuous positive airway pressure CPAP device for her sleep apnea. Which HCPCS Level II code pertains to the CPAP device?",
     "choices": [
@@ -330,103 +97,715 @@
     ]
   },
   {
-    "question_number": 46,
-    "question_type": "ICD",
-    "question": "Tom was diagnosed with bilateral primary osteoarthritis of the knee. Which ICD 10 CM code is suitable for this diagnosis?",
+    "question_number": 6,
+    "question_type": "HCPCS",
+    "question": "During his physical therapy, John was provided with a therapeutic elastic band. Which HCPCS Level II code represents the supply of this band?",
     "choices": [
       {
         "choice": "A",
-        "code": "M17.0",
+        "code": "A4450",
         "embedding": {
-          "code": "M17.0",
-          "description": "Bilateral primary osteoarthritis of knee",
-          "system": "ICD-10-CM",
+          "code": "A4450",
+          "description": "Non-waterproof tape",
+          "system": "HCPCS",
           "source": "NLM Clinical Tables"
         }
       },
       {
         "choice": "B",
-        "code": "M17.1",
+        "code": "A4465",
         "embedding": {
-          "code": "M17.10",
-          "description": "Unilateral primary osteoarthritis, unspecified knee",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables",
-          "note": "Closest match for M17.1"
-        }
-      },
-      {
-        "choice": "C",
-        "code": "M17.2",
-        "embedding": {
-          "code": "M17.2",
-          "description": "Bilateral post-traumatic osteoarthritis of knee",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "D",
-        "code": "M17.3",
-        "embedding": {
-          "code": "M17.30",
-          "description": "Unilateral post-traumatic osteoarthritis, unspecified knee",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables",
-          "note": "Closest match for M17.3"
-        }
-      }
-    ]
-  },
-  {
-    "question_number": 47,
-    "question_type": "ICD",
-    "question": "Samantha was diagnosed with acute sinusitis due to Streptococcus pneumoniae. What ICD 10 CM code corresponds to her condition?",
-    "choices": [
-      {
-        "choice": "A",
-        "code": "J01.00",
-        "embedding": {
-          "code": "J01.00",
-          "description": "Acute maxillary sinusitis, unspecified",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "B",
-        "code": "J01.10",
-        "embedding": {
-          "code": "J01.10",
-          "description": "Acute frontal sinusitis, unspecified",
-          "system": "ICD-10-CM",
+          "code": "A4465",
+          "description": "Non-elastic extremity binder",
+          "system": "HCPCS",
           "source": "NLM Clinical Tables"
         }
       },
       {
         "choice": "C",
-        "code": "J01.01",
+        "code": "A4466",
         "embedding": {
-          "code": "J01.01",
-          "description": "Acute recurrent maxillary sinusitis",
-          "system": "ICD-10-CM",
+          "code": "A4466",
+          "description": "Elastic garment/covering",
+          "system": "HCPCS",
           "source": "NLM Clinical Tables"
         }
       },
       {
         "choice": "D",
-        "code": "J01.11",
+        "code": "A4470",
         "embedding": {
-          "code": "J01.11",
-          "description": "Acute recurrent frontal sinusitis",
-          "system": "ICD-10-CM",
+          "code": "A4470",
+          "description": "Gravlee jet washer",
+          "system": "HCPCS",
           "source": "NLM Clinical Tables"
         }
       }
     ]
   },
   {
-    "question_number": 49,
+    "question_number": 13,
+    "question_type": "ICD",
+    "question": "During a routine check-up, Mark was diagnosed with essential (primary) hypertension. Which ICD 10 CM code represents this condition?",
+    "choices": [
+      {
+        "choice": "A",
+        "code": "I10",
+        "embedding": {
+          "code": "I10",
+          "description": "Essential (primary) hypertension",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "B",
+        "code": "I11.9",
+        "embedding": {
+          "code": "I11.9",
+          "description": "Hypertensive heart disease without heart failure",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "C",
+        "code": "I12.9",
+        "embedding": {
+          "code": "I12.9",
+          "description": "Hypertensive chronic kidney disease with stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "D",
+        "code": "I13.10",
+        "embedding": {
+          "code": "I13.10",
+          "description": "Hypertensive heart and chronic kidney disease without heart failure, with stage 1 through stage 4 chronic kidney disease, or unspecified chronic kidney disease",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      }
+    ]
+  },
+  {
+    "question_number": 19,
+    "question_type": "HCPCS",
+    "question": "For his severe back pain, Dr. Simmons administers an epidural injection to Mike. Which HCPCS Level II code corresponds to the supply of the injection?",
+    "choices": [
+      {
+        "choice": "A",
+        "code": "J1020",
+        "embedding": {
+          "code": "J1020",
+          "description": "Methylprednisolone 20 mg inj",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "B",
+        "code": "J1030",
+        "embedding": {
+          "code": "J1030",
+          "description": "Methylprednisolone 40 mg inj",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "C",
+        "code": "J1040",
+        "embedding": {
+          "code": "J1040",
+          "description": "Methylprednisolone 80 mg inj",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "D",
+        "code": "J1050",
+        "embedding": {
+          "code": "J1050",
+          "description": "Medroxyprogesterone acetate",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      }
+    ]
+  },
+  {
+    "question_number": 23,
+    "question_type": "ICD",
+    "question": "A child was diagnosed with otitis media, unspecified. Which ICD-10-CM code corresponds to this diagnosis?",
+    "choices": [
+      {
+        "choice": "A",
+        "code": "H66.90",
+        "embedding": {
+          "code": "H66.90",
+          "description": "Otitis media, unspecified, unspecified ear",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "B",
+        "code": "H66.91",
+        "embedding": {
+          "code": "H66.91",
+          "description": "Otitis media, unspecified, right ear",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "C",
+        "code": "H66.92",
+        "embedding": {
+          "code": "H66.92",
+          "description": "Otitis media, unspecified, left ear",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "D",
+        "code": "H66.93",
+        "embedding": {
+          "code": "H66.93",
+          "description": "Otitis media, unspecified, bilateral",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      }
+    ]
+  },
+  {
+    "question_number": 24,
+    "question_type": "ICD",
+    "question": "During a routine check-up, Brian was diagnosed with benign essential hypertension. What ICD 10 CM code should be used for this diagnosis?",
+    "choices": [
+      {
+        "choice": "A",
+        "code": "I10",
+        "embedding": {
+          "code": "I10",
+          "description": "Essential (primary) hypertension",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "B",
+        "code": "I15.0",
+        "embedding": {
+          "code": "I15.0",
+          "description": "Renovascular hypertension",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "C",
+        "code": "I15.1",
+        "embedding": {
+          "code": "I15.1",
+          "description": "Hypertension secondary to other renal disorders",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "D",
+        "code": "I15.2",
+        "embedding": {
+          "code": "I15.2",
+          "description": "Hypertension secondary to endocrine disorders",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      }
+    ]
+  },
+  {
+    "question_number": 28,
+    "question_type": "ICD",
+    "question": "A patient was diagnosed with generalized anxiety disorder. What ICD-10-CM code should be used for this diagnosis?",
+    "choices": [
+      {
+        "choice": "A",
+        "code": "F41.0",
+        "embedding": {
+          "code": "F41.0",
+          "description": "Panic disorder [episodic paroxysmal anxiety]",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "B",
+        "code": "F41.1",
+        "embedding": {
+          "code": "F41.1",
+          "description": "Generalized anxiety disorder",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "C",
+        "code": "F41.8",
+        "embedding": {
+          "code": "F41.8",
+          "description": "Other specified anxiety disorders",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "D",
+        "code": "F41.9",
+        "embedding": {
+          "code": "F41.9",
+          "description": "Anxiety disorder, unspecified",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      }
+    ]
+  },
+  {
+    "question_number": 29,
+    "question_type": "HCPCS",
+    "question": "A patient received an injection of epoetin alfa, 1000 units, for anemia. Which HCPCS Level II code corresponds to this drug?",
+    "choices": [
+      {
+        "choice": "A",
+        "code": "J0885",
+        "embedding": {
+          "code": "J0885",
+          "description": "Epoetin alfa, non-esrd",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "B",
+        "code": "J0886",
+        "embedding": {
+          "code": "J0886",
+          "description": "Epoetin alfa 1000 units esrd",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "C",
+        "code": "J0887",
+        "embedding": {
+          "code": "J0887",
+          "description": "Epoetin beta esrd use",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "D",
+        "code": "J0888",
+        "embedding": {
+          "code": "J0888",
+          "description": "Epoetin beta non esrd",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      }
+    ]
+  },
+  {
+    "question_number": 31,
+    "question_type": "ICD",
+    "question": "A patient was diagnosed with mild intermittent asthma, uncomplicated. Which ICD-10-CM code is appropriate for this condition?",
+    "choices": [
+      {
+        "choice": "A",
+        "code": "J45.20",
+        "embedding": {
+          "code": "J45.20",
+          "description": "Mild intermittent asthma, uncomplicated",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "B",
+        "code": "J45.21",
+        "embedding": {
+          "code": "J45.21",
+          "description": "Mild intermittent asthma with (acute) exacerbation",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "C",
+        "code": "J45.22",
+        "embedding": {
+          "code": "J45.22",
+          "description": "Mild intermittent asthma with status asthmaticus",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "D",
+        "code": "J45.30",
+        "embedding": {
+          "code": "J45.30",
+          "description": "Mild persistent asthma, uncomplicated",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      }
+    ]
+  },
+  {
+    "question_number": 42,
+    "question_type": "ICD",
+    "question": "A patient was diagnosed with acute bronchitis due to respiratory syncytial virus. Which ICD-10-CM code represents this diagnosis?",
+    "choices": [
+      {
+        "choice": "A",
+        "code": "J20.2",
+        "embedding": {
+          "code": "J20.2",
+          "description": "Acute bronchitis due to streptococcus",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "B",
+        "code": "J20.3",
+        "embedding": {
+          "code": "J20.3",
+          "description": "Acute bronchitis due to coxsackievirus",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "C",
+        "code": "J20.4",
+        "embedding": {
+          "code": "J20.4",
+          "description": "Acute bronchitis due to parainfluenza virus",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "D",
+        "code": "J20.5",
+        "embedding": {
+          "code": "J20.5",
+          "description": "Acute bronchitis due to respiratory syncytial virus",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      }
+    ]
+  },
+  {
+    "question_number": 43,
+    "question_type": "HCPCS",
+    "question": "A patient with diabetes was provided with an insulin pump. Which HCPCS Level II code corresponds to this device?",
+    "choices": [
+      {
+        "choice": "A",
+        "code": "A4223",
+        "embedding": {
+          "code": "A4223",
+          "description": "Infusion supplies w/o pump",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "B",
+        "code": "E0784",
+        "embedding": {
+          "code": "E0784",
+          "description": "Ext amb infusn pump insulin",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "C",
+        "code": "K0552",
+        "embedding": {
+          "code": "K0552",
+          "description": "Sup/ext non-ins inf pump syr",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "D",
+        "code": "K0553",
+        "embedding": {
+          "code": "K0553",
+          "description": "Ther cgm supply allowance",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      }
+    ]
+  },
+  {
+    "question_number": 45,
+    "question_type": "ICD",
+    "question": "A patient was diagnosed with streptococcal pharyngitis. Which ICD-10-CM code represents this condition?",
+    "choices": [
+      {
+        "choice": "A",
+        "code": "J02.0",
+        "embedding": {
+          "code": "J02.0",
+          "description": "Streptococcal pharyngitis",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "B",
+        "code": "J02.8",
+        "embedding": {
+          "code": "J02.8",
+          "description": "Acute pharyngitis due to other specified organisms",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "C",
+        "code": "J03.0",
+        "embedding": {
+          "code": "J03.00",
+          "description": "Acute streptococcal tonsillitis, unspecified",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables",
+          "note": "Closest match for J03.0"
+        }
+      },
+      {
+        "choice": "D",
+        "code": "J03.8",
+        "embedding": {
+          "code": "J03.80",
+          "description": "Acute tonsillitis due to other specified organisms",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables",
+          "note": "Closest match for J03.8"
+        }
+      }
+    ]
+  },
+  {
+    "question_number": 51,
+    "question_type": "ICD",
+    "question": "A patient was diagnosed with type 2 diabetes mellitus with hyperosmolarity without nonketotic hyperglycemic-hyperosmolar coma (NKHHC). Which ICD-10-CM code corresponds to this diagnosis?",
+    "choices": [
+      {
+        "choice": "A",
+        "code": "E11.00",
+        "embedding": {
+          "code": "E11.00",
+          "description": "Type 2 diabetes mellitus with hyperosmolarity without nonketotic hyperglycemic-hyperosmolar coma (NKHHC)",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "B",
+        "code": "E11.01",
+        "embedding": {
+          "code": "E11.01",
+          "description": "Type 2 diabetes mellitus with hyperosmolarity with coma",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "C",
+        "code": "E11.1",
+        "embedding": {
+          "code": "E11.10",
+          "description": "Type 2 diabetes mellitus with ketoacidosis without coma",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables",
+          "note": "Closest match for E11.1"
+        }
+      },
+      {
+        "choice": "D",
+        "code": "E11.9",
+        "embedding": {
+          "code": "E11.9",
+          "description": "Type 2 diabetes mellitus without complications",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      }
+    ]
+  },
+  {
+    "question_number": 72,
+    "question_type": "HCPCS",
+    "question": "David uses a manual wheelchair due to his mobility limitations. Which HCPCS Level II code pertains to a standard manual wheelchair?",
+    "choices": [
+      {
+        "choice": "A",
+        "code": "K0001",
+        "embedding": {
+          "code": "K0001",
+          "description": "Standard wheelchair",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "B",
+        "code": "K0002",
+        "embedding": {
+          "code": "K0002",
+          "description": "Stnd hemi (low seat) whlchr",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "C",
+        "code": "K0003",
+        "embedding": {
+          "code": "K0003",
+          "description": "Lightweight wheelchair",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "D",
+        "code": "K0004",
+        "embedding": {
+          "code": "K0004",
+          "description": "High strength ltwt whlchr",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      }
+    ]
+  },
+  {
+    "question_number": 74,
+    "question_type": "HCPCS",
+    "question": "A patient was provided with a semi-electric (motorized) hospital bed due to mobility challenges. Which HCPCS Level II code represents this type of hospital bed?",
+    "choices": [
+      {
+        "choice": "A",
+        "code": "E0250",
+        "embedding": {
+          "code": "E0250",
+          "description": "Hosp bed fixed ht w/ mattres",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "B",
+        "code": "E0251",
+        "embedding": {
+          "code": "E0251",
+          "description": "Hosp bed fixd ht w/o mattres",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "C",
+        "code": "E0260",
+        "embedding": {
+          "code": "E0260",
+          "description": "Hosp bed semi-electr w/ matt",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "D",
+        "code": "E0261",
+        "embedding": {
+          "code": "E0261",
+          "description": "Hosp bed semi-electr w/o mat",
+          "system": "HCPCS",
+          "source": "NLM Clinical Tables"
+        }
+      }
+    ]
+  },
+  {
+    "question_number": 88,
+    "question_type": "ICD",
+    "question": "After a trip to a tropical country, Jessica was diagnosed with Dengue fever without warning signs. Which ICD-10-CM code represents this diagnosis?",
+    "choices": [
+      {
+        "choice": "A",
+        "code": "A90",
+        "embedding": {
+          "code": "A90",
+          "description": "Dengue fever [classical dengue]",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "B",
+        "code": "A91",
+        "embedding": {
+          "code": "A91",
+          "description": "Dengue hemorrhagic fever",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "C",
+        "code": "A92.0",
+        "embedding": {
+          "code": "A92.0",
+          "description": "Chikungunya virus disease",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      },
+      {
+        "choice": "D",
+        "code": "A92.8",
+        "embedding": {
+          "code": "A92.8",
+          "description": "Other specified mosquito-borne viral fevers",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
+        }
+      }
+    ]
+  },
+  {
+    "question_number": 94,
     "question_type": "ICD",
     "question": "Lena, a 28-year-old, was diagnosed with a mild form of endometriosis. Which ICD 10 CM code corresponds to her diagnosis?",
     "choices": [
@@ -477,485 +856,96 @@
     ]
   },
   {
-    "question_number": 61,
-    "question_type": "ICD",
-    "question": "Alex was diagnosed with type 1 diabetes mellitus without complications. Which ICD-10-CM code represents this diagnosis?",
-    "choices": [
-      {
-        "choice": "A",
-        "code": "E10.9",
-        "embedding": {
-          "code": "E10.9",
-          "description": "Type 1 diabetes mellitus without complications",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "B",
-        "code": "E11.9",
-        "embedding": {
-          "code": "E11.9",
-          "description": "Type 2 diabetes mellitus without complications",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "C",
-        "code": "E13.9",
-        "embedding": {
-          "code": "E13.9",
-          "description": "Other specified diabetes mellitus without complications",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "D",
-        "code": "E08.9",
-        "embedding": {
-          "code": "E08.9",
-          "description": "Diabetes mellitus due to underlying condition without complications",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      }
-    ]
-  },
-  {
-    "question_number": 67,
-    "question_type": "ICD",
-    "question": "Elena visited the ER with a severe migraine without aura, not intractable. What ICD-10-CM code corresponds to her condition?",
-    "choices": [
-      {
-        "choice": "A",
-        "code": "G43.009",
-        "embedding": {
-          "code": "G43.009",
-          "description": "Migraine without aura, not intractable, without status migrainosus",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "B",
-        "code": "G43.109",
-        "embedding": {
-          "code": "G43.109",
-          "description": "Migraine with aura, not intractable, without status migrainosus",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "C",
-        "code": "G43.209",
-        "embedding": {
-          "code": "G43.209",
-          "description": "ICD code (no additional information available)",
-          "system": "ICD",
-          "source": "API fetch failed",
-          "note": "Could not fetch ICD information from NLM API"
-        }
-      },
-      {
-        "choice": "D",
-        "code": "G43.309",
-        "embedding": {
-          "code": "G43.309",
-          "description": "ICD code (no additional information available)",
-          "system": "ICD",
-          "source": "API fetch failed",
-          "note": "Could not fetch ICD information from NLM API"
-        }
-      }
-    ]
-  },
-  {
-    "question_number": 70,
-    "question_type": "ICD",
-    "question": "Peter visited a dermatologist for a persistent rash. The doctor diagnosed him with atopic dermatitis of the hands. What ICD-10-CM code represents this diagnosis?",
-    "choices": [
-      {
-        "choice": "A",
-        "code": "L20.81",
-        "embedding": {
-          "code": "L20.81",
-          "description": "Atopic neurodermatitis",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "B",
-        "code": "L20.82",
-        "embedding": {
-          "code": "L20.82",
-          "description": "Flexural eczema",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "C",
-        "code": "L20.83",
-        "embedding": {
-          "code": "L20.83",
-          "description": "Infantile (acute) (chronic) eczema",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "D",
-        "code": "L20.84",
-        "embedding": {
-          "code": "L20.84",
-          "description": "Intrinsic (allergic) eczema",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      }
-    ]
-  },
-  {
-    "question_number": 73,
-    "question_type": "ICD",
-    "question": "According to the ICD 10 CM guidelines, when a patient has both an acute and chronic condition, which one should be sequenced first?",
-    "choices": [
-      {
-        "choice": "A",
-        "code": "Acute condition",
-        "embedding": {
-          "code": "Acute condition",
-          "description": "ICD code (no additional information available)",
-          "system": "ICD",
-          "source": "API fetch failed",
-          "note": "Could not fetch ICD information from NLM API"
-        }
-      },
-      {
-        "choice": "B",
-        "code": "Chronic condition",
-        "embedding": {
-          "code": "Chronic condition",
-          "description": "ICD code (no additional information available)",
-          "system": "ICD",
-          "source": "API fetch failed",
-          "note": "Could not fetch ICD information from NLM API"
-        }
-      },
-      {
-        "choice": "C",
-        "code": "Either - based on the severity",
-        "embedding": {
-          "code": "Either - based on the severity",
-          "description": "ICD code (no additional information available)",
-          "system": "ICD",
-          "source": "API fetch failed",
-          "note": "Could not fetch ICD information from NLM API"
-        }
-      },
-      {
-        "choice": "D",
-        "code": "The condition that is being treated during the visit",
-        "embedding": {
-          "code": "The condition that is being treated during the visit",
-          "description": "ICD code (no additional information available)",
-          "system": "ICD",
-          "source": "API fetch failed",
-          "note": "Could not fetch ICD information from NLM API"
-        }
-      }
-    ]
-  },
-  {
-    "question_number": 83,
-    "question_type": "ICD",
-    "question": "Julie was diagnosed with iron-deficiency anemia secondary to chronic blood loss. Which ICD-10-CM code is appropriate for this diagnosis?",
-    "choices": [
-      {
-        "choice": "A",
-        "code": "D50.0",
-        "embedding": {
-          "code": "D50.0",
-          "description": "Iron deficiency anemia secondary to blood loss (chronic)",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "B",
-        "code": "D50.1",
-        "embedding": {
-          "code": "D50.1",
-          "description": "Sideropenic dysphagia",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "C",
-        "code": "D50.8",
-        "embedding": {
-          "code": "D50.8",
-          "description": "Other iron deficiency anemias",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "D",
-        "code": "D50.9",
-        "embedding": {
-          "code": "D50.9",
-          "description": "Iron deficiency anemia, unspecified",
-          "system": "ICD-10-CM",
-          "source": "NLM Clinical Tables"
-        }
-      }
-    ]
-  },
-  {
-    "question_number": 87,
-    "question_type": "ICD",
-    "question": "In ICD-10-CM, how should unspecified codes be utilized?",
-    "choices": [
-      {
-        "choice": "A",
-        "code": "Frequently; as they are easy to use",
-        "embedding": {
-          "code": "Frequently; as they are easy to use",
-          "description": "ICD code (no additional information available)",
-          "system": "ICD",
-          "source": "API fetch failed",
-          "note": "Could not fetch ICD information from NLM API"
-        }
-      },
-      {
-        "choice": "B",
-        "code": "Only when the documentation doesn't provide more specific information",
-        "embedding": {
-          "code": "Only when the documentation doesn't provide more specific information",
-          "description": "ICD code (no additional information available)",
-          "system": "ICD",
-          "source": "API fetch failed",
-          "note": "Could not fetch ICD information from NLM API"
-        }
-      },
-      {
-        "choice": "C",
-        "code": "When the coder is unsure about the specifics of the condition",
-        "embedding": {
-          "code": "When the coder is unsure about the specifics of the condition",
-          "description": "ICD code (no additional information available)",
-          "system": "ICD",
-          "source": "API fetch failed",
-          "note": "Could not fetch ICD information from NLM API"
-        }
-      },
-      {
-        "choice": "D",
-        "code": "In any situation where a quick code is needed",
-        "embedding": {
-          "code": "In any situation where a quick code is needed",
-          "description": "ICD code (no additional information available)",
-          "system": "ICD",
-          "source": "API fetch failed",
-          "note": "Could not fetch ICD information from NLM API"
-        }
-      }
-    ]
-  },
-  {
-    "question_number": 92,
-    "question_type": "HCPCS",
-    "question": "George received an infusion of Remicade for his Crohn's disease. What HCPCS Level II code corresponds to the Remicade infusion?",
-    "choices": [
-      {
-        "choice": "A",
-        "code": "J1745",
-        "embedding": {
-          "code": "J1745",
-          "description": "Infliximab not biosimil 10mg",
-          "system": "HCPCS",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "B",
-        "code": "J1750",
-        "embedding": {
-          "code": "J1750",
-          "description": "Inj iron dextran",
-          "system": "HCPCS",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "C",
-        "code": "J1756",
-        "embedding": {
-          "code": "J1756",
-          "description": "Iron sucrose injection",
-          "system": "HCPCS",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "D",
-        "code": "J1760",
-        "embedding": {
-          "code": "J1760",
-          "description": "HCPCS code (no additional information available)",
-          "system": "HCPCS",
-          "source": "API fetch failed",
-          "note": "Could not fetch HCPCS information from NLM API"
-        }
-      }
-    ]
-  },
-  {
     "question_number": 95,
     "question_type": "ICD",
-    "question": "When a patient is admitted to the hospital for a high fever and is later diagnosed with sepsis, what should be the primary diagnosis according to ICD 10 CM guidelines?",
+    "question": "Tom was diagnosed with bilateral primary osteoarthritis of the knee. Which ICD 10 CM code is suitable for this diagnosis?",
     "choices": [
       {
         "choice": "A",
-        "code": "Fever",
+        "code": "M17.0",
         "embedding": {
-          "code": "Fever",
-          "description": "ICD code (no additional information available)",
-          "system": "ICD",
-          "source": "API fetch failed",
-          "note": "Could not fetch ICD information from NLM API"
+          "code": "M17.0",
+          "description": "Bilateral primary osteoarthritis of knee",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
         }
       },
       {
         "choice": "B",
-        "code": "Sepsis",
+        "code": "M17.1",
         "embedding": {
-          "code": "Sepsis",
-          "description": "ICD code (no additional information available)",
-          "system": "ICD",
-          "source": "API fetch failed",
-          "note": "Could not fetch ICD information from NLM API"
+          "code": "M17.10",
+          "description": "Unilateral primary osteoarthritis, unspecified knee",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables",
+          "note": "Closest match for M17.1"
         }
       },
       {
         "choice": "C",
-        "code": "Both can be primary",
+        "code": "M17.2",
         "embedding": {
-          "code": "Both can be primary",
-          "description": "ICD code (no additional information available)",
-          "system": "ICD",
-          "source": "API fetch failed",
-          "note": "Could not fetch ICD information from NLM API"
+          "code": "M17.2",
+          "description": "Bilateral post-traumatic osteoarthritis of knee",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables"
         }
       },
       {
         "choice": "D",
-        "code": "The condition that prompted the admission",
+        "code": "M17.3",
         "embedding": {
-          "code": "The condition that prompted the admission",
-          "description": "ICD code (no additional information available)",
-          "system": "ICD",
-          "source": "API fetch failed",
-          "note": "Could not fetch ICD information from NLM API"
+          "code": "M17.30",
+          "description": "Unilateral post-traumatic osteoarthritis, unspecified knee",
+          "system": "ICD-10-CM",
+          "source": "NLM Clinical Tables",
+          "note": "Closest match for M17.3"
         }
       }
     ]
   },
   {
     "question_number": 97,
-    "question_type": "HCPCS",
-    "question": "Nancy was fitted with a below-the-knee artificial limb after her leg amputation. Which HCPCS Level II code represents this prosthetic?",
+    "question_type": "ICD",
+    "question": "Samantha was diagnosed with acute sinusitis due to Streptococcus pneumoniae. What ICD 10 CM code corresponds to her condition?",
     "choices": [
       {
         "choice": "A",
-        "code": "L5631",
+        "code": "J01.00",
         "embedding": {
-          "code": "L5631",
-          "description": "Ak/knee disartic acrylic soc",
-          "system": "HCPCS",
+          "code": "J01.00",
+          "description": "Acute maxillary sinusitis, unspecified",
+          "system": "ICD-10-CM",
           "source": "NLM Clinical Tables"
         }
       },
       {
         "choice": "B",
-        "code": "L5637",
+        "code": "J01.10",
         "embedding": {
-          "code": "L5637",
-          "description": "Below knee total contact",
-          "system": "HCPCS",
+          "code": "J01.10",
+          "description": "Acute frontal sinusitis, unspecified",
+          "system": "ICD-10-CM",
           "source": "NLM Clinical Tables"
         }
       },
       {
         "choice": "C",
-        "code": "L5645",
+        "code": "J01.01",
         "embedding": {
-          "code": "L5645",
-          "description": "Bk flex inner socket ext fra",
-          "system": "HCPCS",
+          "code": "J01.01",
+          "description": "Acute recurrent maxillary sinusitis",
+          "system": "ICD-10-CM",
           "source": "NLM Clinical Tables"
         }
       },
       {
         "choice": "D",
-        "code": "L5650",
+        "code": "J01.11",
         "embedding": {
-          "code": "L5650",
-          "description": "Tot contact ak/knee disart s",
-          "system": "HCPCS",
-          "source": "NLM Clinical Tables"
-        }
-      }
-    ]
-  },
-  {
-    "question_number": 100,
-    "question_type": "HCPCS",
-    "question": "Anna received an injection of Botox for her chronic migraines. Which HCPCS Level II code represents the Botox injection?",
-    "choices": [
-      {
-        "choice": "A",
-        "code": "J0585",
-        "embedding": {
-          "code": "J0585",
-          "description": "Injection,onabotulinumtoxina",
-          "system": "HCPCS",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "B",
-        "code": "J0586",
-        "embedding": {
-          "code": "J0586",
-          "description": "Abobotulinumtoxina",
-          "system": "HCPCS",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "C",
-        "code": "J0587",
-        "embedding": {
-          "code": "J0587",
-          "description": "Inj, rimabotulinumtoxinb",
-          "system": "HCPCS",
-          "source": "NLM Clinical Tables"
-        }
-      },
-      {
-        "choice": "D",
-        "code": "J0588",
-        "embedding": {
-          "code": "J0588",
-          "description": "Incobotulinumtoxin a",
-          "system": "HCPCS",
+          "code": "J01.11",
+          "description": "Acute recurrent frontal sinusitis",
+          "system": "ICD-10-CM",
           "source": "NLM Clinical Tables"
         }
       }

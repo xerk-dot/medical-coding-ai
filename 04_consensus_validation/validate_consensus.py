@@ -30,9 +30,9 @@ class ConsensusValidator:
     """Validates consensus results against the official answer key"""
     
     def __init__(self):
-        self.answer_key_file = "../00_question_banks/test_1/test_1_answers.json"
+        self.answer_key_file = "../00_question_banks/final_answers.json"
         self.consensus_reports_dir = "../03_consensus_benchmarks/consensus_reports"
-        self.questions_file = "../00_question_banks/test_1/test_1_questions.json"
+        self.questions_file = "../00_question_banks/final_questions.json"
     
     def load_answer_key(self) -> Dict[int, str]:
         """Load the official answer key"""

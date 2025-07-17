@@ -172,7 +172,7 @@ def create_question_embeddings():
     Create embeddings for ICD and HCPCS questions only using their respective APIs
     """
     # Load questions
-    questions_file = '../00_question_banks/test_1/test_1_questions.json'
+    questions_file = '../00_question_banks/final_questions.json'
     
     if not os.path.exists(questions_file):
         print(f"Error: Questions file not found at {questions_file}")

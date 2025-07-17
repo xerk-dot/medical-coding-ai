@@ -51,7 +51,11 @@ cd 00_hcpcs_icd_apis
 python3 fetch_embeddings.py
 ```
 
-This creates embeddings for 20 questions (13 ICD + 7 HCPCS) out of 100 total questions.
+The script will:
+1. Load questions from `../00_question_banks/final_questions.json`
+2. Filter to only ICD and HCPCS question types
+3. Fetch code descriptions from the NLM APIs
+4. Save enhanced question data to `question_embeddings.json`
 
 ### Step 2: Run Enhanced Tests
 

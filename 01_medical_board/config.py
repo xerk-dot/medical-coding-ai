@@ -79,34 +79,34 @@ AI_DOCTORS: Dict[str, Dict[str, str]] = {
         "cost_tier": 1,  # $0.15/$0.60 per M tokens
         "cost_note": "$0.15/$0.60 per M tokens"
     },
-    "claude_sonnet_4": {
-        "model_id": "anthropic/claude-sonnet-4",
-        "display_name": "Dr. Claude Sonnet the 4th",
-        "short_name": "claude_sonnet_4",
-        "cost_tier": 6,  # $3.00/$15.00 per M tokens
-        "cost_note": "$3.00/$15.00 per M tokens"
-    },
-    "claude_sonnet_3.5": {
-        "model_id": "anthropic/claude-3.5-sonnet",
-        "display_name": "Dr. Claude Sonnet the 3.5th",
-        "short_name": "claude_sonnet_3.5",
-        "cost_tier": 6,  # $3.00/$15.00 per M tokens
-        "cost_note": "$3.00/$15.00 per M tokens"
-    },
-    "claude_sonnet_3.7": {
-        "model_id": "anthropic/claude-3.7-sonnet",
-        "display_name": "Dr. Claude Sonnet the 3.7th",
-        "short_name": "claude_sonnet_3.7",
-        "cost_tier": 6,  # $3.00/$15.00 per M tokens
-        "cost_note": "$3.00/$15.00 per M tokens"
-    },
-    "gemini_2_5_pro": {
-        "model_id": "google/gemini-2.5-pro",
-        "display_name": "Dr. Gemini Pro the 2.5th",
-        "short_name": "gemini_2_5_pro",
-        "cost_tier": 6,  # Similar to Claude pricing
-        "cost_note": "~$3.00/$15.00 per M tokens"
-    },
+    # "claude_sonnet_4": {
+    #     "model_id": "anthropic/claude-sonnet-4",
+    #     "display_name": "Dr. Claude Sonnet the 4th",
+    #     "short_name": "claude_sonnet_4",
+    #     "cost_tier": 6,  # $3.00/$15.00 per M tokens
+    #     "cost_note": "$3.00/$15.00 per M tokens"
+    # },
+    # "claude_sonnet_3.5": {
+    #     "model_id": "anthropic/claude-3.5-sonnet",
+    #     "display_name": "Dr. Claude Sonnet the 3.5th",
+    #     "short_name": "claude_sonnet_3.5",
+    #     "cost_tier": 6,  # $3.00/$15.00 per M tokens
+    #     "cost_note": "$3.00/$15.00 per M tokens"
+    # },
+    # "claude_sonnet_3.7": {
+    #     "model_id": "anthropic/claude-3.7-sonnet",
+    #     "display_name": "Dr. Claude Sonnet the 3.7th",
+    #     "short_name": "claude_sonnet_3.7",
+    #     "cost_tier": 6,  # $3.00/$15.00 per M tokens
+    #     "cost_note": "$3.00/$15.00 per M tokens"
+    # },
+    # "gemini_2_5_pro": {
+    #     "model_id": "google/gemini-2.5-pro",
+    #     "display_name": "Dr. Gemini Pro the 2.5th",
+    #     "short_name": "gemini_2_5_pro",
+    #     "cost_tier": 6,  # Similar to Claude pricing
+    #     "cost_note": "~$3.00/$15.00 per M tokens"
+    # },
     # "gemini_2_5_flash_preview": {
     #     "model_id": "google/gemini-2.5-flash-preview-05-20",
     #     "display_name": "Dr. Gemini Flash Preview the 2.5th",
