@@ -291,9 +291,7 @@ syntra/
   works:
 
   1. Primary Method - Tool Calls (lines 59-84): The system defines a
-  function tool called select_answer that forces the AI to respond with:
-    - **choice**: Must be one of `["A", "B", "C", "D"]`
-    - **reasoning**: Explanation for the choice
+  function tool called select_answer that forces the AI to respond with 1) `["A", "B", "C", "D"]` and 2) explanation for the choice
 
 2. **Fallback Parsing** (lines 114-131): If tool calls fail, the system uses several fallback parsers:
     - `_parse_reasoning_details()`: For Gemini models that put responses in `reasoning_details`
